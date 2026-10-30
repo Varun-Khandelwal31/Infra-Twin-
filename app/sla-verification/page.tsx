@@ -365,7 +365,7 @@ export default function SLAVerificationPage() {
           {/* DUAL IMAGE COMPARISON VIEWERS */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Left Box: Pre-repair Pothole with DYNAMIC RED Mask */}
-            <div className="relative rounded-2xl overflow-hidden border border-rose-200 bg-slate-900 shadow-md flex flex-col justify-between h-[340px] p-4 group">
+            <div className="relative rounded-2xl overflow-hidden border border-rose-200 bg-slate-900 shadow-md flex flex-col justify-between h-[360px] p-4 group">
               <div className="relative z-10 flex items-center justify-between">
                 <span className="text-[10px] uppercase font-mono font-bold px-2 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200 shadow-xs">
                   Step 1: Pre-Repair Drone Scan (Void Detected)
@@ -422,7 +422,7 @@ export default function SLAVerificationPage() {
             </div>
 
             {/* Right Box: Post-repair Pothole with DYNAMIC GREEN / RED Mask */}
-            <div className="relative rounded-2xl overflow-hidden border border-emerald-200 bg-slate-900 shadow-md flex flex-col justify-between h-[340px] p-4 group">
+            <div className="relative rounded-2xl overflow-hidden border border-emerald-200 bg-slate-900 shadow-md flex flex-col justify-between h-[360px] p-4 group">
               <div className="relative z-10 flex items-center justify-between">
                 <span className="text-[10px] uppercase font-mono font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-xs">
                   Step 2: Post-Repair AI Verification Scan
@@ -542,161 +542,162 @@ export default function SLAVerificationPage() {
             </div>
           </div>
 
-          {/* TABBED DEEP INSPECTION DRAWER */}
-          <div className="rounded-2xl bg-white/95 border border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] overflow-hidden">
-            <div className="flex items-center gap-1 p-2 bg-slate-50 border-b border-slate-200">
-              <button
-                onClick={() => setActiveDetailTab('verdict')}
-                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                  activeDetailTab === 'verdict'
-                    ? 'bg-white text-slate-900 shadow-xs border border-slate-200/90'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                AI Computer Vision Diagnostics
-              </button>
-              <button
-                onClick={() => setActiveDetailTab('materials')}
-                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                  activeDetailTab === 'materials'
-                    ? 'bg-white text-slate-900 shadow-xs border border-slate-200/90'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                Itemized Material Audit (CPWD Rates)
-              </button>
-              <button
-                onClick={() => setActiveDetailTab('simulator')}
-                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                  activeDetailTab === 'simulator'
-                    ? 'bg-white text-slate-900 shadow-xs border border-slate-200/90'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                Threshold Simulator
-              </button>
+          {/* INTERACTIVE AUDIT PARAMETER SIMULATOR (ALWAYS VISIBLE) */}
+          <div className="p-5 rounded-2xl bg-white/95 border border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2 text-xs font-bold text-cyan-700 font-mono">
+                <Sliders className="w-4 h-4" />
+                <span>INTERACTIVE AUDIT PARAMETER SIMULATOR</span>
+              </div>
+              <span className="text-[11px] font-mono text-slate-500">Adjust sliders to test statutory fraud detection thresholds</span>
             </div>
 
-            <div className="p-5">
-              {/* Tab 1: AI Diagnostics */}
-              {activeDetailTab === 'verdict' && cvResult && (
-                <div className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-mono">
-                    {cvResult.aiChecks.map((chk, idx) => (
-                      <div
-                        key={idx}
-                        className={`p-3 rounded-xl border flex items-start gap-2 shadow-2xs ${
-                          chk.startsWith('✓')
-                            ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
-                            : 'bg-rose-50 border-rose-200 text-rose-800'
-                        }`}
-                      >
-                        <span>{chk}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 leading-relaxed shadow-2xs">
-                    <strong className="text-cyan-800 font-mono">Statutory Audit Explanation: </strong>
-                    {cvResult.explanation}
-                  </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs font-mono">
+              <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200 shadow-2xs">
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-700">Contractor Claimed / Billed Volume:</span>
+                  <span className="font-bold text-rose-600">{billedVolume.toFixed(2)} m³</span>
                 </div>
-              )}
-
-              {/* Tab 2: Material Table */}
-              {activeDetailTab === 'materials' && (
-                <div className="overflow-x-auto rounded-xl border border-slate-200">
-                  <table className="w-full text-left text-xs">
-                    <thead className="bg-slate-100 text-slate-600 font-mono">
-                      <tr>
-                        <th className="p-3">Material Category</th>
-                        <th className="p-3">Contractor Claimed</th>
-                        <th className="p-3">AI Verified Used</th>
-                        <th className="p-3">Variance / Deficit</th>
-                        <th className="p-3 text-right">Audit &amp; Escrow Status</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100 bg-white font-mono">
-                      {(cvResult?.materialTable || [
-                        {
-                          type: 'VG-30 Bituminous Concrete (BC Type II)',
-                          claimed: `${(billedVolume * 2.4).toFixed(2)} Ton`,
-                          used: `${(aiFilledVolume * 2.4).toFixed(2)} Ton`,
-                          variance: `-${deficitPercentage}%`,
-                          status: isFraud ? 'Exceeded Tolerance' : 'Within SLA Limit',
-                        },
-                      ]).map((row, idx) => (
-                        <tr key={idx} className="hover:bg-slate-50">
-                          <td className="p-3 font-semibold text-slate-900 font-sans">{row.type}</td>
-                          <td className="p-3 text-slate-600">{row.claimed}</td>
-                          <td className="p-3 text-cyan-700 font-semibold">{row.used}</td>
-                          <td className={`p-3 font-bold ${isFraud ? 'text-rose-600' : 'text-emerald-600'}`}>
-                            {row.variance}
-                          </td>
-                          <td className="p-3 text-right">
-                            <span
-                              className={`px-2.5 py-1 rounded text-[10px] font-bold border shadow-xs ${
-                                row.status.includes('Exceeded') || row.status.includes('Fraud')
-                                ? 'bg-rose-50 text-rose-700 border-rose-200'
-                                : 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                              }`}
-                            >
-                              {row.status}
-                            </span>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                <input
+                  type="range"
+                  min="0.10"
+                  max="1.50"
+                  step="0.01"
+                  value={billedVolume}
+                  onChange={(e) => setBilledVolume(parseFloat(e.target.value))}
+                  className="w-full accent-rose-600 cursor-pointer h-2 bg-slate-200 rounded-lg"
+                />
+                <div className="flex justify-between text-[10px] text-slate-500">
+                  <span>0.10 m³</span>
+                  <span>Contractor Invoice Volume</span>
+                  <span>1.50 m³</span>
                 </div>
-              )}
+              </div>
 
-              {/* Tab 3: Sliders Simulator */}
-              {activeDetailTab === 'simulator' && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs font-mono">
-                  <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200 shadow-2xs">
-                    <div className="flex items-center justify-between">
-                      <span className="text-slate-700">Contractor Claimed Volume:</span>
-                      <span className="font-bold text-rose-600">{billedVolume.toFixed(2)} m³</span>
-                    </div>
-                    <input
-                      type="range"
-                      min="0.10"
-                      max="1.50"
-                      step="0.01"
-                      value={billedVolume}
-                      onChange={(e) => setBilledVolume(parseFloat(e.target.value))}
-                      className="w-full accent-rose-600 cursor-pointer h-2 bg-slate-200 rounded-lg"
-                    />
-                    <div className="flex justify-between text-[10px] text-slate-500">
-                      <span>0.10 m³</span>
-                      <span>Contractor Invoice Volume</span>
-                      <span>1.50 m³</span>
-                    </div>
-                  </div>
-
-                  <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200 shadow-2xs">
-                    <div className="flex items-center justify-between">
-                      <span className="text-slate-700">AI Drone Verified Material:</span>
-                      <span className="font-bold text-emerald-600">{aiFilledVolume.toFixed(2)} m³</span>
-                    </div>
-                    <input
-                      type="range"
-                      min="0.10"
-                      max="1.50"
-                      step="0.01"
-                      value={aiFilledVolume}
-                      onChange={(e) => setAiFilledVolume(parseFloat(e.target.value))}
-                      className="w-full accent-emerald-600 cursor-pointer h-2 bg-slate-200 rounded-lg"
-                    />
-                    <div className="flex justify-between text-[10px] text-slate-500">
-                      <span>0.10 m³</span>
-                      <span>LiDAR Volumetric Reconstruction</span>
-                      <span>1.50 m³</span>
-                    </div>
-                  </div>
+              <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200 shadow-2xs">
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-700">AI Drone Verified Material Filled:</span>
+                  <span className="font-bold text-emerald-600">{aiFilledVolume.toFixed(2)} m³</span>
                 </div>
+                <input
+                  type="range"
+                  min="0.10"
+                  max="1.50"
+                  step="0.01"
+                  value={aiFilledVolume}
+                  onChange={(e) => setAiFilledVolume(parseFloat(e.target.value))}
+                  className="w-full accent-emerald-600 cursor-pointer h-2 bg-slate-200 rounded-lg"
+                />
+                <div className="flex justify-between text-[10px] text-slate-500">
+                  <span>0.10 m³</span>
+                  <span>LiDAR Volumetric Reconstruction</span>
+                  <span>1.50 m³</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* AI AUTOMATED DIAGNOSTICS & STATUTORY CHECKS (ALWAYS VISIBLE) */}
+          {cvResult && (
+            <div className="p-5 rounded-2xl bg-white/95 border border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 text-xs font-bold text-slate-900 font-display uppercase tracking-wider">
+                  <Cpu className="w-4 h-4 text-cyan-600" />
+                  <span>Real-Time Computer Vision &amp; Statutory Diagnostics</span>
+                </div>
+                <span className="text-[11px] font-mono text-cyan-700 font-semibold">
+                  Fill Completion: {cvResult.fillCompletenessPct ?? 98}%
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-mono">
+                {cvResult.aiChecks.map((chk, idx) => (
+                  <div
+                    key={idx}
+                    className={`p-3 rounded-xl border flex items-start gap-2 shadow-2xs ${
+                      chk.startsWith('✓')
+                        ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
+                        : 'bg-rose-50 border-rose-200 text-rose-800'
+                    }`}
+                  >
+                    <span>{chk}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 leading-relaxed shadow-2xs">
+                <strong className="text-cyan-800 font-mono">Official Audit Verdict: </strong>
+                {cvResult.explanation}
+              </div>
+            </div>
+          )}
+
+          {/* ITEMIZED VOLUMETRIC MATERIAL AUDIT TABLE (ALWAYS VISIBLE) */}
+          <div className="p-5 rounded-2xl bg-white/95 border border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] space-y-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-xs font-bold text-slate-900 font-display uppercase tracking-wider">
+                  Itemized Volumetric Material Audit (CPWD DSR Aligned)
+                </h3>
+                <p className="text-[11px] text-slate-500 font-mono mt-0.5">
+                  Calculated against physical void dimensions ({voidArea.toFixed(2)} m&sup2; &times; {voidDepth.toFixed(1)} cm)
+                </p>
+              </div>
+
+              {onChainRecord && (
+                <button
+                  onClick={() => setIsBlockchainModalOpen(true)}
+                  className="text-xs font-mono text-purple-700 hover:text-purple-900 flex items-center gap-1 underline font-semibold"
+                >
+                  <Layers className="w-3.5 h-3.5" />
+                  <span>View Merkle Proof (Tx: {onChainRecord.receipt.txHash.slice(0, 10)}...)</span>
+                </button>
               )}
+            </div>
+
+            <div className="overflow-x-auto rounded-xl border border-slate-200">
+              <table className="w-full text-left text-xs">
+                <thead className="bg-slate-100 text-slate-600 font-mono">
+                  <tr>
+                    <th className="p-3">Material Category</th>
+                    <th className="p-3">Contractor Claimed</th>
+                    <th className="p-3">AI Verified Used</th>
+                    <th className="p-3">Variance / Deficit</th>
+                    <th className="p-3 text-right">Audit &amp; Escrow Status</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100 bg-white font-mono">
+                  {(cvResult?.materialTable || [
+                    {
+                      type: 'VG-30 Bituminous Concrete (BC Type II)',
+                      claimed: `${(billedVolume * 2.4).toFixed(2)} Ton`,
+                      used: `${(aiFilledVolume * 2.4).toFixed(2)} Ton`,
+                      variance: `-${deficitPercentage}%`,
+                      status: isFraud ? 'Exceeded Tolerance' : 'Within SLA Limit',
+                    },
+                  ]).map((row, idx) => (
+                    <tr key={idx} className="hover:bg-slate-50">
+                      <td className="p-3 font-semibold text-slate-900 font-sans">{row.type}</td>
+                      <td className="p-3 text-slate-600">{row.claimed}</td>
+                      <td className="p-3 text-cyan-700 font-semibold">{row.used}</td>
+                      <td className={`p-3 font-bold ${isFraud ? 'text-rose-600' : 'text-emerald-600'}`}>
+                        {row.variance}
+                      </td>
+                      <td className="p-3 text-right">
+                        <span
+                          className={`px-2.5 py-1 rounded text-[10px] font-bold border shadow-xs ${
+                            row.status.includes('Exceeded') || row.status.includes('Fraud')
+                              ? 'bg-rose-50 text-rose-700 border-rose-200'
+                              : 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                          }`}
+                        >
+                          {row.status}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </main>

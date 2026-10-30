@@ -163,22 +163,22 @@ export default function LogIssueModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-      <div className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-3xl bg-gradient-to-b from-[#111726] to-[#0a0e17] border border-cyan-500/40 shadow-2xl p-6 sm:p-8 space-y-6 text-slate-100 font-sans">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md animate-fadeIn">
+      <div className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-3xl bg-white border border-slate-200 shadow-2xl p-6 sm:p-8 space-y-6 text-slate-800 font-sans">
         {/* Modal Header */}
-        <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+        <div className="flex items-center justify-between pb-4 border-b border-slate-200">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-2xl bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 shadow-cyan-glow">
+            <div className="p-2.5 rounded-2xl bg-cyan-50 text-cyan-700 border border-cyan-200 shadow-xs">
               <Plus className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-lg font-bold text-white font-display flex items-center gap-2">
+              <h2 className="text-lg font-bold text-slate-900 font-display flex items-center gap-2">
                 <span>Log New Road Inspection Issue</span>
-                <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
+                <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-50 text-cyan-800 border border-cyan-200 font-bold">
                   ISS-{nextIdNumber}
                 </span>
               </h2>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-500">
                 Register AI-detected road cavity across India, assign severity, and trigger contractor work orders
               </p>
             </div>
@@ -186,7 +186,7 @@ export default function LogIssueModal({
 
           <button
             onClick={onClose}
-            className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -196,18 +196,18 @@ export default function LogIssueModal({
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Row 1: Location Title */}
           <div className="space-y-1.5">
-            <label className="block text-xs font-bold text-slate-200 uppercase tracking-wider font-mono">
-              Road / Location Stretch Name <span className="text-rose-400">*</span>
+            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider font-mono">
+              Road / Location Stretch Name <span className="text-rose-500">*</span>
             </label>
             <div className="relative">
-              <MapPin className="w-4 h-4 text-cyan-400 absolute left-3.5 top-3" />
+              <MapPin className="w-4 h-4 text-cyan-600 absolute left-3.5 top-3" />
               <input
                 type="text"
                 required
                 placeholder="e.g. Western Express Highway Andheri Mumbai, ORR Bellandur Bengaluru, etc."
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 font-sans"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-cyan-500 font-sans"
               />
             </div>
           </div>
@@ -215,16 +215,16 @@ export default function LogIssueModal({
           {/* Row 2: Ward & Distress Type */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <label className="block text-xs font-bold text-slate-200 uppercase tracking-wider font-mono">
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider font-mono">
                 Municipal Ward / Zone / Highway Corridor
               </label>
               <select
                 value={ward}
                 onChange={(e) => setWard(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:border-cyan-500 font-sans"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-cyan-500 font-sans"
               >
                 {WARDS_AND_ZONES.map((w) => (
-                  <option key={w} value={w} className="bg-slate-900 text-white">
+                  <option key={w} value={w} className="bg-white text-slate-800">
                     {w}
                   </option>
                 ))}
@@ -236,22 +236,22 @@ export default function LogIssueModal({
                   placeholder="Type custom City, Ward or State (e.g. Ahmedabad SG Highway Zone)"
                   value={customWardText}
                   onChange={(e) => setCustomWardText(e.target.value)}
-                  className="w-full px-3.5 py-2 mt-1.5 rounded-xl bg-slate-950/90 border border-cyan-500/50 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-sans"
+                  className="w-full px-3.5 py-2 mt-1.5 rounded-xl bg-white border border-cyan-400 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-cyan-500 font-sans"
                 />
               )}
             </div>
 
             <div className="space-y-1.5">
-              <label className="block text-xs font-bold text-slate-200 uppercase tracking-wider font-mono">
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider font-mono">
                 Distress Classification
               </label>
               <select
                 value={distress}
                 onChange={(e) => setDistress(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:border-cyan-500 font-sans"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-cyan-500 font-sans"
               >
                 {DISTRESS_TYPES.map((d) => (
-                  <option key={d} value={d} className="bg-slate-900 text-white">
+                  <option key={d} value={d} className="bg-white text-slate-800">
                     {d}
                   </option>
                 ))}
@@ -261,15 +261,15 @@ export default function LogIssueModal({
 
           {/* Row 3: Severity Selector Pills */}
           <div className="space-y-1.5">
-            <label className="block text-xs font-bold text-slate-200 uppercase tracking-wider font-mono">
+            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider font-mono">
               Severity Level
             </label>
             <div className="grid grid-cols-4 gap-2">
               {[
-                { level: 'Critical', label: 'Critical (🔴 >15cm)', color: 'border-rose-500/50 bg-rose-500/20 text-rose-300' },
-                { level: 'High', label: 'High (🟠 10-15cm)', color: 'border-amber-500/50 bg-amber-500/20 text-amber-300' },
-                { level: 'Moderate', label: 'Moderate (🟡 5-10cm)', color: 'border-cyan-500/50 bg-cyan-500/20 text-cyan-300' },
-                { level: 'Low', label: 'Low (🟢 <5cm)', color: 'border-emerald-500/50 bg-emerald-500/20 text-emerald-300' },
+                { level: 'Critical', label: 'Critical (🔴 >15cm)', color: 'border-rose-500 bg-rose-50 text-rose-700 font-bold' },
+                { level: 'High', label: 'High (🟠 10-15cm)', color: 'border-amber-500 bg-amber-50 text-amber-700 font-bold' },
+                { level: 'Moderate', label: 'Moderate (🟡 5-10cm)', color: 'border-cyan-500 bg-cyan-50 text-cyan-700 font-bold' },
+                { level: 'Low', label: 'Low (🟢 <5cm)', color: 'border-emerald-500 bg-emerald-50 text-emerald-700 font-bold' },
               ].map((sev) => (
                 <button
                   type="button"
@@ -277,8 +277,8 @@ export default function LogIssueModal({
                   onClick={() => setSeverity(sev.level as any)}
                   className={`p-2.5 rounded-xl border text-xs font-bold font-mono transition-all text-center ${
                     severity === sev.level
-                      ? `${sev.color} shadow-lg scale-102`
-                      : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:text-slate-200'
+                      ? `${sev.color} shadow-sm ring-2 ring-offset-1 ring-cyan-500`
+                      : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                   }`}
                 >
                   {sev.label}
@@ -288,13 +288,13 @@ export default function LogIssueModal({
           </div>
 
           {/* Row 4: AI Dimension Sliders (Area & Depth) */}
-          <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-4">
-            <div className="flex items-center justify-between text-xs font-bold text-cyan-400 font-mono">
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+            <div className="flex items-center justify-between text-xs font-bold text-cyan-700 font-mono">
               <span className="flex items-center gap-1.5">
                 <Sliders className="w-3.5 h-3.5" />
                 <span>3D Volumetric Parameters (IRC:82 Standards)</span>
               </span>
-              <span className="text-emerald-400 font-mono font-bold">
+              <span className="text-emerald-700 font-mono font-bold">
                 Est. Repair Cost: ₹{calculatedCostLakhs} Lakhs
               </span>
             </div>
@@ -303,8 +303,8 @@ export default function LogIssueModal({
               {/* Area */}
               <div className="space-y-1">
                 <div className="flex justify-between text-xs font-mono">
-                  <span className="text-slate-400">Pothole Void Area:</span>
-                  <span className="font-bold text-white">{areaSqm.toFixed(1)} m²</span>
+                  <span className="text-slate-600">Pothole Void Area:</span>
+                  <span className="font-bold text-slate-900">{areaSqm.toFixed(1)} m²</span>
                 </div>
                 <input
                   type="range"
@@ -313,9 +313,9 @@ export default function LogIssueModal({
                   step={0.1}
                   value={areaSqm}
                   onChange={(e) => setAreaSqm(Number(e.target.value))}
-                  className="w-full accent-cyan-400 cursor-pointer h-1.5 bg-slate-800 rounded-lg"
+                  className="w-full accent-cyan-600 cursor-pointer h-1.5 bg-slate-200 rounded-lg"
                 />
-                <div className="flex justify-between text-[10px] font-mono text-slate-500">
+                <div className="flex justify-between text-[10px] font-mono text-slate-400">
                   <span>0.5 m²</span>
                   <span>5.0 m²</span>
                   <span>10.0 m²</span>
@@ -325,8 +325,8 @@ export default function LogIssueModal({
               {/* Depth */}
               <div className="space-y-1">
                 <div className="flex justify-between text-xs font-mono">
-                  <span className="text-slate-400">Excavation Depth:</span>
-                  <span className="font-bold text-amber-400">{maxDepthCm.toFixed(1)} cm</span>
+                  <span className="text-slate-600">Excavation Depth:</span>
+                  <span className="font-bold text-amber-700">{maxDepthCm.toFixed(1)} cm</span>
                 </div>
                 <input
                   type="range"
@@ -335,9 +335,9 @@ export default function LogIssueModal({
                   step={0.5}
                   value={maxDepthCm}
                   onChange={(e) => setMaxDepthCm(Number(e.target.value))}
-                  className="w-full accent-cyan-400 cursor-pointer h-1.5 bg-slate-800 rounded-lg"
+                  className="w-full accent-cyan-600 cursor-pointer h-1.5 bg-slate-200 rounded-lg"
                 />
-                <div className="flex justify-between text-[10px] font-mono text-slate-500">
+                <div className="flex justify-between text-[10px] font-mono text-slate-400">
                   <span>3 cm (Surface)</span>
                   <span>15 cm (Deep)</span>
                   <span>25 cm (Severe)</span>
@@ -350,16 +350,16 @@ export default function LogIssueModal({
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
             {/* Reporter Selection */}
             <div className="space-y-1.5">
-              <label className="block text-xs font-bold text-slate-200 uppercase tracking-wider font-mono">
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider font-mono">
                 Ingested By / Telemetry Source
               </label>
               <select
                 value={reportedBy}
                 onChange={(e) => setReportedBy(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:border-cyan-500 font-sans"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-cyan-500 font-sans"
               >
                 {REPORTERS.map((r) => (
-                  <option key={r} value={r} className="bg-slate-900 text-white">
+                  <option key={r} value={r} className="bg-white text-slate-800">
                     {r}
                   </option>
                 ))}
@@ -368,7 +368,7 @@ export default function LogIssueModal({
 
             {/* Drone Photo Picker */}
             <div className="space-y-1.5">
-              <label className="block text-xs font-bold text-slate-200 uppercase tracking-wider font-mono">
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider font-mono">
                 Drone / Mobile Evidence Photo
               </label>
               <input
@@ -379,7 +379,7 @@ export default function LogIssueModal({
                 className="hidden"
               />
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg overflow-hidden border border-cyan-500/40 shrink-0 bg-slate-900">
+                <div className="w-10 h-10 rounded-lg overflow-hidden border border-cyan-400 shrink-0 bg-slate-100">
                   <img
                     src={imagePreview}
                     alt="Uploaded Distress"
@@ -389,9 +389,9 @@ export default function LogIssueModal({
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
-                  className="flex-1 px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-300 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all"
+                  className="flex-1 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all"
                 >
-                  <Upload className="w-3.5 h-3.5 text-cyan-400" />
+                  <Upload className="w-3.5 h-3.5 text-cyan-600" />
                   <span className="truncate">{imageName ? imageName.slice(0, 16) : 'Upload Scan'}</span>
                 </button>
               </div>
@@ -399,12 +399,12 @@ export default function LogIssueModal({
           </div>
 
           {/* Row 6: Auto-dispatch Work Order Toggle */}
-          <div className="p-3.5 rounded-2xl bg-cyan-950/30 border border-cyan-500/30 flex items-center justify-between">
+          <div className="p-3.5 rounded-2xl bg-cyan-50 border border-cyan-200 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <Zap className="w-4 h-4 text-cyan-400" />
+              <Zap className="w-4 h-4 text-cyan-600" />
               <div>
-                <div className="text-xs font-bold text-white">Auto-Generate Work Order &amp; PFMS Milestone</div>
-                <div className="text-[11px] text-slate-400">
+                <div className="text-xs font-bold text-slate-900">Auto-Generate Work Order &amp; PFMS Milestone</div>
+                <div className="text-[11px] text-slate-500">
                   Instantly dispatches ticket to municipal zonal contractor
                 </div>
               </div>
@@ -413,23 +413,23 @@ export default function LogIssueModal({
               type="checkbox"
               checked={autoDispatch}
               onChange={(e) => setAutoDispatch(e.target.checked)}
-              className="w-4 h-4 accent-cyan-400 rounded cursor-pointer"
+              className="w-4 h-4 accent-cyan-600 rounded cursor-pointer"
             />
           </div>
 
           {/* Action Buttons */}
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-800">
+          <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-200">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 text-xs font-semibold transition-colors"
+              className="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-extrabold text-xs tracking-wider uppercase flex items-center gap-2 shadow-cyan-glow transition-all active:scale-95 disabled:opacity-50"
+              className="px-6 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-700 text-white font-extrabold text-xs tracking-wider uppercase flex items-center gap-2 shadow-sm transition-all active:scale-95 disabled:opacity-50"
             >
               {isSubmitting ? (
                 <>
