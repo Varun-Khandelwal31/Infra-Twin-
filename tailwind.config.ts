@@ -31,6 +31,7 @@ const config: Config = {
         display: ['Space Grotesk', 'Inter', 'sans-serif'],
       },
       boxShadow: {
+        'xs': '0 1px 2px 0 rgba(0, 0, 0, 0.04)',
         'cyan-glow': '0 0 25px -5px rgba(0, 217, 255, 0.35)',
         'red-glow': '0 0 25px -5px rgba(239, 68, 68, 0.35)',
         'green-glow': '0 0 25px -5px rgba(16, 185, 129, 0.35)',
