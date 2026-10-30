@@ -565,37 +565,37 @@ export default function SpatialMap() {
 
         const isRed = pin.color === 'red';
         const popupNode = document.createElement('div');
-        popupNode.className = 'p-3 text-slate-100 font-sans max-w-xs';
+        popupNode.className = 'p-1 text-slate-800 font-sans max-w-xs';
         popupNode.innerHTML = `
-          <div style="background: #090d16; border: 1px solid ${isRed ? 'rgba(239,68,68,0.5)' : 'rgba(0,217,255,0.4)'}; padding: 14px; border-radius: 14px; box-shadow: 0 10px 25px rgba(0,0,0,0.85);">
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 14px; border-radius: 14px; box-shadow: 0 10px 25px rgba(15,23,42,0.12);">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-              <span style="font-weight: bold; font-size: 12px; color: #fff;">${pin.name}</span>
-              <span style="background: ${isRed ? 'rgba(239,68,68,0.2)' : 'rgba(16,185,129,0.2)'}; color: ${isRed ? '#f87171' : '#34d399'}; border: 1px solid ${isRed ? 'rgba(239,68,68,0.4)' : 'rgba(16,185,129,0.4)'}; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 4px;">
+              <span style="font-weight: bold; font-size: 13px; color: #0f172a;">${pin.name}</span>
+              <span style="background: ${isRed ? '#fef2f2' : '#ecfdf5'}; color: ${isRed ? '#b91c1c' : '#047857'}; border: 1px solid ${isRed ? '#fecaca' : '#a7f3d0'}; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 6px;">
                 ${pin.status}
               </span>
             </div>
-            <div style="font-size: 10px; color: #38bdf8; margin-bottom: 8px; font-family: monospace;">
+            <div style="font-size: 11px; color: #0369a1; margin-bottom: 8px; font-family: monospace; font-weight: 600;">
               ${pin.city}, ${pin.state}
             </div>
             
-            <div style="font-family: monospace; font-size: 11px; background: rgba(15,23,42,0.85); border: 1px solid rgba(51,65,85,0.6); padding: 8px; border-radius: 8px; margin-bottom: 10px;">
+            <div style="font-family: monospace; font-size: 11px; background: #f8fafc; border: 1px solid #e2e8f0; padding: 8px; border-radius: 8px; margin-bottom: 10px;">
               <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                <span style="color: #94a3b8;">Distress Area:</span>
-                <strong style="color: #f1f5f9;">${pin.areaSqm} m²</strong>
+                <span style="color: #64748b;">Distress Area:</span>
+                <strong style="color: #0f172a;">${pin.areaSqm} m²</strong>
               </div>
               <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                <span style="color: #94a3b8;">Void Depth:</span>
-                <strong style="color: ${isRed ? '#f87171' : '#fbbf24'};">${pin.maxDepthCm} cm</strong>
+                <span style="color: #64748b;">Void Depth:</span>
+                <strong style="color: ${isRed ? '#dc2626' : '#d97706'};">${pin.maxDepthCm} cm</strong>
               </div>
               <div style="display: flex; justify-content: space-between;">
-                <span style="color: #94a3b8;">Volumetric Mass:</span>
-                <strong style="color: #38bdf8;">${pin.volumeCum} m³</strong>
+                <span style="color: #64748b;">Volumetric Mass:</span>
+                <strong style="color: #0284c7;">${pin.volumeCum} m³</strong>
               </div>
             </div>
 
             <div style="display: flex; gap: 6px;">
-              <a href="/audit?sample=${pin.sampleId}" style="flex: 1; background: #0f172a; border: 1px solid #334155; color: #38bdf8; text-align: center; padding: 7px; border-radius: 8px; font-size: 10px; font-weight: bold; text-decoration: none;">3D LiDAR Audit</a>
-              <a href="/copilot?location=${encodeURIComponent(pin.city + ', ' + pin.state)}&area=${pin.areaSqm}&depth=${pin.maxDepthCm}" style="flex: 1; background: linear-gradient(to right, #06b6d4, #2563eb); color: #090d16; text-align: center; padding: 7px; border-radius: 8px; font-size: 10px; font-weight: bold; text-decoration: none;">GenAI BOQ</a>
+              <a href="/audit?sample=${pin.sampleId}" style="flex: 1; background: #ffffff; border: 1px solid #cbd5e1; color: #0369a1; text-align: center; padding: 7px; border-radius: 8px; font-size: 11px; font-weight: bold; text-decoration: none;">3D LiDAR Audit</a>
+              <a href="/copilot?location=${encodeURIComponent(pin.city + ', ' + pin.state)}&area=${pin.areaSqm}&depth=${pin.maxDepthCm}" style="flex: 1; background: #0284c7; color: #ffffff; text-align: center; padding: 7px; border-radius: 8px; font-size: 11px; font-weight: bold; text-decoration: none;">GenAI BOQ</a>
             </div>
           </div>
         `;

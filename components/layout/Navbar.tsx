@@ -79,10 +79,10 @@ export default function Navbar() {
 
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
             <Link href="/dashboard" className="hover:text-cyan-600 transition-colors">Command Center</Link>
-            <Link href="/audit" className="hover:text-cyan-600 transition-colors">AI Studio</Link>
-            <Link href="/map" className="hover:text-cyan-600 transition-colors">Digital Twin</Link>
+            <Link href="/audit" className="hover:text-cyan-600 transition-colors">3D AI Studio</Link>
+            <Link href="/map" className="hover:text-cyan-600 transition-colors">Digital Twin Map</Link>
             <Link href="/copilot" className="hover:text-cyan-600 transition-colors">Nirman Copilot</Link>
-            <Link href="/fraud-detection" className="hover:text-cyan-600 transition-colors">SLA Verification</Link>
+            <Link href="/sla-verification" className="hover:text-cyan-600 transition-colors">Contractor SLA</Link>
           </nav>
 
           <div className="flex items-center gap-3">

@@ -54,7 +54,7 @@ export default function BOQResultCard({ boq }: BOQResultCardProps) {
   };
 
   return (
-    <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-md space-y-6 relative">
+    <div className="p-6 rounded-2xl bg-white/95 border border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] space-y-6 relative">
       {/* Toast Feedback */}
       {toastMessage && (
         <div className="fixed top-16 right-6 z-50 p-3.5 rounded-xl bg-white border border-slate-200 text-cyan-800 text-xs font-mono font-bold shadow-xl flex items-center gap-2 animate-fadeIn">

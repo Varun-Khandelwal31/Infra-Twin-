@@ -6,7 +6,7 @@ import VengenceCard from '@/components/ui/VengenceCard';
 
 export default function FinancialTicker() {
   return (
-    <VengenceCard glowColor="emerald" className="p-6 flex flex-col justify-between h-full bg-white border border-slate-200 shadow-xs">
+    <VengenceCard glowColor="emerald" className="p-6 flex flex-col justify-between h-full bg-white/95 border border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)]">
       <div>
         <div className="flex items-center justify-between mb-3">
           <span className="text-xs uppercase font-mono font-bold text-cyan-700 tracking-wider">

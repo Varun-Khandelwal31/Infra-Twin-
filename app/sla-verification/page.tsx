@@ -40,6 +40,7 @@ export default function SLAVerificationPage() {
   const [isProvenanceOpen, setIsProvenanceOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [isPaymentFrozen, setIsPaymentFrozen] = useState(false);
+  const [activeDetailTab, setActiveDetailTab] = useState<'verdict' | 'materials' | 'simulator'>('verdict');
 
   // Blockchain Anchoring & Modal State
   const [isBlockchainModalOpen, setIsBlockchainModalOpen] = useState(false);
@@ -190,7 +191,7 @@ export default function SLAVerificationPage() {
   };
 
   return (
-    <div className="flex h-screen bg-[#f8fafc] text-slate-800 font-sans overflow-hidden">
+    <div className="flex h-screen bg-[#edf2f7] text-slate-800 font-sans overflow-hidden">
       <Sidebar />
 
       {/* Hidden file inputs */}
@@ -214,11 +215,11 @@ export default function SLAVerificationPage() {
 
         <main className="flex-1 overflow-y-auto p-6 space-y-6">
           {/* Header Banner */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-white/95 border border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)]">
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-xl font-bold text-slate-900 font-display">
-                  Contractor SLA &amp; Volumetric Fraud Verification Module
+                  Contractor SLA &amp; Volumetric Fraud Verification
                 </h1>
                 <span
                   className={`p-1.5 rounded-lg border shadow-xs ${
@@ -231,7 +232,7 @@ export default function SLAVerificationPage() {
                 </span>
               </div>
               <p className="text-xs text-slate-500 mt-0.5">
-                Side-by-side 3D volumetric audit comparing contractor material claims against autonomous drone computer-vision scans
+                {currentScenarioName} • <span className="font-semibold text-slate-700">{currentContractor}</span>
               </p>
             </div>
 
@@ -292,84 +293,64 @@ export default function SLAVerificationPage() {
             </div>
           )}
 
-          {/* PRESET SAMPLES PICKER */}
-          <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-900 font-display uppercase tracking-wider">
-                Select Municipal Inspection Scenario Preset:
-              </span>
-              <span className="text-[11px] font-mono text-cyan-700">Click to load real inspection telemetry</span>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {CONTRACTOR_SLA_SAMPLES.map((sample) => (
-                <button
-                  key={sample.id}
-                  onClick={() => handleApplyPreset(sample)}
-                  className="p-3 rounded-xl bg-slate-50/80 border border-slate-200 hover:border-cyan-300 hover:bg-slate-100 text-left transition-all group cursor-pointer shadow-xs"
-                >
-                  <div className="flex items-center justify-between text-[11px] font-mono">
-                    <span className="text-slate-800 group-hover:text-cyan-800 transition-colors font-bold truncate">
-                      {(sample as any).roadName || sample.project}
-                    </span>
-                    <span
-                      className={`text-[9px] px-1.5 py-0.5 rounded font-bold border ${
-                        sample.status === 'FRAUD_ALERT' || sample.status === 'REJECTED'
-                          ? 'bg-rose-50 text-rose-700 border-rose-200'
-                          : 'bg-emerald-50 text-emerald-700 border-emerald-200'
+          {/* STREAMLINED SCENARIO & UPLOAD CONTROL BAR */}
+          <div className="p-4 rounded-2xl bg-white/95 border border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] space-y-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold text-slate-900 font-display uppercase tracking-wider">
+                  Inspection Scenario:
+                </span>
+                <div className="flex items-center gap-2 flex-wrap">
+                  {CONTRACTOR_SLA_SAMPLES.map((sample) => (
+                    <button
+                      key={sample.id}
+                      onClick={() => handleApplyPreset(sample)}
+                      className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer border ${
+                        currentScenarioName.includes((sample as any).roadName || sample.project)
+                          ? 'bg-cyan-50 border-cyan-400 text-cyan-800 shadow-xs'
+                          : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-white hover:text-slate-900'
                       }`}
                     >
-                      {sample.status === 'FRAUD_ALERT' || sample.status === 'REJECTED' ? 'FRAUD' : 'PASSED'}
-                    </span>
-                  </div>
-                  <div className="text-[10px] text-slate-500 mt-1 truncate">
-                    Contractor: {(sample as any).contractor || 'Apex Infraworks Pvt Ltd'}
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* DUAL IMAGE UPLOAD & LIVE SCAN TRIGGER HUB */}
-          <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-cyan-600" />
-                <span className="text-xs font-bold text-slate-900 font-display uppercase tracking-wider">
-                  Live Custom Orthomosaic Upload &amp; 3D Volume Analysis
-                </span>
+                      <span>{(sample as any).roadName || sample.project}</span>
+                      <span
+                        className={`ml-1.5 text-[9px] px-1.5 py-0.2 rounded font-bold ${
+                          sample.status === 'FRAUD_ALERT' || sample.status === 'REJECTED'
+                            ? 'bg-rose-100 text-rose-700'
+                            : 'bg-emerald-100 text-emerald-700'
+                        }`}
+                      >
+                        {sample.status === 'FRAUD_ALERT' || sample.status === 'REJECTED' ? 'FRAUD' : 'PASS'}
+                      </span>
+                    </button>
+                  ))}
+                </div>
               </div>
-              <span className="text-[11px] font-mono text-slate-500">Upload your own before &amp; after photos for real-time differencing</span>
-            </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <button
-                onClick={() => beforeInputRef.current?.click()}
-                className="p-3 rounded-xl bg-rose-50 hover:bg-rose-100/80 border border-rose-200 text-rose-800 text-xs font-semibold flex items-center justify-between transition-all cursor-pointer shadow-xs"
-              >
-                <span>Upload Custom Before Photo</span>
-                <span className="text-[10px] font-mono opacity-80">Pre-Repair Scan</span>
-              </button>
-
-              <button
-                onClick={() => afterInputRef.current?.click()}
-                className="p-3 rounded-xl bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-semibold flex items-center justify-between transition-all cursor-pointer shadow-xs"
-              >
-                <span>Upload Custom After Photo</span>
-                <span className="text-[10px] font-mono opacity-80">Post-Repair Scan</span>
-              </button>
-
-              <button
-                onClick={() => runImageAnalysis(beforeImg, afterImg)}
-                disabled={isScanning}
-                className="p-3 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md hover:shadow-cyan-500/25 cursor-pointer"
-              >
-                <span>{isScanning ? 'Processing Pixel Matrices...' : 'Run Live 3D AI Differencing'}</span>
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => beforeInputRef.current?.click()}
+                  className="px-3 py-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-medium cursor-pointer shadow-2xs"
+                >
+                  Upload Before
+                </button>
+                <button
+                  onClick={() => afterInputRef.current?.click()}
+                  className="px-3 py-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-medium cursor-pointer shadow-2xs"
+                >
+                  Upload After
+                </button>
+                <button
+                  onClick={() => runImageAnalysis(beforeImg, afterImg)}
+                  disabled={isScanning}
+                  className="px-3.5 py-1.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs cursor-pointer shadow-xs"
+                >
+                  {isScanning ? 'Differencing...' : 'Run Analysis'}
+                </button>
+              </div>
             </div>
 
             {isScanning && (
-              <div className="pt-2">
+              <div className="pt-1">
                 <div className="flex justify-between text-[11px] font-mono text-cyan-700 mb-1">
                   <span>[AI Engine] Evaluating Pixel Matrices, Contour Vectors &amp; Compaction...</span>
                   <span>{scanProgress}%</span>
@@ -381,109 +362,10 @@ export default function SLAVerificationPage() {
             )}
           </div>
 
-          {/* FLASHING RED FRAUD ALERT BANNER OR GREEN CLEARANCE BANNER */}
-          {isFraud ? (
-            <div className="p-4 rounded-2xl bg-rose-50 border-2 border-rose-300 text-rose-900 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
-              <div className="flex items-start gap-3">
-                <div className="p-2 rounded-xl bg-rose-100 border border-rose-200 text-rose-700 shrink-0 shadow-xs">
-                  <AlertTriangle className="w-6 h-6" />
-                </div>
-                <div>
-                  <div className="text-sm font-bold text-rose-950 font-display flex items-center gap-2">
-                    <span>SLA VOLUMETRIC DEFICIT FRAUD DETECTED</span>
-                    <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-rose-600 text-white font-bold">
-                      HIGH RISK
-                    </span>
-                  </div>
-                  <p className="text-xs text-rose-800 mt-0.5">
-                    Contractor claimed <strong className="text-rose-950 font-bold">{billedVolume.toFixed(2)} m³</strong> ({(billedVolume * 2.4).toFixed(2)} Ton) of asphalt, but AI drone scan verified only <strong className="text-rose-950 font-bold">{aiFilledVolume.toFixed(2)} m³</strong> ({(aiFilledVolume * 2.4).toFixed(2)} Ton) filled.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 shrink-0">
-                <div className="text-right font-mono">
-                  <div className="text-[10px] text-rose-700 font-semibold uppercase">Material Deficit</div>
-                  <div className="text-xl font-bold text-rose-800">-{deficitPercentage}%</div>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-300 text-emerald-950 shadow-sm flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded-xl bg-emerald-100 text-emerald-700 border border-emerald-200 shrink-0 shadow-xs">
-                  <CheckCircle2 className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-sm font-bold text-emerald-950 font-display">SLA Compliance Verified</div>
-                  <div className="text-xs text-emerald-800">Material filled matches billed invoice within &plusmn;5% statutory tolerance.</div>
-                </div>
-              </div>
-              <div className="font-mono text-xs text-emerald-700 font-bold">
-                Compaction Quality: {compactionDensity}% (PASSED &gt; 97% MDD)
-              </div>
-            </div>
-          )}
-
-          {/* Interactive Sliders Simulation Control */}
-          <div className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-xs font-bold text-cyan-700 font-mono">
-                <Sliders className="w-4 h-4" />
-                <span>INTERACTIVE AUDIT PARAMETER SIMULATOR</span>
-              </div>
-              <span className="text-[11px] font-mono text-slate-500">Adjust sliders to test statutory fraud detection thresholds</span>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs font-mono">
-              <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200 shadow-xs">
-                <div className="flex items-center justify-between">
-                  <span className="text-slate-700">Contractor Claimed / Billed Volume:</span>
-                  <span className="font-bold text-rose-600">{billedVolume.toFixed(2)} m³</span>
-                </div>
-                <input
-                  type="range"
-                  min="0.10"
-                  max="1.50"
-                  step="0.01"
-                  value={billedVolume}
-                  onChange={(e) => setBilledVolume(parseFloat(e.target.value))}
-                  className="w-full accent-rose-600 cursor-pointer h-2 bg-slate-200 rounded-lg"
-                />
-                <div className="flex justify-between text-[10px] text-slate-500">
-                  <span>0.10 m³</span>
-                  <span>Contractor Invoice Volume</span>
-                  <span>1.50 m³</span>
-                </div>
-              </div>
-
-              <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200 shadow-xs">
-                <div className="flex items-center justify-between">
-                  <span className="text-slate-700">AI Drone Verified Material Filled:</span>
-                  <span className="font-bold text-emerald-600">{aiFilledVolume.toFixed(2)} m³</span>
-                </div>
-                <input
-                  type="range"
-                  min="0.10"
-                  max="1.50"
-                  step="0.01"
-                  value={aiFilledVolume}
-                  onChange={(e) => setAiFilledVolume(parseFloat(e.target.value))}
-                  className="w-full accent-emerald-600 cursor-pointer h-2 bg-slate-200 rounded-lg"
-                />
-                <div className="flex justify-between text-[10px] text-slate-500">
-                  <span>0.10 m³</span>
-                  <span>LiDAR Volumetric Reconstruction</span>
-                  <span>1.50 m³</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Side-by-side Dual Scan Viewers with Dynamic SVG Overlays */}
+          {/* DUAL IMAGE COMPARISON VIEWERS */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Left Box: Pre-repair Pothole with DYNAMIC RED Mask */}
-            <div className="relative rounded-2xl overflow-hidden border border-rose-200 bg-slate-900 shadow-md flex flex-col justify-between h-[360px] p-4 group">
+            <div className="relative rounded-2xl overflow-hidden border border-rose-200 bg-slate-900 shadow-md flex flex-col justify-between h-[340px] p-4 group">
               <div className="relative z-10 flex items-center justify-between">
                 <span className="text-[10px] uppercase font-mono font-bold px-2 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200 shadow-xs">
                   Step 1: Pre-Repair Drone Scan (Void Detected)
@@ -524,23 +406,23 @@ export default function SLAVerificationPage() {
                 </svg>
               </div>
 
-              {/* Prominent Bottom Volume Card */}
-              <div className="relative z-10 p-4 rounded-xl bg-white/95 backdrop-blur-xl border border-rose-200 shadow-xs flex items-center justify-between text-xs font-mono">
+              {/* Volume Card */}
+              <div className="relative z-10 p-3.5 rounded-xl bg-white/95 backdrop-blur-xl border border-rose-200 shadow-xs flex items-center justify-between text-xs font-mono">
                 <div>
-                  <div className="text-slate-500 text-[11px] uppercase tracking-wider">Contractor Invoiced Volume</div>
-                  <div className="text-xl font-black text-rose-600 font-display mt-0.5">
-                    Claimed = {billedVolume.toFixed(2)} m³
+                  <div className="text-slate-500 text-[10px] uppercase tracking-wider">Contractor Claimed Volume</div>
+                  <div className="text-lg font-black text-rose-600 font-display mt-0.5">
+                    {billedVolume.toFixed(2)} m³ ({(billedVolume * 2.4).toFixed(2)} Ton)
                   </div>
                 </div>
                 <div className="text-right border-l border-slate-200 pl-4">
-                  <span className="text-slate-500 block">Area: {voidArea.toFixed(2)} m²</span>
-                  <span className="text-rose-600 font-bold block">Deficit: -{deficitPercentage}%</span>
+                  <span className="text-slate-500 block text-[11px]">Area: {voidArea.toFixed(2)} m²</span>
+                  <span className="text-rose-600 font-bold block text-xs">Deficit: -{deficitPercentage}%</span>
                 </div>
               </div>
             </div>
 
             {/* Right Box: Post-repair Pothole with DYNAMIC GREEN / RED Mask */}
-            <div className="relative rounded-2xl overflow-hidden border border-emerald-200 bg-slate-900 shadow-md flex flex-col justify-between h-[360px] p-4 group">
+            <div className="relative rounded-2xl overflow-hidden border border-emerald-200 bg-slate-900 shadow-md flex flex-col justify-between h-[340px] p-4 group">
               <div className="relative z-10 flex items-center justify-between">
                 <span className="text-[10px] uppercase font-mono font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-xs">
                   Step 2: Post-Repair AI Verification Scan
@@ -582,17 +464,17 @@ export default function SLAVerificationPage() {
                 </svg>
               </div>
 
-              {/* Prominent Bottom Volume Card */}
-              <div className="relative z-10 p-4 rounded-xl bg-white/95 backdrop-blur-xl border border-emerald-200 shadow-xs flex items-center justify-between text-xs font-mono">
+              {/* Volume Card */}
+              <div className="relative z-10 p-3.5 rounded-xl bg-white/95 backdrop-blur-xl border border-emerald-200 shadow-xs flex items-center justify-between text-xs font-mono">
                 <div>
-                  <div className="text-slate-500 text-[11px] uppercase tracking-wider">AI Verified Material Filled</div>
-                  <div className="text-xl font-black text-emerald-600 font-display mt-0.5">
-                    Volume filled = {aiFilledVolume.toFixed(2)} m³
+                  <div className="text-slate-500 text-[10px] uppercase tracking-wider">AI Verified Material Filled</div>
+                  <div className="text-lg font-black text-emerald-600 font-display mt-0.5">
+                    {aiFilledVolume.toFixed(2)} m³ ({(aiFilledVolume * 2.4).toFixed(2)} Ton)
                   </div>
                 </div>
                 <div className="text-right border-l border-slate-200 pl-4">
-                  <span className="text-slate-500 block">Compaction: {compactionDensity}%</span>
-                  <span className={`block font-bold ${isFraud ? 'text-rose-600' : 'text-emerald-600'}`}>
+                  <span className="text-slate-500 block text-[11px]">Compaction: {compactionDensity}%</span>
+                  <span className={`block font-bold text-xs ${isFraud ? 'text-rose-600' : 'text-emerald-600'}`}>
                     SLA: {isFraud ? 'FRAUD ALERT' : 'APPROVED'}
                   </span>
                 </div>
@@ -600,107 +482,221 @@ export default function SLAVerificationPage() {
             </div>
           </div>
 
-          {/* AI Automated Diagnostic Checks & Statutory Rationale */}
-          {cvResult && (
-            <div className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs font-bold text-slate-900 font-display uppercase tracking-wider">
-                  <Cpu className="w-4 h-4 text-cyan-600" />
-                  <span>Real-Time Computer Vision &amp; Statutory Diagnostics</span>
-                </div>
-                <span className="text-[11px] font-mono text-cyan-700 font-semibold">
-                  Fill Completion: {cvResult.fillCompletenessPct ?? 98}%
-                </span>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-mono">
-                {cvResult.aiChecks.map((chk, idx) => (
-                  <div
-                    key={idx}
-                    className={`p-3 rounded-xl border flex items-start gap-2 shadow-xs ${
-                      chk.startsWith('✓')
-                        ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
-                        : 'bg-rose-50 border-rose-200 text-rose-800'
-                    }`}
-                  >
-                    <span>{chk}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 leading-relaxed shadow-xs">
-                <strong className="text-cyan-800 font-mono">Official Audit Verdict: </strong>
-                {cvResult.explanation}
-              </div>
-            </div>
-          )}
-
-          {/* Detailed Itemized Material Audit Table */}
-          <div className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-4">
-            <div className="flex items-center justify-between">
+          {/* CORE VERDICT BENTO STRIP */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div
+              className={`p-5 rounded-2xl border flex items-center justify-between shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] ${
+                isFraud ? 'bg-rose-50/80 border-rose-300' : 'bg-emerald-50/80 border-emerald-300'
+              }`}
+            >
               <div>
-                <h3 className="text-xs font-bold text-slate-900 font-display uppercase tracking-wider">
-                  Itemized Volumetric Material Audit (CPWD DSR Aligned)
-                </h3>
-                <p className="text-[11px] text-slate-500 font-mono mt-0.5">
-                  Calculated against physical void dimensions ({voidArea.toFixed(2)} m&sup2; &times; {voidDepth.toFixed(1)} cm)
-                </p>
+                <span className="text-[11px] font-mono text-slate-500 uppercase">Audit SLA Decision</span>
+                <div className={`text-xl font-bold font-display mt-0.5 ${isFraud ? 'text-rose-700' : 'text-emerald-700'}`}>
+                  {isFraud ? 'Volumetric Fraud' : 'Clearance Approved'}
+                </div>
+                <div className="text-xs text-slate-600 mt-1">
+                  {isFraud ? 'Material deficit exceeds 5% limit' : 'Filled matches invoice within tolerance'}
+                </div>
               </div>
-
-              {onChainRecord && (
-                <button
-                  onClick={() => setIsBlockchainModalOpen(true)}
-                  className="text-xs font-mono text-purple-700 hover:text-purple-900 flex items-center gap-1 underline font-semibold"
-                >
-                  <Layers className="w-3.5 h-3.5" />
-                  <span>View Merkle Proof (Tx: {onChainRecord.receipt.txHash.slice(0, 10)}...)</span>
-                </button>
-              )}
+              <div
+                className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 border ${
+                  isFraud ? 'bg-rose-100 text-rose-700 border-rose-200' : 'bg-emerald-100 text-emerald-700 border-emerald-200'
+                }`}
+              >
+                {isFraud ? <AlertTriangle className="w-6 h-6" /> : <CheckCircle2 className="w-6 h-6" />}
+              </div>
             </div>
 
-            <div className="overflow-x-auto rounded-xl border border-slate-200">
-              <table className="w-full text-left text-xs">
-                <thead className="bg-slate-100 text-slate-600 font-mono">
-                  <tr>
-                    <th className="p-3">Material Category</th>
-                    <th className="p-3">Contractor Claimed</th>
-                    <th className="p-3">AI Verified Used</th>
-                    <th className="p-3">Variance / Deficit</th>
-                    <th className="p-3 text-right">Audit &amp; Escrow Status</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100 bg-white font-mono">
-                  {(cvResult?.materialTable || [
-                    {
-                      type: 'VG-30 Bituminous Concrete (BC Type II)',
-                      claimed: `${(billedVolume * 2.4).toFixed(2)} Ton`,
-                      used: `${(aiFilledVolume * 2.4).toFixed(2)} Ton`,
-                      variance: `-${deficitPercentage}%`,
-                      status: isFraud ? 'Exceeded Tolerance' : 'Within SLA Limit',
-                    },
-                  ]).map((row, idx) => (
-                    <tr key={idx} className="hover:bg-slate-50">
-                      <td className="p-3 font-semibold text-slate-900 font-sans">{row.type}</td>
-                      <td className="p-3 text-slate-600">{row.claimed}</td>
-                      <td className="p-3 text-cyan-700 font-semibold">{row.used}</td>
-                      <td className={`p-3 font-bold ${isFraud ? 'text-rose-600' : 'text-emerald-600'}`}>
-                        {row.variance}
-                      </td>
-                      <td className="p-3 text-right">
-                        <span
-                          className={`px-2.5 py-1 rounded text-[10px] font-bold border shadow-xs ${
-                            row.status.includes('Exceeded') || row.status.includes('Fraud')
-                              ? 'bg-rose-50 text-rose-700 border-rose-200'
-                              : 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                          }`}
-                        >
-                          {row.status}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="p-5 rounded-2xl bg-white/95 border border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] flex items-center justify-between">
+              <div>
+                <span className="text-[11px] font-mono text-slate-500 uppercase">Material Variance</span>
+                <div className={`text-xl font-bold font-display mt-0.5 ${isFraud ? 'text-rose-600' : 'text-emerald-600'}`}>
+                  {isFraud ? `-${deficitPercentage}% Deficit` : '+0.8% In Tolerance'}
+                </div>
+                <div className="text-xs text-slate-600 mt-1">
+                  {isFraud ? `Over-billed by ${Math.abs(billedVolume - aiFilledVolume).toFixed(2)} m³` : 'Optimal compaction density'}
+                </div>
+              </div>
+              <div className="w-12 h-12 rounded-2xl bg-cyan-50 border border-cyan-200 flex items-center justify-center text-cyan-600 shrink-0">
+                <Scale className="w-6 h-6" />
+              </div>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-white/95 border border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] flex items-center justify-between">
+              <div>
+                <span className="text-[11px] font-mono text-slate-500 uppercase">PFMS Smart Contract Escrow</span>
+                <div className={`text-xl font-bold font-display mt-0.5 ${isPaymentFrozen ? 'text-rose-600' : 'text-emerald-600'}`}>
+                  {isPaymentFrozen ? 'Payment Frozen' : 'Disbursement Ready'}
+                </div>
+                <div className="text-xs text-slate-600 mt-1">
+                  {isPaymentFrozen ? 'Public funds held safely' : 'Contractor payout approved'}
+                </div>
+              </div>
+              <div
+                className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 border ${
+                  isPaymentFrozen ? 'bg-rose-50 text-rose-600 border-rose-200' : 'bg-emerald-50 text-emerald-600 border-emerald-200'
+                }`}
+              >
+                {isPaymentFrozen ? <Lock className="w-6 h-6" /> : <Unlock className="w-6 h-6" />}
+              </div>
+            </div>
+          </div>
+
+          {/* TABBED DEEP INSPECTION DRAWER */}
+          <div className="rounded-2xl bg-white/95 border border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] overflow-hidden">
+            <div className="flex items-center gap-1 p-2 bg-slate-50 border-b border-slate-200">
+              <button
+                onClick={() => setActiveDetailTab('verdict')}
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  activeDetailTab === 'verdict'
+                    ? 'bg-white text-slate-900 shadow-xs border border-slate-200/90'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                AI Computer Vision Diagnostics
+              </button>
+              <button
+                onClick={() => setActiveDetailTab('materials')}
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  activeDetailTab === 'materials'
+                    ? 'bg-white text-slate-900 shadow-xs border border-slate-200/90'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                Itemized Material Audit (CPWD Rates)
+              </button>
+              <button
+                onClick={() => setActiveDetailTab('simulator')}
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  activeDetailTab === 'simulator'
+                    ? 'bg-white text-slate-900 shadow-xs border border-slate-200/90'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                Threshold Simulator
+              </button>
+            </div>
+
+            <div className="p-5">
+              {/* Tab 1: AI Diagnostics */}
+              {activeDetailTab === 'verdict' && cvResult && (
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-mono">
+                    {cvResult.aiChecks.map((chk, idx) => (
+                      <div
+                        key={idx}
+                        className={`p-3 rounded-xl border flex items-start gap-2 shadow-2xs ${
+                          chk.startsWith('✓')
+                            ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
+                            : 'bg-rose-50 border-rose-200 text-rose-800'
+                        }`}
+                      >
+                        <span>{chk}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 leading-relaxed shadow-2xs">
+                    <strong className="text-cyan-800 font-mono">Statutory Audit Explanation: </strong>
+                    {cvResult.explanation}
+                  </div>
+                </div>
+              )}
+
+              {/* Tab 2: Material Table */}
+              {activeDetailTab === 'materials' && (
+                <div className="overflow-x-auto rounded-xl border border-slate-200">
+                  <table className="w-full text-left text-xs">
+                    <thead className="bg-slate-100 text-slate-600 font-mono">
+                      <tr>
+                        <th className="p-3">Material Category</th>
+                        <th className="p-3">Contractor Claimed</th>
+                        <th className="p-3">AI Verified Used</th>
+                        <th className="p-3">Variance / Deficit</th>
+                        <th className="p-3 text-right">Audit &amp; Escrow Status</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 bg-white font-mono">
+                      {(cvResult?.materialTable || [
+                        {
+                          type: 'VG-30 Bituminous Concrete (BC Type II)',
+                          claimed: `${(billedVolume * 2.4).toFixed(2)} Ton`,
+                          used: `${(aiFilledVolume * 2.4).toFixed(2)} Ton`,
+                          variance: `-${deficitPercentage}%`,
+                          status: isFraud ? 'Exceeded Tolerance' : 'Within SLA Limit',
+                        },
+                      ]).map((row, idx) => (
+                        <tr key={idx} className="hover:bg-slate-50">
+                          <td className="p-3 font-semibold text-slate-900 font-sans">{row.type}</td>
+                          <td className="p-3 text-slate-600">{row.claimed}</td>
+                          <td className="p-3 text-cyan-700 font-semibold">{row.used}</td>
+                          <td className={`p-3 font-bold ${isFraud ? 'text-rose-600' : 'text-emerald-600'}`}>
+                            {row.variance}
+                          </td>
+                          <td className="p-3 text-right">
+                            <span
+                              className={`px-2.5 py-1 rounded text-[10px] font-bold border shadow-xs ${
+                                row.status.includes('Exceeded') || row.status.includes('Fraud')
+                                ? 'bg-rose-50 text-rose-700 border-rose-200'
+                                : 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                              }`}
+                            >
+                              {row.status}
+                            </span>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+              {/* Tab 3: Sliders Simulator */}
+              {activeDetailTab === 'simulator' && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs font-mono">
+                  <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200 shadow-2xs">
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-700">Contractor Claimed Volume:</span>
+                      <span className="font-bold text-rose-600">{billedVolume.toFixed(2)} m³</span>
+                    </div>
+                    <input
+                      type="range"
+                      min="0.10"
+                      max="1.50"
+                      step="0.01"
+                      value={billedVolume}
+                      onChange={(e) => setBilledVolume(parseFloat(e.target.value))}
+                      className="w-full accent-rose-600 cursor-pointer h-2 bg-slate-200 rounded-lg"
+                    />
+                    <div className="flex justify-between text-[10px] text-slate-500">
+                      <span>0.10 m³</span>
+                      <span>Contractor Invoice Volume</span>
+                      <span>1.50 m³</span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200 shadow-2xs">
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-700">AI Drone Verified Material:</span>
+                      <span className="font-bold text-emerald-600">{aiFilledVolume.toFixed(2)} m³</span>
+                    </div>
+                    <input
+                      type="range"
+                      min="0.10"
+                      max="1.50"
+                      step="0.01"
+                      value={aiFilledVolume}
+                      onChange={(e) => setAiFilledVolume(parseFloat(e.target.value))}
+                      className="w-full accent-emerald-600 cursor-pointer h-2 bg-slate-200 rounded-lg"
+                    />
+                    <div className="flex justify-between text-[10px] text-slate-500">
+                      <span>0.10 m³</span>
+                      <span>LiDAR Volumetric Reconstruction</span>
+                      <span>1.50 m³</span>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </main>

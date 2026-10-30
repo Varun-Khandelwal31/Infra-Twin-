@@ -137,7 +137,7 @@ export default function PredictivePage() {
   const activeSelectedRoad = selectedRoadIdx !== null ? predictiveData[selectedRoadIdx] : null;
 
   return (
-    <div className="flex h-screen bg-[#f8fafc] text-slate-800 font-sans overflow-hidden">
+    <div className="flex h-screen bg-[#edf2f7] text-slate-800 font-sans overflow-hidden">
       <Sidebar />
 
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
@@ -145,7 +145,7 @@ export default function PredictivePage() {
 
         <main className="flex-1 overflow-y-auto p-6 space-y-6">
           {/* Header Banner */}
-          <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="p-6 rounded-2xl bg-white/95 border border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-lg bg-purple-50 border border-purple-200 flex items-center justify-center text-purple-700 shadow-xs">

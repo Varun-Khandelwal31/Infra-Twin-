@@ -210,35 +210,35 @@ export default function DigitalTwin3DScene() {
   }, []);
 
   return (
-    <VengenceCard glowColor="cyan" className="p-5 flex flex-col justify-between h-full bg-white border border-slate-200">
+    <VengenceCard glowColor="cyan" className="p-6 flex flex-col justify-between h-full bg-white/95 border border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)]">
       <div className="flex items-center justify-between mb-3">
         <div>
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-cyan-500 animate-ping" />
+            <span className="w-2.5 h-2.5 rounded-full bg-cyan-500 animate-ping" />
             <h3 className="text-sm font-bold text-slate-900 font-display">Autonomous Drone Digital Twin</h3>
           </div>
           <p className="text-[11px] text-slate-500">Live 3D Telemetry &amp; LiDAR Surface Scanner</p>
         </div>
         <Link
           href="/audit"
-          className="text-xs text-cyan-700 hover:text-cyan-800 font-semibold flex items-center gap-1 group"
+          className="text-xs text-cyan-700 hover:text-cyan-800 font-semibold flex items-center gap-1 group bg-cyan-50 hover:bg-cyan-100 px-3 py-1.5 rounded-lg border border-cyan-200 transition-colors"
         >
-          <span>Audit 3D</span>
+          <span>Open 3D Studio</span>
           <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
         </Link>
       </div>
 
       {/* 3D WebGL Viewport */}
-      <div className="relative w-full h-44 rounded-xl overflow-hidden bg-slate-100 border border-slate-200 shadow-inner">
+      <div className="relative w-full h-72 rounded-xl overflow-hidden bg-slate-100 border border-slate-200 shadow-inner">
         <div ref={mountRef} className="w-full h-full" />
 
         {/* 3D Viewport HUD Overlay */}
-        <div className="absolute top-2 left-2 flex items-center gap-2 px-2.5 py-1 rounded-lg bg-white/90 backdrop-blur-md border border-slate-200 text-[10px] font-mono text-cyan-700 shadow-xs">
+        <div className="absolute top-2.5 left-2.5 flex items-center gap-2 px-2.5 py-1 rounded-lg bg-white/90 backdrop-blur-md border border-slate-200 text-[10px] font-mono text-cyan-700 shadow-xs">
           <Activity className="w-3 h-3 text-cyan-600 animate-pulse" />
           <span>LiDAR: 120,000 pts/sec</span>
         </div>
 
-        <div className="absolute bottom-2 right-2 flex items-center gap-2 px-2.5 py-1 rounded-lg bg-white/90 backdrop-blur-md border border-slate-200 text-[10px] font-mono text-emerald-700 shadow-xs">
+        <div className="absolute bottom-2.5 right-2.5 flex items-center gap-2 px-2.5 py-1 rounded-lg bg-white/90 backdrop-blur-md border border-slate-200 text-[10px] font-mono text-emerald-700 shadow-xs">
           <Radio className="w-3 h-3 text-emerald-600 animate-pulse" />
           <span>RTK Centimeter Lock</span>
         </div>

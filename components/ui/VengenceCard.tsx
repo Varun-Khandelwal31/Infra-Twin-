@@ -52,19 +52,19 @@ export default function VengenceCard({
   };
 
   const glowStyles = {
-    cyan: 'border-slate-200/90 hover:border-cyan-500/50 shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgba(6,182,212,0.14)]',
-    rose: 'border-slate-200/90 hover:border-rose-500/50 shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgba(244,63,94,0.14)]',
-    emerald: 'border-slate-200/90 hover:border-emerald-500/50 shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgba(16,185,129,0.14)]',
-    amber: 'border-slate-200/90 hover:border-amber-500/50 shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgba(245,158,11,0.14)]',
-    purple: 'border-slate-200/90 hover:border-purple-500/50 shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgba(168,85,247,0.14)]',
+    cyan: 'border-slate-200/90 hover:border-cyan-400 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.06),0_1px_3px_rgba(15,23,42,0.04)] hover:shadow-[0_12px_28px_-4px_rgba(15,23,42,0.1),0_0_20px_rgba(6,182,212,0.15)]',
+    rose: 'border-slate-200/90 hover:border-rose-400 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.06),0_1px_3px_rgba(15,23,42,0.04)] hover:shadow-[0_12px_28px_-4px_rgba(15,23,42,0.1),0_0_20px_rgba(244,63,94,0.15)]',
+    emerald: 'border-slate-200/90 hover:border-emerald-400 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.06),0_1px_3px_rgba(15,23,42,0.04)] hover:shadow-[0_12px_28px_-4px_rgba(15,23,42,0.1),0_0_20px_rgba(16,185,129,0.15)]',
+    amber: 'border-slate-200/90 hover:border-amber-400 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.06),0_1px_3px_rgba(15,23,42,0.04)] hover:shadow-[0_12px_28px_-4px_rgba(15,23,42,0.1),0_0_20px_rgba(245,158,11,0.15)]',
+    purple: 'border-slate-200/90 hover:border-purple-400 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.06),0_1px_3px_rgba(15,23,42,0.04)] hover:shadow-[0_12px_28px_-4px_rgba(15,23,42,0.1),0_0_20px_rgba(168,85,247,0.15)]',
   };
 
   const spotlightGlows = {
-    cyan: 'rgba(6, 182, 212, 0.08)',
-    rose: 'rgba(244, 63, 94, 0.08)',
-    emerald: 'rgba(16, 185, 129, 0.08)',
-    amber: 'rgba(245, 158, 11, 0.08)',
-    purple: 'rgba(168, 85, 247, 0.08)',
+    cyan: 'rgba(6, 182, 212, 0.12)',
+    rose: 'rgba(244, 63, 94, 0.12)',
+    emerald: 'rgba(16, 185, 129, 0.12)',
+    amber: 'rgba(245, 158, 11, 0.12)',
+    purple: 'rgba(168, 85, 247, 0.12)',
   };
 
   return (

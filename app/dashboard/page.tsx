@@ -73,7 +73,7 @@ export default function DashboardPage() {
   const totalPotholes = INSPECTION_SAMPLES.length;
 
   return (
-    <div className="flex h-screen bg-[#f8fafc] text-slate-800 font-sans overflow-hidden">
+    <div className="flex h-screen bg-[#edf2f7] text-slate-800 font-sans overflow-hidden">
       <Sidebar />
 
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
@@ -81,7 +81,7 @@ export default function DashboardPage() {
 
         <main className="flex-1 overflow-y-auto p-6 space-y-6">
           {/* Top Status Header */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white/90 backdrop-blur-md p-5 rounded-2xl border border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)]">
             <div>
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-cyan-500 animate-pulse" />
@@ -101,8 +101,8 @@ export default function DashboardPage() {
                 <span className="font-bold tabular-nums">{clock || '--:--:-- --'}</span>
                 <span className="text-slate-500">IST</span>
               </div>
-              <div className="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700">
-                <span className="text-cyan-700 font-bold">Pan-India Active</span>
+              <div className="px-3 py-1.5 rounded-xl bg-cyan-50/80 border border-cyan-200 text-cyan-800 font-semibold">
+                <span>Pan-India Active</span>
               </div>
               <div className="px-3 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 font-semibold">
                 IRC:82 Engine
@@ -112,7 +112,7 @@ export default function DashboardPage() {
 
           {/* Quick Metrics Bar — Clean Vengence 3D Tilt Spotlight Cards */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <VengenceCard glowColor="cyan" className="p-4 flex items-center justify-between bg-white border border-slate-200 shadow-xs">
+            <VengenceCard glowColor="cyan" className="p-4 flex items-center justify-between bg-white/95 border border-slate-200/90">
               <div>
                 <div className="text-[11px] font-mono text-slate-500">Total Audited Stretch</div>
                 <div className="text-2xl font-bold text-slate-900 font-display tabular-nums mt-0.5">
@@ -120,65 +120,60 @@ export default function DashboardPage() {
                 </div>
                 <div className="text-[10px] font-mono text-cyan-700 mt-0.5 font-medium">National Highway Network</div>
               </div>
-              <div className="w-10 h-10 rounded-xl bg-cyan-50 border border-cyan-200 flex items-center justify-center text-cyan-600 shrink-0">
+              <div className="w-11 h-11 rounded-2xl bg-cyan-50 border border-cyan-200 flex items-center justify-center text-cyan-600 shrink-0 shadow-xs">
                 <Route className="w-5 h-5" />
               </div>
             </VengenceCard>
 
-            <VengenceCard glowColor="rose" className="p-4 flex items-center justify-between bg-white border border-slate-200 shadow-xs">
+            <VengenceCard glowColor="rose" className="p-4 flex items-center justify-between bg-white/95 border border-slate-200/90">
               <div>
                 <div className="text-[11px] font-mono text-slate-500">Active Critical Voids</div>
                 <div className="text-2xl font-bold text-rose-600 font-display mt-0.5">{activePotholes} Critical</div>
                 <div className="text-[10px] font-mono text-slate-500 mt-0.5">{totalPotholes} sites monitored</div>
               </div>
-              <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-200 flex items-center justify-center text-rose-600 shrink-0">
+              <div className="w-11 h-11 rounded-2xl bg-rose-50 border border-rose-200 flex items-center justify-center text-rose-600 shrink-0 shadow-xs">
                 <AlertTriangle className="w-5 h-5" />
               </div>
             </VengenceCard>
 
-            <VengenceCard glowColor="amber" className="p-4 flex items-center justify-between bg-white border border-slate-200 shadow-xs">
+            <VengenceCard glowColor="amber" className="p-4 flex items-center justify-between bg-white/95 border border-slate-200/90">
               <div>
                 <div className="text-[11px] font-mono text-slate-500">Escrow Fraud Defense</div>
-                <div className="text-2xl font-bold text-amber-600 font-display mt-0.5">3 Blocked</div>
-                <div className="text-[10px] font-mono text-amber-700 mt-0.5 font-medium">₹26.2L held in escrow</div>
+                <div className="text-2xl font-bold text-amber-600 font-display mt-0.5">₹26.2 L Held</div>
+                <div className="text-[10px] font-mono text-amber-700 mt-0.5 font-medium">3 Blocked Over-billings</div>
               </div>
-              <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-600 shrink-0">
+              <div className="w-11 h-11 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-600 shrink-0 shadow-xs">
                 <ShieldCheck className="w-5 h-5" />
               </div>
             </VengenceCard>
 
-            <VengenceCard glowColor="emerald" className="p-4 flex items-center justify-between bg-white border border-slate-200 shadow-xs">
+            <VengenceCard glowColor="emerald" className="p-4 flex items-center justify-between bg-white/95 border border-slate-200/90">
               <div>
                 <div className="text-[11px] font-mono text-slate-500">Active Drone Sorties</div>
                 <div className="text-2xl font-bold text-emerald-600 font-display mt-0.5">{droneSorties} Flying</div>
                 <div className="text-[10px] font-mono text-emerald-700 mt-0.5 font-medium">Autonomous LiDAR feed</div>
               </div>
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 shrink-0">
+              <div className="w-11 h-11 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 shrink-0 shadow-xs">
                 <Activity className="w-5 h-5" />
               </div>
             </VengenceCard>
           </div>
 
-          {/* Core Grid: Health Index + Financial Ticker */}
+          {/* Core Grid: 3D Digital Twin Viewer + Road Health & Financial */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            <div className="lg:col-span-5">
-              <RoadHealthGauge score={74} />
+            <div className="lg:col-span-7">
+              <DigitalTwin3DScene />
             </div>
 
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-5 flex flex-col gap-6">
+              <RoadHealthGauge score={74} />
               <FinancialTicker />
             </div>
           </div>
 
-          {/* Secondary Grid: Live Alert Feed + 3D Digital Twin Viewer */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            <div className="lg:col-span-7">
-              <LiveAlertFeed />
-            </div>
-
-            <div className="lg:col-span-5">
-              <DigitalTwin3DScene />
-            </div>
+          {/* Priority Maintenance Alerts (Clean Actionable Feed) */}
+          <div className="w-full">
+            <LiveAlertFeed />
           </div>
         </main>
       </div>

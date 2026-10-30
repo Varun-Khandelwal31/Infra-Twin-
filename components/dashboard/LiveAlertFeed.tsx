@@ -60,19 +60,19 @@ const ALERTS = [
 
 export default function LiveAlertFeed() {
   return (
-    <VengenceCard glowColor="rose" className="p-6 flex flex-col h-full">
+    <VengenceCard glowColor="rose" className="p-6 flex flex-col bg-white/95 border border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)]">
       <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-rose-500 animate-ping" />
-          <h3 className="text-sm font-bold text-slate-900 font-display">Live AI Distress Feed</h3>
+        <div className="flex items-center gap-2.5">
+          <div className="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping" />
+          <h3 className="text-sm font-bold text-slate-900 font-display">Priority Infrastructure Distress Queue</h3>
         </div>
-        <span className="text-[10px] font-mono text-cyan-700 bg-cyan-50 px-2 py-0.5 rounded border border-cyan-200 font-medium">
-          Auto Stream
+        <span className="text-[11px] font-mono text-cyan-800 bg-cyan-50 px-2.5 py-1 rounded-full border border-cyan-200 font-semibold">
+          Autonomous Telemetry Feed
         </span>
       </div>
 
-      <div className="space-y-3 overflow-y-auto pr-1 max-h-[340px]">
-        {ALERTS.map((alert) => {
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+        {ALERTS.slice(0, 4).map((alert) => {
           let badgeStyle = 'bg-rose-50 text-rose-700 border-rose-200';
           let Icon = AlertTriangle;
 
@@ -87,45 +87,45 @@ export default function LiveAlertFeed() {
           return (
             <div
               key={alert.id}
-              className="p-3.5 rounded-xl bg-slate-50/90 border border-slate-200/90 hover:bg-slate-100/80 hover:border-cyan-300 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 group shadow-xs"
+              className="p-4 rounded-xl bg-slate-50/80 border border-slate-200/80 hover:bg-white hover:border-cyan-300 transition-all flex flex-col justify-between gap-3 group shadow-2xs hover:shadow-xs"
             >
               <div className="flex items-start gap-3">
-                <div className={`p-2 rounded-lg border ${badgeStyle} shrink-0 mt-0.5 shadow-xs`}>
+                <div className={`p-2.5 rounded-xl border ${badgeStyle} shrink-0 mt-0.5 shadow-2xs`}>
                   <Icon className="w-4 h-4" />
                 </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-slate-900 group-hover:text-cyan-800 transition-colors">
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-xs font-bold text-slate-900 group-hover:text-cyan-800 transition-colors truncate">
                       {alert.road}
                     </span>
-                    <span className={`text-[9px] font-mono px-1.5 py-0.2 rounded border font-semibold ${badgeStyle}`}>
+                    <span className={`text-[9px] font-mono px-2 py-0.5 rounded-full border font-bold shrink-0 ${badgeStyle}`}>
                       {alert.severity}
                     </span>
                   </div>
-                  <p className="text-[11px] text-slate-600 mt-0.5">{alert.type}</p>
-                  <div className="flex items-center gap-3 text-[10px] text-slate-500 mt-1 font-mono">
-                    <span>{alert.ward}</span>
+                  <p className="text-[11px] text-slate-600 mt-1 line-clamp-1">{alert.type}</p>
+                  <div className="flex items-center gap-2 text-[10px] text-slate-500 mt-1.5 font-mono">
+                    <span className="truncate">{alert.ward}</span>
                     <span>•</span>
-                    <span>{alert.time}</span>
+                    <span className="shrink-0">{alert.time}</span>
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
+              <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-200/60">
                 <Link
                   href={alert.actionLink}
-                  className="px-2.5 py-1.5 rounded-lg bg-white hover:bg-cyan-50 text-cyan-700 border border-slate-200 hover:border-cyan-300 text-[11px] font-semibold transition-all flex items-center gap-1 shadow-xs"
+                  className="px-3 py-1.5 rounded-lg bg-white hover:bg-cyan-50 text-cyan-700 border border-slate-200 hover:border-cyan-300 text-[11px] font-semibold transition-all flex items-center gap-1.5 shadow-2xs"
                 >
-                  <span>Audit</span>
+                  <span>Inspect 3D</span>
                   <ExternalLink className="w-3 h-3" />
                 </Link>
 
                 <Link
                   href={alert.boqLink}
-                  className="px-2.5 py-1.5 rounded-lg bg-white hover:bg-blue-50 text-blue-700 border border-slate-200 hover:border-blue-300 text-[11px] font-semibold transition-all flex items-center gap-1 shadow-xs"
+                  className="px-3 py-1.5 rounded-lg bg-white hover:bg-blue-50 text-blue-700 border border-slate-200 hover:border-blue-300 text-[11px] font-semibold transition-all flex items-center gap-1.5 shadow-2xs"
                 >
-                  <Bot className="w-3 h-3" />
-                  <span>BOQ</span>
+                  <Bot className="w-3 h-3 text-blue-600" />
+                  <span>Synthesize BOQ</span>
                 </Link>
               </div>
             </div>

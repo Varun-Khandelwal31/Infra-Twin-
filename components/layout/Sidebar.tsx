@@ -24,17 +24,16 @@ import { cn } from '@/lib/utils';
 const NAV_ITEMS = [
   { label: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
   { label: 'Map View', href: '/map', icon: MapPin },
-  { label: 'AI Inspection', href: '/audit', icon: ScanEye },
-  { label: 'SLA Verification', href: '/sla-verification', icon: ShieldCheck },
-  { label: 'Contractor SLA', href: '/fraud-detection', icon: ShieldCheck },
-  { label: 'Nirman Copilot', href: '/copilot', icon: Bot },
-  { label: 'Predictive Maint.', href: '/predictive', icon: TrendingUp },
-  { label: 'Issues Feed', href: '/issues', icon: AlertTriangle },
+  { label: '3D AI Inspection', href: '/audit', icon: ScanEye },
+  { label: 'Contractor SLA Audit', href: '/sla-verification', icon: ShieldCheck },
+  { label: 'Nirman Copilot (BOQ)', href: '/copilot', icon: Bot },
+  { label: 'Predictive Maintenance', href: '/predictive', icon: TrendingUp },
+  { label: 'Issues Directory', href: '/issues', icon: AlertTriangle },
   { label: 'Work Orders', href: '/work-orders', icon: ClipboardList },
-  { label: 'Analytics', href: '/analytics', icon: BarChart3 },
-  { label: 'Assets', href: '/assets', icon: Layers },
-  { label: 'Team', href: '/team', icon: Users },
-  { label: 'Settings', href: '/settings', icon: Settings },
+  { label: 'Analytics & Leaderboard', href: '/analytics', icon: BarChart3 },
+  { label: 'Asset Inventory', href: '/assets', icon: Layers },
+  { label: 'Operations Team', href: '/team', icon: Users },
+  { label: 'System Settings', href: '/settings', icon: Settings },
 ];
 
 export default function Sidebar() {

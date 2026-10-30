@@ -136,7 +136,7 @@ function CopilotContent() {
   return (
     <>
       {/* Header Banner */}
-      <div className="p-6 rounded-2xl bg-gradient-to-r from-[#111726] via-slate-900 to-blue-950/40 border border-cyan-500/20 shadow-glass flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-2xl bg-white/95 border border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-cyan-50 border border-cyan-200 flex items-center justify-center text-cyan-700 shadow-xs">
@@ -340,7 +340,7 @@ function CopilotContent() {
 
 export default function CopilotPage() {
   return (
-    <div className="flex h-screen bg-[#f8fafc] text-slate-800 font-sans overflow-hidden">
+    <div className="flex h-screen bg-[#edf2f7] text-slate-800 font-sans overflow-hidden">
       <Sidebar />
 
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">

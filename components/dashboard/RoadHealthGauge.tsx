@@ -29,7 +29,7 @@ export default function RoadHealthGauge({ score = 74 }: RoadHealthGaugeProps) {
   }
 
   return (
-    <VengenceCard glowColor="cyan" className="p-6 flex flex-col items-center justify-between h-full relative overflow-hidden bg-white border border-slate-200 shadow-xs">
+    <VengenceCard glowColor="cyan" className="p-6 flex flex-col items-center justify-between h-full relative overflow-hidden bg-white/95 border border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)]">
       <div className="w-full flex items-center justify-between mb-4">
         <div>
           <h3 className="text-sm font-bold text-slate-900 font-display">Pan-India Pavement Condition Index</h3>
