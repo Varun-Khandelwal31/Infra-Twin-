@@ -16,7 +16,6 @@ import {
   Layers,
   Users,
   Settings,
-  Activity,
   Cpu,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -40,17 +39,17 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 bg-[#0c101b]/95 backdrop-blur-xl border-r border-slate-800/90 flex flex-col justify-between shrink-0 select-none z-30 min-h-screen text-slate-300 shadow-2xl">
+    <aside className="w-64 bg-[#0b0f19] border-r border-slate-800/80 flex flex-col justify-between shrink-0 select-none z-30 min-h-screen text-slate-300">
       {/* Brand Header */}
       <div>
-        <div className="p-4 border-b border-slate-800/90 flex items-center gap-3 bg-[#090d16]/50">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shadow-xs">
+        <div className="p-4 border-b border-slate-800/80 flex items-center gap-3 bg-[#0b0f19]">
+          <div className="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
             <Cpu className="w-5 h-5 animate-pulse" />
           </div>
           <div>
             <div className="flex items-center gap-1.5">
               <span className="font-bold text-lg tracking-tight text-white font-display">InfraTwin</span>
-              <span className="text-xs px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-mono font-bold border border-cyan-500/40">AI</span>
+              <span className="text-xs px-1.5 py-0.5 rounded bg-cyan-500/15 text-cyan-300 font-mono font-bold border border-cyan-500/30">AI</span>
             </div>
             <p className="text-[10px] text-slate-400 font-medium">Smart City Audit Engine • NHAI</p>
           </div>
@@ -65,21 +64,21 @@ export default function Sidebar() {
               <Link key={item.href} href={item.href} className="block">
                 <div
                   className={cn(
-                    'flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 group relative overflow-hidden',
+                    'flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium transition-colors group relative overflow-hidden',
                     isActive
-                      ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-bold shadow-md shadow-cyan-600/30'
+                      ? 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/40 font-bold'
                       : 'text-slate-400 hover:text-white hover:bg-slate-900/60'
                   )}
                 >
                   <Icon
                     className={cn(
-                      'w-4 h-4 transition-transform duration-200 group-hover:scale-110 shrink-0',
-                      isActive ? 'text-white' : 'text-slate-400 group-hover:text-cyan-400'
+                      'w-4 h-4 transition-transform group-hover:scale-110 shrink-0',
+                      isActive ? 'text-cyan-400' : 'text-slate-400 group-hover:text-cyan-400'
                     )}
                   />
                   <span className="font-mono">{item.label}</span>
                   {isActive && (
-                    <span className="absolute right-2.5 w-1.5 h-1.5 rounded-full bg-white shadow-cyan-glow" />
+                    <span className="absolute right-2.5 w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#06b6d4]" />
                   )}
                 </div>
               </Link>
@@ -89,7 +88,7 @@ export default function Sidebar() {
       </div>
 
       {/* System Footer Status */}
-      <div className="p-3 border-t border-slate-800/90 space-y-3 bg-[#090d16]/60">
+      <div className="p-3 border-t border-slate-800/80 space-y-3 bg-[#0b0f19]">
         <div className="flex items-center justify-between px-2 text-[11px]">
           <div className="flex items-center gap-2 text-slate-300 font-medium">
             <span className="relative flex h-2 w-2">
@@ -102,11 +101,11 @@ export default function Sidebar() {
         </div>
 
         {/* User Card */}
-        <div className="flex items-center gap-3 p-2 rounded-lg bg-[#111726]/80 border border-slate-800 text-white shadow-sm">
+        <div className="flex items-center gap-3 p-2 rounded-lg bg-slate-900/60 border border-slate-800 text-white">
           <img
             src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=crop"
             alt="User Avatar"
-            className="w-8 h-8 rounded-full border border-cyan-400/50 object-cover"
+            className="w-8 h-8 rounded-full border border-cyan-500/40 object-cover"
           />
           <div className="overflow-hidden">
             <div className="text-xs font-semibold text-white truncate">Aarav Mehta</div>

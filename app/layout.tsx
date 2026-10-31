@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark scroll-smooth">
-      <body className="bg-[#090d16] text-slate-100 font-sans antialiased relative selection:bg-cyan-500 selection:text-black">
+      <body className="bg-[#0b0f19] text-slate-100 font-sans antialiased relative selection:bg-cyan-500 selection:text-black">
         <VengenceBackground />
         <div className="relative z-10">{children}</div>
       </body>

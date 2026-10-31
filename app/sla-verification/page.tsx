@@ -251,9 +251,9 @@ export default function SLAVerificationPage() {
               <button
                 onClick={handleAnchorOnBlockchain}
                 disabled={isAnchoring}
-                className="px-3 py-1.5 rounded-xl bg-purple-500/15 hover:bg-purple-500/25 border border-purple-500/30 text-purple-300 text-xs font-mono font-bold flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer shadow-xs"
+                className="px-3 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-bold flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer shadow-xs"
               >
-                <Coins className="w-3.5 h-3.5 text-purple-400" />
+                <Coins className="w-3.5 h-3.5 text-cyan-400" />
                 <span>{isAnchoring ? 'Anchoring...' : 'On-Chain Proof'}</span>
               </button>
 
@@ -645,7 +645,7 @@ export default function SLAVerificationPage() {
                   {onChainRecord && (
                     <button
                       onClick={() => setIsBlockchainModalOpen(true)}
-                      className="text-[11px] font-mono text-purple-400 hover:text-purple-300 flex items-center gap-1 underline font-semibold"
+                      className="text-[11px] font-mono text-cyan-400 hover:text-cyan-300 flex items-center gap-1 underline font-semibold"
                     >
                       <Layers className="w-3 h-3" />
                       <span>Merkle Root</span>
