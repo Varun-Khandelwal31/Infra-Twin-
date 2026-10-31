@@ -6,24 +6,24 @@
 
 @layer base {
   body {
-    @apply bg-[#dbe3eb] text-slate-800 font-sans antialiased overflow-x-hidden;
+    @apply bg-[#090d16] text-slate-100 font-sans antialiased overflow-x-hidden;
   }
 }
 
-/* Custom subtle scrollbars for light engineering theme */
+/* Custom subtle scrollbars for dark engineering theme */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #0c101b;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.5);
+  background: rgba(148, 163, 184, 0.25);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(100, 116, 139, 0.7);
+  background: rgba(0, 217, 255, 0.4);
 }
 
 @keyframes scanline {

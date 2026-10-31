@@ -13,8 +13,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="bg-[#dbe3eb] text-slate-800 font-sans antialiased relative selection:bg-cyan-600 selection:text-white">
+    <html lang="en" className="dark scroll-smooth">
+      <body className="bg-[#090d16] text-slate-100 font-sans antialiased relative selection:bg-cyan-500 selection:text-black">
         <VengenceBackground />
         <div className="relative z-10">{children}</div>
       </body>
