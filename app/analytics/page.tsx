@@ -202,7 +202,7 @@ export default function AnalyticsPage() {
   };
 
   return (
-    <div className="flex h-screen bg-transparent text-slate-800 font-sans overflow-hidden">
+    <div className="flex h-screen bg-transparent text-slate-200 font-sans overflow-hidden">
       <Sidebar />
 
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
@@ -210,13 +210,13 @@ export default function AnalyticsPage() {
 
         <main className="flex-1 overflow-y-auto p-6 space-y-6">
           {/* Header Banner */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs">
             <div>
               <div className="flex items-center gap-2">
                 <div className="p-2 rounded-xl bg-indigo-50 text-indigo-700 border border-indigo-200">
                   <BarChart3 className="w-5 h-5" />
                 </div>
-                <h1 className="text-xl font-bold text-slate-900 font-display">
+                <h1 className="text-xl font-bold text-white font-display">
                   Infrastructure Telemetry Analytics &amp; PCI Trends
                 </h1>
               </div>
@@ -228,7 +228,7 @@ export default function AnalyticsPage() {
             <div className="flex items-center gap-3">
               <button
                 onClick={handleExportCSV}
-                className="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-xs font-semibold hover:text-cyan-700 hover:border-cyan-300 shadow-xs flex items-center gap-1.5 transition-colors cursor-pointer"
+                className="px-4 py-2 rounded-xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl text-slate-300 text-xs font-semibold hover:text-cyan-400 hover:border-cyan-500/40 shadow-xs flex items-center gap-1.5 transition-colors cursor-pointer"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Export Analytics CSV</span>
@@ -245,10 +245,10 @@ export default function AnalyticsPage() {
           )}
 
           {/* Historical PCI Trend Line Chart */}
-          <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-4">
+          <div className="p-6 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <h2 className="text-sm font-bold text-slate-900 font-display">
+                <h2 className="text-sm font-bold text-white font-display">
                   Pavement Condition Index (PCI) Degradation Trends
                 </h2>
                 <p className="text-xs text-slate-500">Quarterly PCI trajectories across national road networks</p>
@@ -256,13 +256,13 @@ export default function AnalyticsPage() {
 
               <div className="flex flex-wrap items-center gap-2">
                 {/* Scope selector */}
-                <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-100 border border-slate-200 text-xs font-mono">
+                <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-800/60 border border-slate-800 text-xs font-mono">
                   <button
                     onClick={() => setScope('NATIONAL')}
                     className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
                       scope === 'NATIONAL'
-                        ? 'bg-white text-cyan-800 font-bold border border-slate-200 shadow-xs'
-                        : 'text-slate-600 hover:text-slate-900'
+                        ? 'bg-[#111726] text-cyan-300 font-bold border border-slate-800 shadow-xs'
+                        : 'text-slate-400 hover:text-white'
                     }`}
                   >
                     Pan-India Corridors
@@ -271,8 +271,8 @@ export default function AnalyticsPage() {
                     onClick={() => setScope('NCR')}
                     className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
                       scope === 'NCR'
-                        ? 'bg-white text-cyan-800 font-bold border border-slate-200 shadow-xs'
-                        : 'text-slate-600 hover:text-slate-900'
+                        ? 'bg-[#111726] text-cyan-300 font-bold border border-slate-800 shadow-xs'
+                        : 'text-slate-400 hover:text-white'
                     }`}
                   >
                     Delhi NCR Wards
@@ -280,15 +280,15 @@ export default function AnalyticsPage() {
                 </div>
 
                 {/* Time Range selector */}
-                <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-100 border border-slate-200 text-xs font-mono">
+                <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-800/60 border border-slate-800 text-xs font-mono">
                   {(['1M', '3M', '6M', '1Y'] as const).map((range) => (
                     <button
                       key={range}
                       onClick={() => setTimeRange(range)}
                       className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer ${
                         timeRange === range
-                          ? 'bg-white text-cyan-800 font-bold border border-slate-200 shadow-xs'
-                          : 'text-slate-600 hover:text-slate-900'
+                          ? 'bg-[#111726] text-cyan-300 font-bold border border-slate-800 shadow-xs'
+                          : 'text-slate-400 hover:text-white'
                       }`}
                     >
                       {range}
@@ -298,7 +298,7 @@ export default function AnalyticsPage() {
               </div>
             </div>
 
-            <div className="w-full h-80 bg-slate-50/80 rounded-xl p-4 border border-slate-200">
+            <div className="w-full h-80 bg-slate-900/60/80 rounded-xl p-4 border border-slate-800">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={currentChartData} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
                   <XAxis dataKey="month" stroke="#64748b" fontSize={11} />
@@ -354,9 +354,9 @@ export default function AnalyticsPage() {
           {/* Secondary Grid: Distress Pie Chart + Contractor Leaderboard */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             {/* Pie Chart */}
-            <div className="lg:col-span-5 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-4">
+            <div className="lg:col-span-5 p-6 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs space-y-4">
               <div>
-                <h3 className="text-sm font-bold text-slate-900 font-display">Distress Type Breakdown</h3>
+                <h3 className="text-sm font-bold text-white font-display">Distress Type Breakdown</h3>
                 <p className="text-xs text-slate-500">AI Computer Vision Classification</p>
               </div>
 
@@ -394,7 +394,7 @@ export default function AnalyticsPage() {
                 {DISTRESS_DISTRIBUTION.map((d, i) => (
                   <div key={i} className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: d.color }} />
-                    <span className="text-slate-700 truncate">{d.name}</span>
+                    <span className="text-slate-300 truncate">{d.name}</span>
                     <span className="font-bold text-slate-500 ml-auto">{d.value}%</span>
                   </div>
                 ))}
@@ -402,10 +402,10 @@ export default function AnalyticsPage() {
             </div>
 
             {/* Contractor Leaderboard */}
-            <div className="lg:col-span-7 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-4">
+            <div className="lg:col-span-7 p-6 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-sm font-bold text-slate-900 font-display">Contractor SLA Compliance Audit</h3>
+                  <h3 className="text-sm font-bold text-white font-display">Contractor SLA Compliance Audit</h3>
                   <p className="text-xs text-slate-500">Click any contractor row to view escrow hold details</p>
                 </div>
                 <Award className="w-5 h-5 text-amber-500" />
@@ -418,14 +418,14 @@ export default function AnalyticsPage() {
                     <div
                       key={i}
                       onClick={() => setSelectedContractor(c)}
-                      className="p-3.5 rounded-xl bg-slate-50/80 border border-slate-200 hover:border-cyan-400 hover:bg-slate-100/80 cursor-pointer transition-all flex items-center justify-between group shadow-2xs"
+                      className="p-3.5 rounded-xl bg-slate-900/60/80 border border-slate-800 hover:border-cyan-400 hover:bg-slate-800/60/80 cursor-pointer transition-all flex items-center justify-between group shadow-2xs"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center font-mono font-bold text-cyan-700 text-xs shadow-2xs">
+                        <div className="w-8 h-8 rounded-lg bg-[#111726]/90 border border-slate-800/90 shadow-2xl flex items-center justify-center font-mono font-bold text-cyan-400 text-xs shadow-2xs">
                           #{i + 1}
                         </div>
                         <div>
-                          <div className="text-xs font-bold text-slate-900 group-hover:text-cyan-700 transition-colors">
+                          <div className="text-xs font-bold text-white group-hover:text-cyan-400 transition-colors">
                             {c.name}
                           </div>
                           <div className="text-[10px] text-slate-500 font-mono">
@@ -459,39 +459,39 @@ export default function AnalyticsPage() {
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md animate-fadeIn">
               <div className="fixed inset-0" onClick={() => setSelectedContractor(null)} />
 
-              <div className="relative w-full max-w-md rounded-2xl bg-white border border-slate-200 shadow-2xl p-6 space-y-4 z-10 font-sans text-xs text-slate-800">
-                <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+              <div className="relative w-full max-w-md rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-2xl p-6 space-y-4 z-10 font-sans text-xs text-slate-200">
+                <div className="flex items-center justify-between border-b border-slate-800 pb-3">
                   <div className="flex items-center gap-2">
-                    <div className="p-2 rounded-xl bg-cyan-50 text-cyan-700 border border-cyan-200">
+                    <div className="p-2 rounded-xl bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">
                       <Award className="w-4 h-4" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-bold text-slate-900 font-display">{selectedContractor.name}</h3>
+                      <h3 className="text-sm font-bold text-white font-display">{selectedContractor.name}</h3>
                       <span className="text-[10px] font-mono text-slate-500">{selectedContractor.status}</span>
                     </div>
                   </div>
-                  <button onClick={() => setSelectedContractor(null)} className="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 cursor-pointer">
+                  <button onClick={() => setSelectedContractor(null)} className="p-1 rounded-lg text-slate-400 hover:text-slate-300 hover:bg-slate-800/60 cursor-pointer">
                     <X className="w-4 h-4" />
                   </button>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3 font-mono text-[11px]">
-                  <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                  <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
                     <div className="text-slate-500 text-[10px]">Verified SLA Quality</div>
-                    <div className="text-cyan-700 font-bold text-base mt-0.5">{selectedContractor.verifiedSla}</div>
+                    <div className="text-cyan-400 font-bold text-base mt-0.5">{selectedContractor.verifiedSla}</div>
                   </div>
-                  <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                  <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
                     <div className="text-slate-500 text-[10px]">Total Billed to Date</div>
                     <div className="text-emerald-700 font-bold text-base mt-0.5">{selectedContractor.totalBilled}</div>
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1 font-mono text-[11px]">
-                  <div className="text-slate-600">
-                    <strong className="text-slate-800">Primary Contact:</strong> {selectedContractor.contactPerson}
+                <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1 font-mono text-[11px]">
+                  <div className="text-slate-400">
+                    <strong className="text-slate-200">Primary Contact:</strong> {selectedContractor.contactPerson}
                   </div>
-                  <div className="text-slate-600">
-                    <strong className="text-slate-800">PFMS / GeM Escrow Status:</strong>{' '}
+                  <div className="text-slate-400">
+                    <strong className="text-slate-200">PFMS / GeM Escrow Status:</strong>{' '}
                     <span
                       className={`font-bold ${
                         selectedContractor.escrowStatus === 'ESCROW_PAYMENT_FROZEN'
@@ -507,7 +507,7 @@ export default function AnalyticsPage() {
                 <div className="flex justify-end gap-2 pt-1">
                   <button
                     onClick={() => setSelectedContractor(null)}
-                    className="px-4 py-2 rounded-xl bg-cyan-50 text-cyan-700 border border-cyan-200 font-bold hover:bg-cyan-100 cursor-pointer"
+                    className="px-4 py-2 rounded-xl bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 font-bold hover:bg-cyan-100 cursor-pointer"
                   >
                     Close Audit Overview
                   </button>

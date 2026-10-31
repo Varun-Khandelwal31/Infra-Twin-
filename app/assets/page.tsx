@@ -159,7 +159,7 @@ export default function AssetsPage() {
   const edgeCount = assetsList.filter((a) => a.category === 'Edge Computing').length;
 
   return (
-    <div className="flex h-screen bg-transparent text-slate-800 font-sans overflow-hidden">
+    <div className="flex h-screen bg-transparent text-slate-200 font-sans overflow-hidden">
       <Sidebar />
 
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
@@ -167,13 +167,13 @@ export default function AssetsPage() {
 
         <main className="flex-1 overflow-y-auto p-6 space-y-6">
           {/* Header Banner */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs">
             <div>
               <div className="flex items-center gap-2">
                 <div className="p-2 rounded-xl bg-teal-50 text-teal-700 border border-teal-200">
                   <Layers className="w-5 h-5" />
                 </div>
-                <h1 className="text-xl font-bold text-slate-900 font-display">
+                <h1 className="text-xl font-bold text-white font-display">
                   Smart City Infrastructure Asset Inventory
                 </h1>
               </div>
@@ -185,7 +185,7 @@ export default function AssetsPage() {
             <div className="flex items-center gap-3">
               <button
                 onClick={handleExportCSV}
-                className="px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-cyan-700 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs cursor-pointer"
+                className="px-4 py-2.5 rounded-xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl text-slate-300 hover:text-cyan-400 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs cursor-pointer"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Export Manifest (CSV)</span>
@@ -211,17 +211,17 @@ export default function AssetsPage() {
 
           {/* Asset Categories Grid */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex items-center justify-between card-3d-tilt">
+            <div className="p-4 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs flex items-center justify-between card-3d-tilt">
               <div>
                 <div className="text-[11px] font-mono text-slate-500">Pavement Stretches</div>
-                <div className="text-2xl font-bold text-slate-900 font-display">1,840 km</div>
+                <div className="text-2xl font-bold text-white font-display">1,840 km</div>
               </div>
-              <div className="p-2.5 rounded-xl bg-cyan-50 text-cyan-700 border border-cyan-200">
+              <div className="p-2.5 rounded-xl bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">
                 <Route className="w-5 h-5" />
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex items-center justify-between card-3d-tilt">
+            <div className="p-4 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs flex items-center justify-between card-3d-tilt">
               <div>
                 <div className="text-[11px] font-mono text-slate-500">Autonomous UAV Fleet</div>
                 <div className="text-2xl font-bold text-emerald-700 font-display">{droneCount} Drones</div>
@@ -231,7 +231,7 @@ export default function AssetsPage() {
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex items-center justify-between card-3d-tilt">
+            <div className="p-4 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs flex items-center justify-between card-3d-tilt">
               <div>
                 <div className="text-[11px] font-mono text-slate-500">IR &amp; RGB Cameras</div>
                 <div className="text-2xl font-bold text-amber-700 font-display">{cameraCount} Units</div>
@@ -241,7 +241,7 @@ export default function AssetsPage() {
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex items-center justify-between card-3d-tilt">
+            <div className="p-4 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs flex items-center justify-between card-3d-tilt">
               <div>
                 <div className="text-[11px] font-mono text-slate-500">Edge Compute Nodes</div>
                 <div className="text-2xl font-bold text-indigo-700 font-display">{edgeCount} Stations</div>
@@ -253,7 +253,7 @@ export default function AssetsPage() {
           </div>
 
           {/* Search & Filter Toolbar */}
-          <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="p-4 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="relative flex-1 max-w-md">
               <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
               <input
@@ -261,7 +261,7 @@ export default function AssetsPage() {
                 placeholder="Search assets by name, ID, or zone..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-cyan-500"
+                className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-900/60 border border-slate-800 text-xs text-slate-200 placeholder-slate-400 focus:bg-[#111726] focus:outline-none focus:border-cyan-500"
               />
             </div>
 
@@ -272,8 +272,8 @@ export default function AssetsPage() {
                   onClick={() => setCategoryFilter(cat)}
                   className={`px-3 py-1.5 rounded-xl border transition-all shrink-0 cursor-pointer ${
                     categoryFilter === cat
-                      ? 'bg-cyan-50 text-cyan-800 border-cyan-300 shadow-xs font-bold'
-                      : 'bg-slate-50 text-slate-600 border-slate-200 hover:text-slate-900 hover:bg-slate-100'
+                      ? 'bg-cyan-500/15 text-cyan-300 border-cyan-500/40 shadow-xs font-bold'
+                      : 'bg-slate-900/60 text-slate-400 border-slate-800 hover:text-white hover:bg-slate-800/60'
                   }`}
                 >
                   {cat}
@@ -283,10 +283,10 @@ export default function AssetsPage() {
           </div>
 
           {/* Assets Inventory Table */}
-          <div className="rounded-2xl border border-slate-200/90 bg-white shadow-xs overflow-hidden">
+          <div className="rounded-2xl border border-slate-800/90 bg-[#111726] shadow-xs overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="bg-slate-100 text-slate-700 font-mono text-[11px] border-b border-slate-200">
+                <thead className="bg-slate-800/60 text-slate-300 font-mono text-[11px] border-b border-slate-800">
                   <tr>
                     <th className="p-4">Asset ID</th>
                     <th className="p-4">Asset Description</th>
@@ -311,14 +311,14 @@ export default function AssetsPage() {
                       const isMaint = asset.status === 'UNDER_MAINTENANCE';
 
                       return (
-                        <tr key={asset.id} className="hover:bg-slate-50 transition-colors">
-                          <td className="p-4 font-mono font-bold text-cyan-700">{asset.id}</td>
+                        <tr key={asset.id} className="hover:bg-slate-900/60 transition-colors">
+                          <td className="p-4 font-mono font-bold text-cyan-400">{asset.id}</td>
                           <td className="p-4">
-                            <div className="font-bold text-slate-900 font-sans">{asset.name}</div>
+                            <div className="font-bold text-white font-sans">{asset.name}</div>
                             <div className="text-[10px] text-slate-500 font-mono mt-0.5">SN: {asset.serialNo}</div>
                           </td>
-                          <td className="p-4 font-mono text-slate-600">{asset.category}</td>
-                          <td className="p-4 text-slate-600 font-sans">{asset.location}</td>
+                          <td className="p-4 font-mono text-slate-400">{asset.category}</td>
+                          <td className="p-4 text-slate-400 font-sans">{asset.location}</td>
                           <td className="p-4">
                             <span className="px-2 py-0.5 rounded font-mono text-[10px] bg-emerald-50 text-emerald-700 border border-emerald-200">
                               {asset.health}
@@ -331,25 +331,25 @@ export default function AssetsPage() {
                                   ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
                                   : isMaint
                                   ? 'bg-rose-50 text-rose-700 border-rose-200'
-                                  : 'bg-cyan-50 text-cyan-700 border-cyan-200'
+                                  : 'bg-cyan-500/15 text-cyan-400 border-cyan-500/30'
                               }`}
                             >
                               {asset.status.replace('_', ' ')}
                             </span>
                           </td>
-                          <td className="p-4 font-mono text-slate-800">{asset.estValue}</td>
+                          <td className="p-4 font-mono text-slate-200">{asset.estValue}</td>
                           <td className="p-4 text-right">
                             <div className="flex items-center justify-end gap-2">
                               <button
                                 onClick={() => handleScheduleMaintenance(asset)}
-                                className="p-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-500 hover:text-cyan-700 hover:bg-slate-100 transition-colors cursor-pointer"
+                                className="p-1.5 rounded-lg bg-slate-900/60 border border-slate-800 text-slate-500 hover:text-cyan-400 hover:bg-slate-800/60 transition-colors cursor-pointer"
                                 title="Toggle Maintenance Mode"
                               >
                                 <Wrench className="w-3.5 h-3.5" />
                               </button>
                               <button
                                 onClick={() => handleDeleteAsset(asset.id, asset.name)}
-                                className="p-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-500 hover:text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer"
+                                className="p-1.5 rounded-lg bg-slate-900/60 border border-slate-800 text-slate-500 hover:text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer"
                                 title="Decommission Asset"
                               >
                                 <Trash2 className="w-3.5 h-3.5" />

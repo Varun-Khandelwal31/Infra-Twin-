@@ -29,11 +29,11 @@ export default function RoadHealthGauge({ score = 74 }: RoadHealthGaugeProps) {
   }
 
   return (
-    <VengenceCard glowColor="cyan" className="p-6 flex flex-col items-center justify-between h-full relative overflow-hidden bg-white/95 border border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)]">
+    <VengenceCard glowColor="cyan" className="p-6 flex flex-col items-center justify-between h-full relative overflow-hidden bg-[#111726]/90 border border-slate-800/90 shadow-2xl">
       <div className="w-full flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-sm font-bold text-slate-900 font-display">Pan-India Pavement Condition Index</h3>
-          <p className="text-[11px] text-slate-500">National Highways &amp; Urban Corridors (IRC:82-2023)</p>
+          <h3 className="text-sm font-bold text-white font-display">Pan-India Pavement Condition Index</h3>
+          <p className="text-[11px] text-slate-400">National Highways &amp; Urban Corridors (IRC:82-2023)</p>
         </div>
         <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${badgeColor}`}>
           Real-Time Audit

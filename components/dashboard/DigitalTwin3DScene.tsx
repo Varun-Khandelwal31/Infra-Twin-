@@ -26,8 +26,8 @@ export default function DigitalTwin3DScene() {
 
     // 1. Scene & Camera
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color('#eef3f8');
-    scene.fog = new THREE.FogExp2('#eef3f8', 0.05);
+    scene.background = new THREE.Color('#090d16');
+    scene.fog = new THREE.FogExp2('#090d16', 0.05);
 
     const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 50);
     camera.position.set(0, 3.2, 5.8);

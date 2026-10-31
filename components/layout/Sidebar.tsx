@@ -40,19 +40,19 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 bg-white/95 backdrop-blur-xl border-r border-slate-200/90 flex flex-col justify-between shrink-0 select-none z-30 min-h-screen text-slate-700 shadow-[4px_0_24px_-4px_rgba(15,23,42,0.04)]">
+    <aside className="w-64 bg-[#0c101b]/95 backdrop-blur-xl border-r border-slate-800/80 flex flex-col justify-between shrink-0 select-none z-30 min-h-screen text-slate-300 shadow-2xl">
       {/* Brand Header */}
       <div>
-        <div className="p-4 border-b border-slate-200/80 flex items-center gap-3 bg-white/50">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500/15 to-blue-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-600 shadow-xs">
+        <div className="p-4 border-b border-slate-800/80 flex items-center gap-3 bg-slate-900/40">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 shadow-cyan-glow/20">
             <Cpu className="w-5 h-5 animate-pulse" />
           </div>
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="font-bold text-lg tracking-tight text-slate-900 font-display">InfraTwin</span>
-              <span className="text-xs px-1.5 py-0.5 rounded bg-cyan-100/90 text-cyan-800 font-mono font-bold border border-cyan-300">AI</span>
+              <span className="font-bold text-lg tracking-tight text-white font-display">InfraTwin</span>
+              <span className="text-xs px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-mono font-bold border border-cyan-500/40">AI</span>
             </div>
-            <p className="text-[10px] text-slate-500 font-medium">Smart City Audit Engine • NHAI</p>
+            <p className="text-[10px] text-slate-400 font-medium">Smart City Audit Engine • NHAI</p>
           </div>
         </div>
 
@@ -67,19 +67,19 @@ export default function Sidebar() {
                   className={cn(
                     'flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 group relative overflow-hidden',
                     isActive
-                      ? 'bg-gradient-to-r from-cyan-50 to-blue-50/60 text-cyan-900 border border-cyan-200/90 font-bold shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80'
+                      ? 'bg-gradient-to-r from-cyan-500/20 to-blue-500/15 text-cyan-300 border border-cyan-500/40 font-bold shadow-cyan-glow/15'
+                      : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
                   )}
                 >
                   <Icon
                     className={cn(
                       'w-4 h-4 transition-transform duration-200 group-hover:scale-110 shrink-0',
-                      isActive ? 'text-cyan-600' : 'text-slate-500 group-hover:text-slate-700'
+                      isActive ? 'text-cyan-400' : 'text-slate-500 group-hover:text-slate-300'
                     )}
                   />
                   <span className="font-mono">{item.label}</span>
                   {isActive && (
-                    <span className="absolute right-2.5 w-1.5 h-1.5 rounded-full bg-cyan-500" />
+                    <span className="absolute right-2.5 w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-cyan-glow" />
                   )}
                 </div>
               </Link>
@@ -89,9 +89,9 @@ export default function Sidebar() {
       </div>
 
       {/* System Footer Status */}
-      <div className="p-3 border-t border-slate-200 space-y-3 bg-slate-50">
+      <div className="p-3 border-t border-slate-800/80 space-y-3 bg-slate-900/60">
         <div className="flex items-center justify-between px-2 text-[11px]">
-          <div className="flex items-center gap-2 text-slate-700 font-medium">
+          <div className="flex items-center gap-2 text-slate-300 font-medium">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -102,15 +102,15 @@ export default function Sidebar() {
         </div>
 
         {/* User Card */}
-        <div className="flex items-center gap-3 p-2 rounded-lg bg-white border border-slate-200 shadow-xs">
+        <div className="flex items-center gap-3 p-2 rounded-lg bg-slate-900/90 border border-slate-800 shadow-sm">
           <img
             src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=crop"
             alt="User Avatar"
-            className="w-8 h-8 rounded-full border border-cyan-300 object-cover"
+            className="w-8 h-8 rounded-full border border-cyan-400/50 object-cover"
           />
           <div className="overflow-hidden">
-            <div className="text-xs font-semibold text-slate-900 truncate">Aarav Mehta</div>
-            <div className="text-[10px] text-cyan-700 truncate font-mono">City Chief Engineer</div>
+            <div className="text-xs font-semibold text-white truncate">Aarav Mehta</div>
+            <div className="text-[10px] text-cyan-400 truncate font-mono">City Chief Engineer</div>
           </div>
         </div>
       </div>

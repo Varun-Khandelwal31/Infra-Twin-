@@ -200,7 +200,7 @@ function AuditContent() {
           <span>&gt;</span>
           <span className="text-slate-700 font-semibold">{selectedSample.location.zone || 'Pan-India Smart Corridors'}</span>
           <span>&gt;</span>
-          <span className="text-cyan-700 font-bold">Inspection: {selectedSample.inspectionNo}</span>
+          <span className="text-cyan-400 font-bold">Inspection: {selectedSample.inspectionNo}</span>
         </div>
 
         {/* Hidden File Input for Custom Road Image Upload */}
@@ -224,7 +224,7 @@ function AuditContent() {
 
       {/* Sample Selector Row */}
       <div className="space-y-2">
-        <div className="flex items-center justify-between text-xs text-slate-600 font-mono">
+        <div className="flex items-center justify-between text-xs text-slate-400 font-mono">
           <span>Active Road Feeds ({samplesList.length} Sites):</span>
           <span className="hidden sm:inline text-slate-500">Select any road or upload custom scan</span>
         </div>
@@ -233,13 +233,13 @@ function AuditContent() {
           {/* Custom Upload Button */}
           <button
             onClick={() => fileInputRef.current?.click()}
-            className="flex items-center gap-2 px-3 py-2 rounded-xl border border-dashed border-cyan-300 bg-cyan-50/70 hover:bg-cyan-100/60 text-cyan-800 transition-all text-left shrink-0 shadow-xs"
+            className="flex items-center gap-2 px-3 py-2 rounded-xl border border-dashed border-cyan-500/40 bg-cyan-500/15/70 hover:bg-cyan-100/60 text-cyan-400 transition-all text-left shrink-0 shadow-xs"
           >
-            <div className="w-8 h-8 rounded-lg bg-cyan-100 flex items-center justify-center text-cyan-700 shrink-0">
+            <div className="w-8 h-8 rounded-lg bg-cyan-100 flex items-center justify-center text-cyan-400 shrink-0">
               <ImageIcon className="w-4 h-4" />
             </div>
             <div className="flex flex-col text-xs">
-              <span className="font-bold text-cyan-800">+ Custom Scan</span>
+              <span className="font-bold text-cyan-400">+ Custom Scan</span>
               <span className="text-[10px] text-cyan-600 font-mono">Run YOLOv8</span>
             </div>
           </button>
@@ -252,17 +252,17 @@ function AuditContent() {
                 onClick={() => handleSampleChange(s)}
                 className={`flex items-center gap-2.5 p-2 rounded-xl border transition-all text-left shrink-0 shadow-xs ${
                   isSelected
-                    ? 'bg-cyan-50 text-cyan-900 border-cyan-400 font-semibold'
-                    : 'bg-white border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                    ? 'bg-cyan-500/15 text-cyan-300 border-cyan-500 font-semibold'
+                    : 'bg-white border-slate-800 text-slate-400 hover:text-white hover:bg-slate-50'
                 }`}
               >
                 <img
                   src={s.imageUrl}
                   alt={s.roadName}
-                  className="w-8 h-8 rounded-lg object-cover border border-slate-200 shrink-0"
+                  className="w-8 h-8 rounded-lg object-cover border border-slate-800 shrink-0"
                 />
                 <div className="flex flex-col text-xs pr-1">
-                  <span className="font-bold font-display truncate max-w-[140px] text-slate-900">{s.roadName.split('(')[0]}</span>
+                  <span className="font-bold font-display truncate max-w-[140px] text-white">{s.roadName.split('(')[0]}</span>
                   <span className="text-[10px] text-slate-500 font-mono truncate max-w-[140px]">{s.metrics.severityIndex} • {s.metrics.maxDepthCm}cm</span>
                 </div>
               </button>
@@ -273,16 +273,16 @@ function AuditContent() {
 
       {/* Processing Loader */}
       {isScanning && (
-        <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3 font-mono text-xs animate-fadeIn">
+        <div className="p-4 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs space-y-3 font-mono text-xs animate-fadeIn">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-cyan-700 font-bold">
+            <div className="flex items-center gap-2 text-cyan-400 font-bold">
               <Cpu className="w-4 h-4 text-cyan-600 animate-spin" />
               <span>AI VOLUMETRIC INFERENCE ({scanProgress}%)</span>
             </div>
             <span className="text-[10px] text-slate-500">YOLOv8-Seg &amp; Depth-Anything</span>
           </div>
 
-          <div className="w-full h-1.5 rounded-full bg-slate-100 overflow-hidden border border-slate-200">
+          <div className="w-full h-1.5 rounded-full bg-slate-100 overflow-hidden border border-slate-800">
             <div
               className="h-full bg-gradient-to-r from-cyan-600 to-blue-600 transition-all duration-150"
               style={{ width: `${scanProgress}%` }}
@@ -296,14 +296,14 @@ function AuditContent() {
         {/* Left Column: Viewport Switcher + Active 3D/Drone View + Calibration */}
         <div className="lg:col-span-8 space-y-4">
           {/* Viewport Mode Switcher */}
-          <div className="flex flex-wrap items-center justify-between gap-3 p-2 rounded-2xl bg-white border border-slate-200 shadow-xs backdrop-blur-xl">
+          <div className="flex flex-wrap items-center justify-between gap-3 p-2 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs backdrop-blur-xl">
             <div className="flex items-center gap-1.5">
               <button
                 onClick={() => setActiveViewerTab('3d')}
                 className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold flex items-center gap-1.5 transition-all ${
                   activeViewerTab === '3d'
-                    ? 'bg-cyan-50 text-cyan-700 border border-cyan-200 shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 shadow-xs'
+                    : 'text-slate-400 hover:text-white'
                 }`}
               >
                 <Box className="w-3.5 h-3.5" />
@@ -314,8 +314,8 @@ function AuditContent() {
                 onClick={() => setActiveViewerTab('drone')}
                 className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold flex items-center gap-1.5 transition-all ${
                   activeViewerTab === 'drone'
-                    ? 'bg-cyan-50 text-cyan-700 border border-cyan-200 shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 shadow-xs'
+                    : 'text-slate-400 hover:text-white'
                 }`}
               >
                 <Camera className="w-3.5 h-3.5" />
@@ -326,8 +326,8 @@ function AuditContent() {
                 onClick={() => setActiveViewerTab('heatmap')}
                 className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold flex items-center gap-1.5 transition-all ${
                   activeViewerTab === 'heatmap'
-                    ? 'bg-cyan-50 text-cyan-700 border border-cyan-200 shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 shadow-xs'
+                    : 'text-slate-400 hover:text-white'
                 }`}
               >
                 <BarChart2 className="w-3.5 h-3.5" />
@@ -364,9 +364,9 @@ function AuditContent() {
           )}
 
           {/* Clean Physical Calibration Strip */}
-          <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs text-xs font-mono space-y-3">
-            <div className="flex items-center justify-between text-slate-800 font-bold">
-              <span className="flex items-center gap-1.5 text-cyan-700">
+          <div className="p-4 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs text-xs font-mono space-y-3">
+            <div className="flex items-center justify-between text-slate-200 font-bold">
+              <span className="flex items-center gap-1.5 text-cyan-400">
                 <Sliders className="w-3.5 h-3.5" />
                 <span>PHYSICAL TELEMETRY &amp; SCALE CALIBRATION</span>
               </span>
@@ -376,8 +376,8 @@ function AuditContent() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-1">
                 <div className="flex justify-between text-[11px]">
-                  <span className="text-slate-600">Flight Altitude:</span>
-                  <span className="text-cyan-700 font-bold">{flightAltitude.toFixed(1)} m AGL</span>
+                  <span className="text-slate-400">Flight Altitude:</span>
+                  <span className="text-cyan-400 font-bold">{flightAltitude.toFixed(1)} m AGL</span>
                 </div>
                 <input
                   type="range"
@@ -392,7 +392,7 @@ function AuditContent() {
 
               <div className="space-y-1">
                 <div className="flex justify-between text-[11px]">
-                  <span className="text-slate-600">Depth Metric Extrusion:</span>
+                  <span className="text-slate-400">Depth Metric Extrusion:</span>
                   <span className="text-amber-700 font-bold">{depthScale.toFixed(2)}x</span>
                 </div>
                 <input
@@ -424,7 +424,7 @@ function AuditContent() {
 
 export default function AuditPage() {
   return (
-    <div className="flex h-screen bg-transparent text-slate-800 font-sans overflow-hidden">
+    <div className="flex h-screen bg-transparent text-slate-200 font-sans overflow-hidden">
       <Sidebar />
 
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">

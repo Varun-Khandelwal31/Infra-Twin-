@@ -143,7 +143,7 @@ export default function TeamPage() {
   const inAuditCount = teamMembers.filter((m) => m.status === 'IN_AUDIT').length;
 
   return (
-    <div className="flex h-screen bg-transparent text-slate-800 font-sans overflow-hidden">
+    <div className="flex h-screen bg-transparent text-slate-200 font-sans overflow-hidden">
       <Sidebar />
 
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
@@ -151,13 +151,13 @@ export default function TeamPage() {
 
         <main className="flex-1 overflow-y-auto p-6 space-y-6">
           {/* Header Banner */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs">
             <div>
               <div className="flex items-center gap-2">
-                <div className="p-2 rounded-xl bg-cyan-50 text-cyan-700 border border-cyan-200">
+                <div className="p-2 rounded-xl bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">
                   <Users className="w-5 h-5" />
                 </div>
-                <h1 className="text-xl font-bold text-slate-900 font-display">
+                <h1 className="text-xl font-bold text-white font-display">
                   Municipal Infrastructure Audit &amp; Operations Team
                 </h1>
               </div>
@@ -169,7 +169,7 @@ export default function TeamPage() {
             <div className="flex items-center gap-3">
               <button
                 onClick={handleExportCSV}
-                className="px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-cyan-700 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs cursor-pointer"
+                className="px-4 py-2.5 rounded-xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl text-slate-300 hover:text-cyan-400 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs cursor-pointer"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Export Roster (CSV)</span>
@@ -187,19 +187,19 @@ export default function TeamPage() {
 
           {/* Success Toast Banner */}
           {toastMessage && (
-            <div className="p-4 rounded-2xl bg-cyan-50 border border-cyan-300 text-cyan-900 text-xs font-mono font-bold shadow-xs flex items-center justify-between gap-4 animate-fadeIn">
+            <div className="p-4 rounded-2xl bg-cyan-500/15 border border-cyan-500/40 text-cyan-900 text-xs font-mono font-bold shadow-xs flex items-center justify-between gap-4 animate-fadeIn">
               <div className="flex items-center gap-3 text-xs font-mono">
-                <div className="p-2 rounded-xl bg-white text-cyan-700 border border-cyan-200">
+                <div className="p-2 rounded-xl bg-[#111726] text-cyan-400 border border-cyan-500/30">
                   <CheckCircle2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="font-bold text-slate-900 uppercase">Operations Roster</div>
-                  <div className="text-cyan-800">{toastMessage}</div>
+                  <div className="font-bold text-white uppercase">Operations Roster</div>
+                  <div className="text-cyan-300">{toastMessage}</div>
                 </div>
               </div>
               <button
                 onClick={() => setToastMessage(null)}
-                className="text-xs text-slate-500 hover:text-slate-800 font-mono underline cursor-pointer"
+                className="text-xs text-slate-500 hover:text-slate-200 font-mono underline cursor-pointer"
               >
                 Dismiss
               </button>
@@ -208,27 +208,27 @@ export default function TeamPage() {
 
           {/* Quick Roster Status Metrics */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex items-center justify-between card-3d-tilt">
+            <div className="p-4 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs flex items-center justify-between card-3d-tilt">
               <div>
                 <div className="text-[11px] font-mono text-slate-500">Total Enrolled Team</div>
-                <div className="text-2xl font-bold text-slate-900 font-display">{teamMembers.length} Staff</div>
+                <div className="text-2xl font-bold text-white font-display">{teamMembers.length} Staff</div>
               </div>
-              <div className="p-2.5 rounded-xl bg-cyan-50 text-cyan-700 border border-cyan-200">
+              <div className="p-2.5 rounded-xl bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">
                 <Users className="w-5 h-5" />
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex items-center justify-between card-3d-tilt">
+            <div className="p-4 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs flex items-center justify-between card-3d-tilt">
               <div>
                 <div className="text-[11px] font-mono text-slate-500">Active on Duty</div>
-                <div className="text-2xl font-bold text-cyan-700 font-display">{onDutyCount} Active</div>
+                <div className="text-2xl font-bold text-cyan-400 font-display">{onDutyCount} Active</div>
               </div>
               <div className="p-2.5 rounded-xl bg-blue-50 text-blue-700 border border-blue-200">
                 <Shield className="w-5 h-5" />
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex items-center justify-between card-3d-tilt">
+            <div className="p-4 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs flex items-center justify-between card-3d-tilt">
               <div>
                 <div className="text-[11px] font-mono text-slate-500">Airborne Drone Pilots</div>
                 <div className="text-2xl font-bold text-emerald-700 font-display">{airborneCount} Flying</div>
@@ -238,7 +238,7 @@ export default function TeamPage() {
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex items-center justify-between card-3d-tilt">
+            <div className="p-4 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs flex items-center justify-between card-3d-tilt">
               <div>
                 <div className="text-[11px] font-mono text-slate-500">In Field SLA Audits</div>
                 <div className="text-2xl font-bold text-amber-700 font-display">{inAuditCount} Auditing</div>
@@ -250,7 +250,7 @@ export default function TeamPage() {
           </div>
 
           {/* Search & Filter Toolbar */}
-          <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="p-4 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="relative flex-1 max-w-md">
               <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
               <input
@@ -258,7 +258,7 @@ export default function TeamPage() {
                 placeholder="Search staff by name, role, or municipal zone..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-cyan-500"
+                className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-900/60 border border-slate-800 text-xs text-slate-200 placeholder-slate-400 focus:bg-[#111726] focus:outline-none focus:border-cyan-500"
               />
             </div>
 
@@ -269,8 +269,8 @@ export default function TeamPage() {
                   onClick={() => setStatusFilter(status)}
                   className={`px-3 py-1.5 rounded-xl border transition-all shrink-0 cursor-pointer ${
                     statusFilter === status
-                      ? 'bg-cyan-50 text-cyan-800 border-cyan-300 shadow-xs font-bold'
-                      : 'bg-slate-50 text-slate-600 border-slate-200 hover:text-slate-900 hover:bg-slate-100'
+                      ? 'bg-cyan-500/15 text-cyan-300 border-cyan-500/40 shadow-xs font-bold'
+                      : 'bg-slate-900/60 text-slate-400 border-slate-800 hover:text-white hover:bg-slate-800/60'
                   }`}
                 >
                   {status.replace('_', ' ')}
@@ -289,7 +289,7 @@ export default function TeamPage() {
               return (
                 <div
                   key={member.id}
-                  className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-4 hover:border-cyan-400 hover:shadow-md transition-all card-3d-tilt flex flex-col justify-between"
+                  className="p-6 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs space-y-4 hover:border-cyan-400 hover:shadow-md transition-all card-3d-tilt flex flex-col justify-between"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
@@ -298,7 +298,7 @@ export default function TeamPage() {
                           isAirborne
                             ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
                             : isOnDuty
-                            ? 'bg-cyan-50 text-cyan-700 border-cyan-200'
+                            ? 'bg-cyan-500/15 text-cyan-400 border-cyan-500/30'
                             : 'bg-amber-50 text-amber-700 border-amber-200'
                         }`}
                       >
@@ -319,11 +319,11 @@ export default function TeamPage() {
                       <img
                         src={member.avatar}
                         alt={member.name}
-                        className="w-12 h-12 rounded-xl object-cover border border-slate-200 shadow-2xs shrink-0"
+                        className="w-12 h-12 rounded-xl object-cover border border-slate-800 shadow-2xs shrink-0"
                       />
                       <div className="min-w-0">
-                        <h3 className="text-sm font-bold text-slate-900 font-display truncate">{member.name}</h3>
-                        <p className="text-xs text-cyan-700 font-mono truncate">{member.role}</p>
+                        <h3 className="text-sm font-bold text-white font-display truncate">{member.name}</h3>
+                        <p className="text-xs text-cyan-400 font-mono truncate">{member.role}</p>
                       </div>
                     </div>
 
@@ -343,7 +343,7 @@ export default function TeamPage() {
                     </div>
                   </div>
 
-                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-mono">
+                  <div className="pt-3 border-t border-slate-800/60 flex items-center justify-between text-xs font-mono">
                     <span className="text-slate-500 text-[11px]">Sorties Completed</span>
                     <span className="text-emerald-700 font-bold font-display">{member.sorties} Missions</span>
                   </div>

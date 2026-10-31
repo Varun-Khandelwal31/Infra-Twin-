@@ -108,7 +108,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="flex h-screen bg-transparent text-slate-800 font-sans overflow-hidden">
+    <div className="flex h-screen bg-transparent text-slate-200 font-sans overflow-hidden">
       <Sidebar />
 
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
@@ -116,13 +116,13 @@ export default function SettingsPage() {
 
         <main className="flex-1 overflow-y-auto p-6 space-y-6">
           {/* Header Banner */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs">
             <div>
               <div className="flex items-center gap-2">
-                <div className="p-2 rounded-xl bg-cyan-50 text-cyan-700 border border-cyan-200">
+                <div className="p-2 rounded-xl bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">
                   <Settings className="w-5 h-5" />
                 </div>
-                <h1 className="text-xl font-bold text-slate-900 font-display">
+                <h1 className="text-xl font-bold text-white font-display">
                   System Configuration &amp; AI Model Settings
                 </h1>
               </div>
@@ -134,7 +134,7 @@ export default function SettingsPage() {
             <div className="flex items-center gap-3">
               <button
                 onClick={handleResetDefaults}
-                className="px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-slate-900 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs cursor-pointer"
+                className="px-4 py-2.5 rounded-xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl text-slate-300 hover:text-white text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs cursor-pointer"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>Reset Defaults</span>
@@ -160,8 +160,8 @@ export default function SettingsPage() {
           {/* Core Settings Sections */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Section 1: Computer Vision & Depth Engine Parameters */}
-            <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-5 card-3d-tilt">
-              <div className="flex items-center gap-2 text-xs font-bold text-cyan-700 font-mono">
+            <div className="p-6 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs space-y-5 card-3d-tilt">
+              <div className="flex items-center gap-2 text-xs font-bold text-cyan-400 font-mono">
                 <Cpu className="w-4 h-4" />
                 <span>COMPUTER VISION &amp; DEPTH MATRIX PIPELINE</span>
               </div>
@@ -169,8 +169,8 @@ export default function SettingsPage() {
               {/* Slider 1 */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="text-slate-700">YOLOv8-Seg Instance Confidence Threshold:</span>
-                  <span className="font-bold text-cyan-700">{yoloConf}%</span>
+                  <span className="text-slate-300">YOLOv8-Seg Instance Confidence Threshold:</span>
+                  <span className="font-bold text-cyan-400">{yoloConf}%</span>
                 </div>
                 <input
                   type="range"
@@ -188,10 +188,10 @@ export default function SettingsPage() {
               </div>
 
               {/* Slider 2 */}
-              <div className="space-y-2 pt-2 border-t border-slate-100">
+              <div className="space-y-2 pt-2 border-t border-slate-800/60">
                 <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="text-slate-700">Depth Anything Monocular Scale Factor:</span>
-                  <span className="font-bold text-cyan-700">{depthScale.toFixed(2)}x</span>
+                  <span className="text-slate-300">Depth Anything Monocular Scale Factor:</span>
+                  <span className="font-bold text-cyan-400">{depthScale.toFixed(2)}x</span>
                 </div>
                 <input
                   type="range"
@@ -211,21 +211,21 @@ export default function SettingsPage() {
             </div>
 
             {/* Section 2: GenAI Copilot & LLM Model Runtime */}
-            <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-5 card-3d-tilt">
-              <div className="flex items-center gap-2 text-xs font-bold text-cyan-700 font-mono">
+            <div className="p-6 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs space-y-5 card-3d-tilt">
+              <div className="flex items-center gap-2 text-xs font-bold text-cyan-400 font-mono">
                 <Sliders className="w-4 h-4" />
                 <span>NIRMAN COPILOT &amp; LLM RUNTIME</span>
               </div>
 
               {/* Model Select */}
               <div className="space-y-2">
-                <label className="text-xs font-mono text-slate-700 block">
+                <label className="text-xs font-mono text-slate-300 block">
                   Active Groq LLM Inference Model:
                 </label>
                 <select
                   value={modelSelect}
                   onChange={(e) => setModelSelect(e.target.value)}
-                  className="w-full p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono text-cyan-800 focus:bg-white focus:outline-none focus:border-cyan-500"
+                  className="w-full p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 text-xs font-mono text-cyan-300 focus:bg-[#111726] focus:outline-none focus:border-cyan-500"
                 >
                   <option value="llama-3.3-70b-versatile">Llama-3.3-70b-versatile (Recommended)</option>
                   <option value="codellama-70b-instruct">Code Llama 70B Instruct (Code Meta AI - High Precision)</option>
@@ -236,8 +236,8 @@ export default function SettingsPage() {
               </div>
 
               {/* IRC Standard Toggle */}
-              <div className="space-y-2 pt-2 border-t border-slate-100">
-                <label className="text-xs font-mono text-slate-700 block">
+              <div className="space-y-2 pt-2 border-t border-slate-800/60">
+                <label className="text-xs font-mono text-slate-300 block">
                   Indian Road Congress (IRC) Governance Standard:
                 </label>
                 <div className="grid grid-cols-2 gap-3">
@@ -247,8 +247,8 @@ export default function SettingsPage() {
                       onClick={() => setIrcBenchmark(std)}
                       className={`p-2.5 rounded-xl border text-xs font-mono font-bold transition-all cursor-pointer ${
                         ircBenchmark === std
-                          ? 'bg-cyan-50 text-cyan-800 border-cyan-300 shadow-xs'
-                          : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'
+                          ? 'bg-cyan-500/15 text-cyan-300 border-cyan-500/40 shadow-xs'
+                          : 'bg-slate-900/60 text-slate-400 border-slate-800 hover:bg-slate-800/60'
                       }`}
                     >
                       {std}
@@ -259,9 +259,9 @@ export default function SettingsPage() {
             </div>
 
             {/* Section 3: Swytchcode Durable Execution Engine */}
-            <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-5 card-3d-tilt lg:col-span-2">
+            <div className="p-6 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs space-y-5 card-3d-tilt lg:col-span-2">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs font-bold text-cyan-700 font-mono">
+                <div className="flex items-center gap-2 text-xs font-bold text-cyan-400 font-mono">
                   <Database className="w-4 h-4" />
                   <span>SWYTCHCODE DURABLE WORKFLOW &amp; AGENTIC API ENGINE</span>
                 </div>
@@ -271,21 +271,21 @@ export default function SettingsPage() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
-                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+                <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1">
                   <div className="text-slate-500 text-[10px]">Durable Retry Policy</div>
-                  <div className="font-bold text-cyan-700">Exponential Backoff (3 Retries)</div>
+                  <div className="font-bold text-cyan-400">Exponential Backoff (3 Retries)</div>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+                <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1">
                   <div className="text-slate-500 text-[10px]">State Persistence</div>
                   <div className="font-bold text-emerald-700">Enabled (Session Key Sync)</div>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+                <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1">
                   <div className="text-slate-500 text-[10px]">Swytchcode CLI OpenAPI Spec</div>
                   <a
                     href="/swytchcode-openapi.json"
                     target="_blank"
                     download
-                    className="inline-block font-bold text-cyan-700 underline hover:text-cyan-800 pt-0.5"
+                    className="inline-block font-bold text-cyan-400 underline hover:text-cyan-300 pt-0.5"
                   >
                     /swytchcode-openapi.json
                   </a>
@@ -294,9 +294,9 @@ export default function SettingsPage() {
             </div>
 
             {/* Section 4: CodeMate AI Live Quality & Security Audit Engine */}
-            <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-5 card-3d-tilt lg:col-span-2">
+            <div className="p-6 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs space-y-5 card-3d-tilt lg:col-span-2">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div className="flex items-center gap-2 text-xs font-bold text-cyan-700 font-mono">
+                <div className="flex items-center gap-2 text-xs font-bold text-cyan-400 font-mono">
                   <Shield className="w-4 h-4 text-emerald-600" />
                   <span>CODEMATE AI SDLC QUALITY &amp; OWASP SECURITY AUDITOR</span>
                 </div>
@@ -304,7 +304,7 @@ export default function SettingsPage() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={handleExportSecurityCert}
-                    className="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 hover:text-cyan-700 text-xs font-mono flex items-center gap-1.5 transition-colors shadow-xs cursor-pointer"
+                    className="px-3 py-1.5 rounded-lg bg-[#111726]/90 border border-slate-800/90 shadow-2xl text-slate-300 hover:text-cyan-400 text-xs font-mono flex items-center gap-1.5 transition-colors shadow-xs cursor-pointer"
                   >
                     <Download className="w-3.5 h-3.5" />
                     <span>Export Audit (.json)</span>
@@ -324,11 +324,11 @@ export default function SettingsPage() {
               {/* Live Audit Progress Bar */}
               {isAuditing && (
                 <div className="space-y-1.5 font-mono text-xs">
-                  <div className="flex justify-between text-[11px] text-cyan-700">
+                  <div className="flex justify-between text-[11px] text-cyan-400">
                     <span>{auditLog}</span>
                     <span>{auditProgress}%</span>
                   </div>
-                  <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden border border-slate-200">
+                  <div className="w-full h-2 rounded-full bg-slate-800/60 overflow-hidden border border-slate-800">
                     <div
                       className="h-full bg-gradient-to-r from-cyan-500 via-blue-500 to-emerald-500 transition-all duration-300"
                       style={{ width: `${auditProgress}%` }}
@@ -338,24 +338,24 @@ export default function SettingsPage() {
               )}
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs font-mono">
-                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+                <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1">
                   <div className="text-slate-500 text-[10px]">OWASP Security Rating</div>
                   <div className="font-bold text-emerald-700">A+ (0 Critical Vulns)</div>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+                <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1">
                   <div className="text-slate-500 text-[10px]">TypeScript Strictness</div>
-                  <div className="font-bold text-cyan-700">100% Type Coverage</div>
+                  <div className="font-bold text-cyan-400">100% Type Coverage</div>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+                <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1">
                   <div className="text-slate-500 text-[10px]">Automated PR Review Agent</div>
                   <div className="font-bold text-emerald-700">Passing (GitHub Actions)</div>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+                <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1">
                   <div className="text-slate-500 text-[10px]">CodeMate Audit API</div>
                   <a
                     href="/api/codemate/audit"
                     target="_blank"
-                    className="inline-block font-bold text-cyan-700 underline hover:text-cyan-800 pt-0.5"
+                    className="inline-block font-bold text-cyan-400 underline hover:text-cyan-300 pt-0.5"
                   >
                     /api/codemate/audit
                   </a>

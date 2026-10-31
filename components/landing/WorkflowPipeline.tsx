@@ -41,10 +41,10 @@ export default function WorkflowPipeline() {
         <span className="text-xs uppercase font-mono text-cyan-700 font-bold tracking-widest px-3.5 py-1.5 rounded-full bg-cyan-50 border border-cyan-200 shadow-xs">
           Autonomous Audit Pipeline
         </span>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-display tracking-tight mt-3">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-display tracking-tight mt-3">
           How InfraTwin AI Governs Smart City Roads
         </h2>
-        <p className="text-slate-600 text-sm mt-2">
+        <p className="text-slate-400 text-sm mt-2">
           From raw aerial drone flight to automated statutory compliance and contractor payment release.
         </p>
       </div>
@@ -55,7 +55,7 @@ export default function WorkflowPipeline() {
           return (
             <div
               key={idx}
-              className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-cyan-400 hover:shadow-md transition-all flex flex-col justify-between group relative overflow-hidden"
+              className="p-6 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs hover:border-cyan-400 hover:shadow-md transition-all flex flex-col justify-between group relative overflow-hidden"
             >
               <div>
                 <div className="flex items-center justify-between mb-6">
@@ -67,10 +67,10 @@ export default function WorkflowPipeline() {
                   </span>
                 </div>
 
-                <h3 className="text-lg font-bold text-slate-900 font-display mb-2 group-hover:text-cyan-700 transition-colors">
+                <h3 className="text-lg font-bold text-white font-display mb-2 group-hover:text-cyan-700 transition-colors">
                   {step.title}
                 </h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
+                <p className="text-xs text-slate-400 leading-relaxed">
                   {step.desc}
                 </p>
               </div>

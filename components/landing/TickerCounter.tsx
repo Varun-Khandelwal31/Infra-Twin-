@@ -52,7 +52,7 @@ export default function TickerCounter() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs relative overflow-hidden group hover:shadow-md hover:border-cyan-300 hover:scale-[1.02] transition-all"
+              className="p-6 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs relative overflow-hidden group hover:shadow-md hover:border-cyan-300 hover:scale-[1.02] transition-all"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className={`w-10 h-10 rounded-xl border flex items-center justify-center ${stat.iconColor} shadow-xs`}>
@@ -62,10 +62,10 @@ export default function TickerCounter() {
                   Live Ticker
                 </span>
               </div>
-              <div className="text-3xl font-extrabold tracking-tight font-display text-slate-900 mb-1">
+              <div className="text-3xl font-extrabold tracking-tight font-display text-white mb-1">
                 {stat.value}
               </div>
-              <div className="text-sm font-semibold text-slate-800">{stat.label}</div>
+              <div className="text-sm font-semibold text-slate-200">{stat.label}</div>
               <div className="text-xs text-slate-500 mt-1">{stat.subtext}</div>
             </motion.div>
           );

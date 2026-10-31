@@ -14,18 +14,18 @@ export default function InteractivePlayground() {
         <span className="text-xs uppercase font-mono text-cyan-700 font-bold tracking-widest px-3.5 py-1.5 rounded-full bg-cyan-50 border border-cyan-200 shadow-xs">
           Interactive AI Playground
         </span>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-display tracking-tight mt-3">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-display tracking-tight mt-3">
           Test the Computer Vision & Depth Engine
         </h2>
-        <p className="text-slate-600 text-sm mt-2 leading-relaxed">
+        <p className="text-slate-400 text-sm mt-2 leading-relaxed">
           Toggle between raw aerial drone RGB imagery, YOLOv8 cyan segmentation boundary masks, and sub-centimeter monocular 3D depth heatmaps.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/90 shadow-md">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#111726]/90 p-6 sm:p-8 rounded-3xl border border-slate-800/90 shadow-2xl shadow-md">
         {/* Left Scan Viewport */}
         <div className="lg:col-span-7 space-y-4">
-          <div className="relative h-[360px] sm:h-[400px] rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 group shadow-inner">
+          <div className="relative h-[360px] sm:h-[400px] rounded-2xl overflow-hidden bg-slate-100 border border-slate-800 group shadow-inner">
             {/* Base Image */}
             <img
               src="/images/indian_alligator_crack_corridor.jpg"
@@ -64,13 +64,13 @@ export default function InteractivePlayground() {
             )}
 
             {/* Layer Control Pills */}
-            <div className="absolute top-4 left-4 z-20 flex items-center bg-white/95 p-1.5 rounded-xl border border-slate-200 text-xs shadow-xs backdrop-blur-md">
+            <div className="absolute top-4 left-4 z-20 flex items-center bg-slate-900/95 p-1.5 rounded-xl border border-slate-800 text-xs shadow-xs backdrop-blur-md">
               <button
                 onClick={() => setActiveLayer('rgb')}
                 className={`px-3 py-1.5 rounded-lg transition-all font-semibold ${
                   activeLayer === 'rgb'
                     ? 'bg-cyan-50 text-cyan-700 border border-cyan-200 shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
+                    : 'text-slate-400 hover:text-white'
                 }`}
               >
                 Raw RGB Scan
@@ -80,7 +80,7 @@ export default function InteractivePlayground() {
                 className={`px-3 py-1.5 rounded-lg transition-all font-semibold ${
                   activeLayer === 'segmentation'
                     ? 'bg-cyan-50 text-cyan-700 border border-cyan-200 shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
+                    : 'text-slate-400 hover:text-white'
                 }`}
               >
                 YOLOv8 Mask
@@ -90,14 +90,14 @@ export default function InteractivePlayground() {
                 className={`px-3 py-1.5 rounded-lg transition-all font-semibold ${
                   activeLayer === 'depth'
                     ? 'bg-rose-50 text-rose-700 border border-rose-200 shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
+                    : 'text-slate-400 hover:text-white'
                 }`}
               >
                 3D Depth Mesh
               </button>
             </div>
 
-            <div className="absolute bottom-4 right-4 z-20 px-3 py-1 rounded-lg bg-white/90 border border-slate-200 text-[11px] font-mono text-cyan-700 shadow-xs backdrop-blur-md">
+            <div className="absolute bottom-4 right-4 z-20 px-3 py-1 rounded-lg bg-slate-900/90 border border-slate-800 text-[11px] font-mono text-cyan-700 shadow-xs backdrop-blur-md">
               Connaught Place • IR-2025-05-27
             </div>
           </div>
@@ -110,7 +110,7 @@ export default function InteractivePlayground() {
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
               <span>Real-Time Volumetric Inference</span>
             </div>
-            <h3 className="text-2xl font-bold text-slate-900 font-display">
+            <h3 className="text-2xl font-bold text-white font-display">
               Outer Ring Road Pothole #104
             </h3>
             <p className="text-xs text-slate-500 mt-1">
@@ -120,19 +120,19 @@ export default function InteractivePlayground() {
 
           {/* Metrics List */}
           <div className="grid grid-cols-2 gap-3 text-xs">
-            <div className="p-3.5 rounded-xl bg-slate-50/80 border border-slate-200 shadow-xs">
+            <div className="p-3.5 rounded-xl bg-slate-50/80 border border-slate-800 shadow-xs">
               <div className="text-[10px] text-slate-500 font-mono">Surface Area</div>
-              <div className="text-base font-bold text-slate-900 font-display mt-0.5">2.5 sqm (±0.15)</div>
+              <div className="text-base font-bold text-white font-display mt-0.5">2.5 sqm (±0.15)</div>
             </div>
-            <div className="p-3.5 rounded-xl bg-slate-50/80 border border-slate-200 shadow-xs">
+            <div className="p-3.5 rounded-xl bg-slate-50/80 border border-slate-800 shadow-xs">
               <div className="text-[10px] text-slate-500 font-mono">Max Depth</div>
               <div className="text-base font-bold text-rose-600 font-display mt-0.5">15.0 cm (±1.2)</div>
             </div>
-            <div className="p-3.5 rounded-xl bg-slate-50/80 border border-slate-200 shadow-xs">
+            <div className="p-3.5 rounded-xl bg-slate-50/80 border border-slate-800 shadow-xs">
               <div className="text-[10px] text-slate-500 font-mono">Volume Displacement</div>
               <div className="text-base font-bold text-cyan-700 font-display mt-0.5">0.375 m³</div>
             </div>
-            <div className="p-3.5 rounded-xl bg-slate-50/80 border border-slate-200 shadow-xs">
+            <div className="p-3.5 rounded-xl bg-slate-50/80 border border-slate-800 shadow-xs">
               <div className="text-[10px] text-slate-500 font-mono">Severity Score</div>
               <div className="text-base font-bold text-amber-600 font-display mt-0.5">98.7% Critical</div>
             </div>
@@ -149,7 +149,7 @@ export default function InteractivePlayground() {
 
             <Link
               href="/copilot?sample=sample-1"
-              className="px-5 py-3 rounded-xl bg-white border border-slate-200 text-slate-700 font-semibold text-xs hover:bg-slate-50 hover:border-cyan-300 shadow-xs transition-all flex items-center justify-center gap-2"
+              className="px-5 py-3 rounded-xl bg-white border border-slate-800 text-slate-700 font-semibold text-xs hover:bg-slate-50 hover:border-cyan-300 shadow-xs transition-all flex items-center justify-center gap-2"
             >
               <FileText className="w-4 h-4 text-cyan-600" />
               <span>Generate IRC BOQ</span>

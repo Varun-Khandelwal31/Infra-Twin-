@@ -15,25 +15,25 @@ export default function ROICalculator() {
 
   return (
     <section className="py-20 px-6 max-w-7xl mx-auto w-full">
-      <div className="p-8 sm:p-12 rounded-3xl bg-white border border-slate-200/90 shadow-md relative overflow-hidden">
+      <div className="p-8 sm:p-12 rounded-3xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-md relative overflow-hidden">
         <div className="max-w-3xl mx-auto text-center space-y-4 mb-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-mono font-medium shadow-xs">
             <Calculator className="w-3.5 h-3.5" />
             <span>Smart City Municipal ROI Calculator</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-display">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-display">
             Calculate Municipal Savings for Your City
           </h2>
-          <p className="text-slate-600 text-sm">
+          <p className="text-slate-400 text-sm">
             Adjust the road network size to project municipal budget savings, prevented contractor over-billing, and reduced carbon footprint.
           </p>
         </div>
 
         {/* Interactive Slider */}
-        <div className="max-w-2xl mx-auto bg-slate-50/80 p-6 rounded-2xl border border-slate-200 space-y-4 mb-10 shadow-xs">
+        <div className="max-w-2xl mx-auto bg-slate-50/80 p-6 rounded-2xl border border-slate-800 space-y-4 mb-10 shadow-xs">
           <div className="flex items-center justify-between text-xs font-mono">
-            <span className="text-slate-600">Total City Road Stretch Length:</span>
+            <span className="text-slate-400">Total City Road Stretch Length:</span>
             <span className="text-lg font-bold text-cyan-700 font-display">{roadKm} km</span>
           </div>
 
@@ -56,44 +56,44 @@ export default function ROICalculator() {
 
         {/* Calculated Results Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          <div className="p-5 rounded-2xl bg-white border border-emerald-200/80 text-center space-y-2 shadow-xs">
+          <div className="p-5 rounded-2xl bg-[#111726]/90 border border-emerald-200/80 text-center space-y-2 shadow-xs">
             <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700 mx-auto shadow-xs">
               <IndianRupee className="w-5 h-5" />
             </div>
-            <div className="text-2xl font-extrabold text-slate-900 font-display">
+            <div className="text-2xl font-extrabold text-white font-display">
               ₹{budgetSavedLakhs} Lakhs
             </div>
             <div className="text-xs font-semibold text-emerald-700">Municipal Budget Saved</div>
             <p className="text-[11px] text-slate-500">Via early preventive patch maintenance</p>
           </div>
 
-          <div className="p-5 rounded-2xl bg-white border border-amber-200/80 text-center space-y-2 shadow-xs">
+          <div className="p-5 rounded-2xl bg-[#111726]/90 border border-amber-200/80 text-center space-y-2 shadow-xs">
             <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 mx-auto shadow-xs">
               <ShieldCheck className="w-5 h-5" />
             </div>
-            <div className="text-2xl font-extrabold text-slate-900 font-display">
+            <div className="text-2xl font-extrabold text-white font-display">
               ₹{fraudBlockedLakhs} Lakhs
             </div>
             <div className="text-xs font-semibold text-amber-700">Fraudulent Claims Blocked</div>
             <p className="text-[11px] text-slate-500">Through 3D volumetric audit rules</p>
           </div>
 
-          <div className="p-5 rounded-2xl bg-white border border-cyan-200/80 text-center space-y-2 shadow-xs">
+          <div className="p-5 rounded-2xl bg-[#111726]/90 border border-cyan-200/80 text-center space-y-2 shadow-xs">
             <div className="w-10 h-10 rounded-xl bg-cyan-50 border border-cyan-200 flex items-center justify-center text-cyan-700 mx-auto shadow-xs">
               <Leaf className="w-5 h-5" />
             </div>
-            <div className="text-2xl font-extrabold text-slate-900 font-display">
+            <div className="text-2xl font-extrabold text-white font-display">
               {carbonSavedTons} Tons
             </div>
             <div className="text-xs font-semibold text-cyan-700">CO2 Emissions Avoided</div>
             <p className="text-[11px] text-slate-500">Reduced raw asphalt production</p>
           </div>
 
-          <div className="p-5 rounded-2xl bg-white border border-purple-200/80 text-center space-y-2 shadow-xs">
+          <div className="p-5 rounded-2xl bg-[#111726]/90 border border-purple-200/80 text-center space-y-2 shadow-xs">
             <div className="w-10 h-10 rounded-xl bg-purple-50 border border-purple-200 flex items-center justify-center text-purple-700 mx-auto shadow-xs">
               <Clock className="w-5 h-5" />
             </div>
-            <div className="text-2xl font-extrabold text-slate-900 font-display">
+            <div className="text-2xl font-extrabold text-white font-display">
               {daysSaved} Days
             </div>
             <div className="text-xs font-semibold text-purple-700">Inspection Time Saved</div>

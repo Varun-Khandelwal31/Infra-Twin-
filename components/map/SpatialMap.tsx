@@ -565,7 +565,7 @@ export default function SpatialMap() {
 
         const isRed = pin.color === 'red';
         const popupNode = document.createElement('div');
-        popupNode.className = 'p-1 text-slate-800 font-sans max-w-xs';
+        popupNode.className = 'p-1 text-slate-200 font-sans max-w-xs';
         popupNode.innerHTML = `
           <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 14px; border-radius: 14px; box-shadow: 0 10px 25px rgba(15,23,42,0.12);">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
@@ -819,12 +819,12 @@ export default function SpatialMap() {
 
   if (loading) {
     return (
-      <div className="w-full h-[calc(100vh-6rem)] rounded-2xl border border-slate-200/90 bg-white p-8 flex flex-col items-center justify-center space-y-4 shadow-xs">
+      <div className="w-full h-[calc(100vh-6rem)] rounded-2xl border border-slate-800/90 bg-[#111726] p-8 flex flex-col items-center justify-center space-y-4 shadow-xs">
         <Activity className="w-8 h-8 text-cyan-600 animate-spin" />
-        <div className="text-sm font-mono font-bold text-slate-800">
+        <div className="text-sm font-mono font-bold text-slate-200">
           Fetching Pan-India GeoJSON Road Networks across 36 States &amp; UTs...
         </div>
-        <div className="w-64 h-2 rounded-full bg-slate-100 overflow-hidden border border-slate-200">
+        <div className="w-64 h-2 rounded-full bg-slate-100 overflow-hidden border border-slate-800">
           <div className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 animate-pulse w-3/4" />
         </div>
       </div>
@@ -833,13 +833,13 @@ export default function SpatialMap() {
 
   if (error) {
     return (
-      <div className="w-full h-[calc(100vh-6rem)] rounded-2xl border border-rose-200 bg-white p-8 flex flex-col items-center justify-center space-y-4 shadow-xs">
+      <div className="w-full h-[calc(100vh-6rem)] rounded-2xl border border-rose-200 bg-[#111726] p-8 flex flex-col items-center justify-center space-y-4 shadow-xs">
         <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 font-medium">
           ⚠️ {error}
         </div>
         <button
           onClick={() => window.location.reload()}
-          className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 text-xs font-mono cursor-pointer"
+          className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-800 text-slate-300 text-xs font-mono cursor-pointer"
         >
           Retry Load
         </button>
@@ -856,7 +856,7 @@ export default function SpatialMap() {
     : [];
 
   return (
-    <div className="relative w-full h-[calc(100vh-6rem)] flex flex-col lg:flex-row overflow-hidden rounded-2xl border border-slate-200/90 shadow-md bg-white">
+    <div className="relative w-full h-[calc(100vh-6rem)] flex flex-col lg:flex-row overflow-hidden rounded-2xl border border-slate-800/90 shadow-2xl bg-[#0b0f19] border-slate-800">
       {/* Map Container */}
       <div className="relative flex-1 h-full min-h-[450px]">
         <div ref={mapContainerRef} className="w-full h-full" />
@@ -871,7 +871,7 @@ export default function SpatialMap() {
                 placeholder="Search any Indian place (e.g. Lucknow, Kochi, Guwahati, NH-44, Leh)..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-72 sm:w-96 pl-9 pr-20 py-2 rounded-xl bg-white/95 border border-slate-300 text-slate-900 placeholder-slate-400 text-xs font-sans shadow-md backdrop-blur-xl focus:outline-none focus:border-cyan-500"
+                className="w-72 sm:w-96 pl-9 pr-20 py-2 rounded-xl bg-slate-900/95 border border-slate-700 text-white placeholder-slate-400 text-xs font-sans shadow-md backdrop-blur-xl focus:outline-none focus:border-cyan-500"
               />
               <Search className="w-4 h-4 text-cyan-600 absolute left-3 pointer-events-none" />
               <button
@@ -885,7 +885,7 @@ export default function SpatialMap() {
             {/* Statutory Data Sources Button */}
             <button
               onClick={() => setIsProvenanceOpen(true)}
-              className="px-3 py-2 rounded-xl bg-white/90 hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-bold flex items-center gap-1.5 shadow-xs backdrop-blur-xl transition-all cursor-pointer"
+              className="px-3 py-2 rounded-xl bg-slate-900/90 hover:bg-slate-50 border border-slate-800 text-slate-300 text-xs font-bold flex items-center gap-1.5 shadow-xs backdrop-blur-xl transition-all cursor-pointer"
             >
               <Scale className="w-3.5 h-3.5 text-cyan-600" />
               <span>Data Sources</span>
@@ -894,7 +894,7 @@ export default function SpatialMap() {
             {/* How to Read This Map Toggle Button */}
             <button
               onClick={() => setIsGuideOpen(!isGuideOpen)}
-              className="px-3 py-2 rounded-xl bg-white/90 hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-medium flex items-center gap-1.5 shadow-xs backdrop-blur-xl transition-all cursor-pointer"
+              className="px-3 py-2 rounded-xl bg-slate-900/90 hover:bg-slate-50 border border-slate-800 text-slate-300 text-xs font-medium flex items-center gap-1.5 shadow-xs backdrop-blur-xl transition-all cursor-pointer"
             >
               <HelpCircle className="w-3.5 h-3.5 text-cyan-600" />
               <span>Map Guide</span>
@@ -903,7 +903,7 @@ export default function SpatialMap() {
           </div>
 
           {/* Map Style Selector Pills */}
-          <div className="flex items-center bg-white/90 p-1 rounded-xl border border-slate-200 text-xs pointer-events-auto backdrop-blur-xl shadow-xs">
+          <div className="flex items-center bg-slate-900/90 p-1 rounded-xl border border-slate-800 text-xs pointer-events-auto backdrop-blur-xl shadow-xs">
             {MAP_STYLES.map((s) => (
               <button
                 key={s.id}
@@ -911,8 +911,8 @@ export default function SpatialMap() {
                 className={cn(
                   'px-2.5 py-1 rounded-lg transition-all font-medium cursor-pointer',
                   currentStyle === s.id
-                    ? 'bg-cyan-50 text-cyan-800 border border-cyan-200 font-bold shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 font-bold shadow-xs'
+                    : 'text-slate-400 hover:text-white'
                 )}
               >
                 {s.label.split(' ')[1]}
@@ -923,13 +923,13 @@ export default function SpatialMap() {
 
         {/* Search Feedback Banner */}
         {searchFeedback && (
-          <div className="absolute top-16 left-4 z-20 p-2.5 rounded-xl bg-white/95 border border-cyan-300 text-cyan-900 text-xs font-mono shadow-md animate-fadeIn">
+          <div className="absolute top-16 left-4 z-20 p-2.5 rounded-xl bg-slate-900/95 border border-cyan-500/40 text-cyan-300 text-xs font-mono shadow-md animate-fadeIn">
             {searchFeedback}
           </div>
         )}
 
         {/* REGIONAL ZONE FILTER PILLS */}
-        <div className="absolute top-16 right-4 z-10 flex flex-wrap items-center gap-1.5 bg-white/95 p-1.5 rounded-xl border border-slate-200 text-xs font-mono backdrop-blur-xl shadow-md">
+        <div className="absolute top-16 right-4 z-10 flex flex-wrap items-center gap-1.5 bg-slate-900/95 p-1.5 rounded-xl border border-slate-800 text-xs font-mono backdrop-blur-xl shadow-md">
           {(
             [
               'All India',
@@ -947,8 +947,8 @@ export default function SpatialMap() {
               className={cn(
                 'px-2.5 py-1 rounded-lg transition-all text-xs font-bold cursor-pointer',
                 currentZone === zone
-                  ? 'bg-cyan-50 text-cyan-800 border border-cyan-300 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
+                  ? 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/40 shadow-xs'
+                  : 'text-slate-400 hover:text-white'
               )}
             >
               {zone === 'All India' ? '🇮🇳 Pan-India' : zone}
@@ -958,16 +958,16 @@ export default function SpatialMap() {
 
         {/* INTERACTIVE GUIDE COLLAPSIBLE OVERLAY */}
         {isGuideOpen && (
-          <div className="absolute top-20 left-4 z-30 max-w-lg p-4 rounded-2xl bg-white/95 border border-slate-200 text-slate-800 text-xs font-sans shadow-2xl backdrop-blur-2xl animate-fadeIn space-y-3">
-            <div className="flex items-center justify-between pb-2 border-b border-slate-200">
-              <span className="font-bold text-slate-900 font-mono uppercase flex items-center gap-1.5">
+          <div className="absolute top-20 left-4 z-30 max-w-lg p-4 rounded-2xl bg-slate-900/95 border border-slate-800 text-slate-200 text-xs font-sans shadow-2xl backdrop-blur-2xl animate-fadeIn space-y-3">
+            <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+              <span className="font-bold text-white font-mono uppercase flex items-center gap-1.5">
                 <Info className="w-4 h-4 text-cyan-600" />
                 <span>Pan-India Spatial Digital Twin Guide</span>
               </span>
-              <button onClick={() => setIsGuideOpen(false)} className="text-slate-400 hover:text-slate-700 font-mono cursor-pointer">✕</button>
+              <button onClick={() => setIsGuideOpen(false)} className="text-slate-400 hover:text-slate-300 font-mono cursor-pointer">✕</button>
             </div>
 
-            <p className="text-[11px] text-slate-600 leading-relaxed">
+            <p className="text-[11px] text-slate-400 leading-relaxed">
               This spatial digital twin covers all 28 Indian States &amp; 8 UTs. You can click <strong>anywhere on India&apos;s map</strong> or search any town/highway to instantly reverse-geocode the location, fetch localized CPWD cost indices, and generate an IRC:82 Bill of Quantities!
             </p>
 
@@ -986,7 +986,7 @@ export default function SpatialMap() {
               </div>
             </div>
 
-            <div className="text-[10px] font-mono text-cyan-700 pt-1 border-t border-slate-200 flex items-center justify-between">
+            <div className="text-[10px] font-mono text-cyan-700 pt-1 border-t border-slate-800 flex items-center justify-between">
               <span>🎯 Click anywhere on map to inspect location</span>
               <span>📅 Use bottom slider to simulate monsoon degradation</span>
             </div>
@@ -998,9 +998,9 @@ export default function SpatialMap() {
           {roads.slice(0, 8).map((road) => {
             const score = road.historicalScores[selectedMonthIdx];
             const isSelected = selectedRoad?.id === road.id;
-            let bgStyle = 'border-emerald-200 text-emerald-700 bg-white/90';
-            if (score < 50) bgStyle = 'border-rose-200 text-rose-700 bg-white/90';
-            else if (score < 80) bgStyle = 'border-amber-200 text-amber-700 bg-white/90';
+            let bgStyle = 'border-emerald-200 text-emerald-700 bg-slate-900/90';
+            if (score < 50) bgStyle = 'border-rose-200 text-rose-700 bg-slate-900/90';
+            else if (score < 80) bgStyle = 'border-amber-200 text-amber-700 bg-slate-900/90';
 
             return (
               <button
@@ -1009,7 +1009,7 @@ export default function SpatialMap() {
                 className={cn(
                   'px-2.5 py-1 rounded-lg text-xs font-mono font-medium transition-all backdrop-blur-md border cursor-pointer shadow-xs',
                   isSelected
-                    ? 'bg-cyan-50 text-cyan-800 border-cyan-400 shadow-sm font-bold scale-102'
+                    ? 'bg-cyan-500/15 text-cyan-300 border-cyan-400 shadow-sm font-bold scale-102'
                     : `hover:bg-slate-50 ${bgStyle}`
                 )}
               >
@@ -1020,8 +1020,8 @@ export default function SpatialMap() {
         </div>
 
         {/* Bottom Temporal Slider Controls */}
-        <div className="absolute bottom-4 left-4 right-4 lg:right-96 z-10 p-4 rounded-2xl bg-white/95 backdrop-blur-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-md text-slate-800">
-          <div className="flex items-center gap-2 text-xs font-semibold text-slate-800 shrink-0">
+        <div className="absolute bottom-4 left-4 right-4 lg:right-96 z-10 p-4 rounded-2xl bg-slate-900/95 backdrop-blur-xl border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-md text-slate-200">
+          <div className="flex items-center gap-2 text-xs font-semibold text-slate-200 shrink-0">
             <Calendar className="w-4 h-4 text-cyan-600" />
             <span>Monsoon Degradation Simulator</span>
           </div>
@@ -1048,16 +1048,16 @@ export default function SpatialMap() {
 
       {/* Right Drawer / Popup Panel for Selected Road or Clicked Location */}
       {selectedRoad && (
-        <div className="w-full lg:w-96 bg-white/95 backdrop-blur-xl border-t lg:border-t-0 lg:border-l border-slate-200 p-6 flex flex-col justify-between overflow-y-auto shrink-0 z-20 text-slate-800 shadow-xl">
+        <div className="w-full lg:w-96 bg-slate-900/95 backdrop-blur-xl border-t lg:border-t-0 lg:border-l border-slate-800 p-6 flex flex-col justify-between overflow-y-auto shrink-0 z-20 text-slate-200 shadow-xl">
           <div>
             <div className="flex items-center justify-between mb-4">
-              <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-cyan-50 text-cyan-700 border border-cyan-200 font-bold">
+              <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-cyan-500/15 text-cyan-700 border border-cyan-500/30 font-bold">
                 {selectedRoad.city} • {selectedRoad.state || 'India'}
               </span>
               <span className="text-xs font-mono text-slate-500">{selectedRoad.ward}</span>
             </div>
 
-            <h2 className="text-lg font-bold text-slate-900 font-display mb-1">
+            <h2 className="text-lg font-bold text-white font-display mb-1">
               {selectedRoad.name}
             </h2>
             <div className="flex items-center gap-2 text-xs text-slate-500 mb-4 font-mono">
@@ -1066,10 +1066,10 @@ export default function SpatialMap() {
             </div>
 
             {/* Score & Status Card */}
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 mb-6 flex items-center justify-between">
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-800 mb-6 flex items-center justify-between">
               <div>
                 <div className="text-[11px] text-slate-500 font-mono">Pavement Condition Index (PCI)</div>
-                <div className="text-3xl font-extrabold font-display text-slate-900 mt-0.5">
+                <div className="text-3xl font-extrabold font-display text-white mt-0.5">
                   {currentScore} <span className="text-xs text-slate-400 font-mono font-normal">/ 100</span>
                 </div>
               </div>
@@ -1090,12 +1090,12 @@ export default function SpatialMap() {
 
             {/* Historical Degradation Line Chart (Recharts) */}
             <div className="mb-6">
-              <h3 className="text-xs font-bold text-slate-700 font-display mb-2 flex items-center gap-1.5">
+              <h3 className="text-xs font-bold text-slate-300 font-display mb-2 flex items-center gap-1.5">
                 <Activity className="w-3.5 h-3.5 text-cyan-600" />
                 <span>6-Month PCI Degradation Trend Line</span>
               </h3>
 
-              <div className="w-full h-36 bg-slate-50/80 rounded-xl p-2 border border-slate-200">
+              <div className="w-full h-36 bg-slate-50/80 rounded-xl p-2 border border-slate-800">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={trendData}>
                     <XAxis dataKey="month" stroke="#64748b" fontSize={10} />
@@ -1117,11 +1117,11 @@ export default function SpatialMap() {
 
             {/* Traffic & Distress Stats */}
             <div className="grid grid-cols-2 gap-3 text-xs mb-6">
-              <div className="p-3 rounded-lg bg-slate-50 border border-slate-200">
+              <div className="p-3 rounded-lg bg-slate-50 border border-slate-800">
                 <div className="text-[10px] text-slate-500 font-mono">Traffic Volume</div>
-                <div className="font-bold text-slate-800 font-display mt-0.5">{selectedRoad.trafficVolume}</div>
+                <div className="font-bold text-slate-200 font-display mt-0.5">{selectedRoad.trafficVolume}</div>
               </div>
-              <div className="p-3 rounded-lg bg-slate-50 border border-slate-200">
+              <div className="p-3 rounded-lg bg-slate-50 border border-slate-800">
                 <div className="text-[10px] text-slate-500 font-mono">Detected Potholes</div>
                 <div className="font-bold text-rose-600 font-display mt-0.5">{selectedRoad.potholesCount} Critical</div>
               </div>
@@ -1129,7 +1129,7 @@ export default function SpatialMap() {
           </div>
 
           {/* Action CTAs */}
-          <div className="space-y-2 pt-4 border-t border-slate-200">
+          <div className="space-y-2 pt-4 border-t border-slate-800">
             <Link
               href={`/copilot?location=${encodeURIComponent(selectedRoad.name + ', ' + selectedRoad.city + ', ' + (selectedRoad.state || 'India'))}`}
               className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-xs shadow-xs transition-all flex items-center justify-center gap-2"
@@ -1140,7 +1140,7 @@ export default function SpatialMap() {
 
             <Link
               href={`/audit?sample=sample-1`}
-              className="w-full py-2.5 px-4 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 font-semibold text-xs hover:bg-slate-100 transition-all flex items-center justify-center gap-2"
+              className="w-full py-2.5 px-4 rounded-xl bg-slate-50 border border-slate-800 text-slate-300 font-semibold text-xs hover:bg-slate-100 transition-all flex items-center justify-center gap-2"
             >
               <span>Inspect in 3D AI Audit Studio</span>
               <ExternalLink className="w-3.5 h-3.5" />

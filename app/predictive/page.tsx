@@ -137,7 +137,7 @@ export default function PredictivePage() {
   const activeSelectedRoad = selectedRoadIdx !== null ? predictiveData[selectedRoadIdx] : null;
 
   return (
-    <div className="flex h-screen bg-transparent text-slate-800 font-sans overflow-hidden">
+    <div className="flex h-screen bg-transparent text-slate-200 font-sans overflow-hidden">
       <Sidebar />
 
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
@@ -145,13 +145,13 @@ export default function PredictivePage() {
 
         <main className="flex-1 overflow-y-auto p-6 space-y-6">
           {/* Header Banner */}
-          <div className="p-6 rounded-2xl bg-white/95 border border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="p-6 rounded-2xl bg-slate-900/95 border border-slate-800/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-lg bg-purple-50 border border-purple-200 flex items-center justify-center text-purple-700 shadow-xs">
                   <TrendingUp className="w-4 h-4" />
                 </div>
-                <h1 className="text-xl font-bold text-slate-900 font-display">
+                <h1 className="text-xl font-bold text-white font-display">
                   Predictive Maintenance &amp; Multi-Year Budget Allocation
                 </h1>
               </div>
@@ -163,7 +163,7 @@ export default function PredictivePage() {
             <div className="flex items-center gap-3">
               <button
                 onClick={handleExportCSV}
-                className="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-cyan-800 hover:bg-slate-50 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs"
+                className="px-4 py-2 rounded-xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl text-slate-300 hover:text-cyan-300 hover:bg-slate-900/60 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Export Budget Plan (CSV)</span>
@@ -180,9 +180,9 @@ export default function PredictivePage() {
           )}
 
           {/* Time Horizon & What-If Simulation Sliders */}
-          <div className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-4">
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-3 border-b border-slate-100">
-              <div className="flex items-center gap-2 text-xs font-bold text-cyan-700 font-mono">
+          <div className="p-5 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs space-y-4">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-3 border-b border-slate-800/60">
+              <div className="flex items-center gap-2 text-xs font-bold text-cyan-400 font-mono">
                 <Sliders className="w-4 h-4" />
                 <span>PAN-INDIA PREDICTION HORIZON &amp; CLIMATIC SIMULATOR</span>
               </div>
@@ -197,7 +197,7 @@ export default function PredictivePage() {
                       'px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold border transition-all shadow-xs',
                       horizonMonths === opt.value
                         ? 'bg-purple-50 text-purple-700 border-purple-300'
-                        : 'bg-white text-slate-600 hover:text-slate-900 border-slate-200 hover:bg-slate-50'
+                        : 'bg-[#111726] text-slate-400 hover:text-white border-slate-800 hover:bg-slate-900/60'
                     )}
                   >
                     {opt.label}
@@ -219,8 +219,8 @@ export default function PredictivePage() {
                   className={cn(
                     'px-3 py-1 rounded-lg text-xs font-mono transition-all border shadow-xs',
                     selectedRegion === r.value
-                      ? 'bg-cyan-50 text-cyan-700 border-cyan-300 font-semibold'
-                      : 'bg-white text-slate-600 hover:text-slate-900 border-slate-200 hover:bg-slate-50'
+                      ? 'bg-cyan-500/15 text-cyan-400 border-cyan-500/40 font-semibold'
+                      : 'bg-[#111726] text-slate-400 hover:text-white border-slate-800 hover:bg-slate-900/60'
                   )}
                 >
                   {r.label}
@@ -230,13 +230,13 @@ export default function PredictivePage() {
 
             {/* Simulation Sliders Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs font-mono">
-              <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200 shadow-xs">
+              <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 shadow-xs">
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-700 flex items-center gap-1.5">
+                  <span className="text-slate-300 flex items-center gap-1.5">
                     <CloudRain className="w-3.5 h-3.5 text-cyan-600" />
                     <span>Monsoon Intensity Multiplier:</span>
                   </span>
-                  <span className="font-bold text-cyan-700">{monsoonFactor.toFixed(1)}x Rainfall</span>
+                  <span className="font-bold text-cyan-400">{monsoonFactor.toFixed(1)}x Rainfall</span>
                 </div>
                 <input
                   type="range"
@@ -254,9 +254,9 @@ export default function PredictivePage() {
                 </div>
               </div>
 
-              <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200 shadow-xs">
+              <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 shadow-xs">
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-700 flex items-center gap-1.5">
+                  <span className="text-slate-300 flex items-center gap-1.5">
                     <Truck className="w-3.5 h-3.5 text-amber-600" />
                     <span>Heavy Commercial Axle Load Growth:</span>
                   </span>
@@ -281,10 +281,10 @@ export default function PredictivePage() {
           </div>
 
           {/* Core Scatter Plot Chart Card */}
-          <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-4">
+          <div className="p-6 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div>
-                <h2 className="text-sm font-bold text-slate-900 font-display">
+                <h2 className="text-sm font-bold text-white font-display">
                   Traffic Volume vs. Pavement Age Scatter Matrix ({horizonMonths}-Month Forecast)
                 </h2>
                 <p className="text-xs text-slate-500">
@@ -306,7 +306,7 @@ export default function PredictivePage() {
             </div>
 
             {/* Recharts Scatter Plot */}
-            <div className="w-full h-80 bg-slate-50 rounded-xl p-4 border border-slate-200 shadow-inner">
+            <div className="w-full h-80 bg-slate-900/60 rounded-xl p-4 border border-slate-800 shadow-inner">
               <ResponsiveContainer width="100%" height="100%">
                 <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
                   <XAxis
@@ -332,11 +332,11 @@ export default function PredictivePage() {
                       if (!payload || !payload.length) return null;
                       const d = payload[0].payload;
                       return (
-                        <div className="p-3 bg-white border border-slate-200 rounded-xl shadow-xl text-xs space-y-1">
-                          <div className="font-bold text-slate-900">{d.name}</div>
+                        <div className="p-3 bg-[#111726]/90 border border-slate-800/90 shadow-2xl rounded-xl shadow-xl text-xs space-y-1">
+                          <div className="font-bold text-white">{d.name}</div>
                           <div className="text-slate-500">Ward: {d.ward}</div>
-                          <div className="text-cyan-700 font-mono">Traffic: {d.x.toLocaleString()} PCU/day</div>
-                          <div className="text-slate-600 font-mono">Age: {d.y} Years</div>
+                          <div className="text-cyan-400 font-mono">Traffic: {d.x.toLocaleString()} PCU/day</div>
+                          <div className="text-slate-400 font-mono">Age: {d.y} Years</div>
                           <div className="text-rose-600 font-mono font-bold">
                             Predicted Failure: in {d.daysToFailure} Days
                           </div>
@@ -370,9 +370,9 @@ export default function PredictivePage() {
             </div>
 
             {/* Interactive Road Segment Table */}
-            <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-xs">
+            <div className="overflow-x-auto rounded-xl border border-slate-800 shadow-xs">
               <table className="w-full text-left text-xs">
-                <thead className="bg-slate-100 text-slate-600 font-mono">
+                <thead className="bg-slate-800/60 text-slate-400 font-mono">
                   <tr>
                     <th className="p-3">Road Segment</th>
                     <th className="p-3">State / Division</th>
@@ -383,7 +383,7 @@ export default function PredictivePage() {
                     <th className="p-3 text-right">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 bg-white font-mono">
+                <tbody className="divide-y divide-slate-100 bg-[#111726] font-mono">
                   {predictiveData.map((road, idx) => {
                     const isSelected = selectedRoadIdx === idx;
                     let riskColor = 'text-emerald-700 bg-emerald-50 border-emerald-200';
@@ -397,13 +397,13 @@ export default function PredictivePage() {
                         className={cn(
                           'cursor-pointer transition-colors',
                           isSelected
-                            ? 'bg-cyan-50/60 border-l-2 border-l-cyan-600'
-                            : 'hover:bg-slate-50'
+                            ? 'bg-cyan-500/15/60 border-l-2 border-l-cyan-600'
+                            : 'hover:bg-slate-900/60'
                         )}
                       >
-                        <td className="p-3 font-semibold text-slate-900 font-sans">
+                        <td className="p-3 font-semibold text-white font-sans">
                           {road.name}
-                          <div className="text-[10px] text-cyan-700 font-mono font-medium">{road.state}</div>
+                          <div className="text-[10px] text-cyan-400 font-mono font-medium">{road.state}</div>
                         </td>
                         <td className="p-3 text-slate-500">{road.ward}</td>
                         <td className="p-3">
@@ -420,13 +420,13 @@ export default function PredictivePage() {
                           <div className="flex items-center gap-1.5 justify-end">
                             <Link
                               href={`/audit?sample=${road.sampleId}`}
-                              className="px-2 py-1 rounded bg-white text-cyan-700 border border-slate-200 text-[10px] font-bold hover:bg-cyan-50 transition-colors flex items-center gap-1 shadow-xs"
+                              className="px-2 py-1 rounded bg-[#111726] text-cyan-400 border border-slate-800 text-[10px] font-bold hover:bg-cyan-500/15 transition-colors flex items-center gap-1 shadow-xs"
                             >
                               Audit <ExternalLink className="w-2.5 h-2.5" />
                             </Link>
                             <Link
                               href={`/copilot?sample=${road.sampleId}`}
-                              className="px-2 py-1 rounded bg-white text-blue-700 border border-slate-200 text-[10px] font-bold hover:bg-blue-50 transition-colors flex items-center gap-1 shadow-xs"
+                              className="px-2 py-1 rounded bg-[#111726] text-blue-700 border border-slate-800 text-[10px] font-bold hover:bg-blue-50 transition-colors flex items-center gap-1 shadow-xs"
                             >
                               BOQ <ExternalLink className="w-2.5 h-2.5" />
                             </Link>
@@ -441,14 +441,14 @@ export default function PredictivePage() {
           </div>
 
           {/* Preventative Budget Allocation — Dynamic */}
-          <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-6">
+          <div className="p-6 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs space-y-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <div className="p-2 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-xs">
                   <IndianRupee className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-slate-900 font-display">
+                  <h3 className="text-lg font-bold text-white font-display">
                     Preventative Budget Allocation ({horizonMonths}-Month Forecast)
                   </h3>
                   <p className="text-xs text-slate-500">AI Recommendation Engine • Computed from {predictiveData.filter(r => r.risk !== 'Low').length} at-risk segments</p>
@@ -461,12 +461,12 @@ export default function PredictivePage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-5 rounded-xl bg-slate-50 border border-emerald-200 space-y-3 shadow-xs">
+              <div className="p-5 rounded-xl bg-slate-900/60 border border-emerald-200 space-y-3 shadow-xs">
                 <div className="text-xs uppercase font-mono font-bold text-emerald-700">
                   Option A: Preventative Patching Now (Next {horizonMonths} Months)
                 </div>
-                <div className="text-3xl font-extrabold text-slate-900 font-display">₹{budgetData.totalNow} Lakhs</div>
-                <p className="text-xs text-slate-600">
+                <div className="text-3xl font-extrabold text-white font-display">₹{budgetData.totalNow} Lakhs</div>
+                <p className="text-xs text-slate-400">
                   Full-depth micro-patching of all at-risk segments before monsoon moisture infiltration.
                 </p>
                 <div className="text-[11px] font-mono text-emerald-700 font-medium flex items-center gap-1">
@@ -475,12 +475,12 @@ export default function PredictivePage() {
                 </div>
               </div>
 
-              <div className="p-5 rounded-xl bg-slate-50 border border-rose-200 space-y-3 shadow-xs">
+              <div className="p-5 rounded-xl bg-slate-900/60 border border-rose-200 space-y-3 shadow-xs">
                 <div className="text-xs uppercase font-mono font-bold text-rose-700">
                   Option B: Deferred Full Reconstruction (After Failure)
                 </div>
                 <div className="text-3xl font-extrabold text-rose-700 font-display">₹{budgetData.totalLater} Lakhs</div>
-                <p className="text-xs text-slate-600">
+                <p className="text-xs text-slate-400">
                   Complete sub-base milling, DBM overlay, traffic diversion costs, and emergency contractor tenders.
                 </p>
                 <div className="text-[11px] font-mono text-rose-700 font-medium flex items-center gap-1">
@@ -503,48 +503,48 @@ export default function PredictivePage() {
 
           {/* Interactive Road Inspection Detail Drawer */}
           {activeSelectedRoad && (
-            <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xl space-y-3 font-mono text-xs animate-fadeIn">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+            <div className="p-5 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xl space-y-3 font-mono text-xs animate-fadeIn">
+              <div className="flex items-center justify-between border-b border-slate-800/60 pb-2">
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-cyan-600 animate-ping" />
-                  <span className="font-bold text-slate-900 font-sans text-sm">{activeSelectedRoad.name}</span>
+                  <span className="font-bold text-white font-sans text-sm">{activeSelectedRoad.name}</span>
                   <span className="text-[10px] text-slate-500 font-mono">({activeSelectedRoad.ward})</span>
                 </div>
                 <button
                   onClick={() => setSelectedRoadIdx(null)}
-                  className="p-1 rounded-lg text-slate-400 hover:text-slate-700 cursor-pointer"
+                  className="p-1 rounded-lg text-slate-400 hover:text-slate-300 cursor-pointer"
                 >
                   <X className="w-4 h-4" />
                 </button>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 text-[11px]">
-                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 shadow-xs">
+                <div className="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 shadow-xs">
                   <div className="text-slate-500 text-[10px]">Predicted Failure</div>
                   <div className="text-rose-600 font-bold font-sans text-sm">{activeSelectedRoad.daysToFailure} Days</div>
                 </div>
-                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 shadow-xs">
+                <div className="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 shadow-xs">
                   <div className="text-slate-500 text-[10px]">Traffic Loading</div>
-                  <div className="text-cyan-700 font-bold font-sans text-sm">{activeSelectedRoad.x.toLocaleString()} PCU/day</div>
+                  <div className="text-cyan-400 font-bold font-sans text-sm">{activeSelectedRoad.x.toLocaleString()} PCU/day</div>
                 </div>
-                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 shadow-xs">
+                <div className="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 shadow-xs">
                   <div className="text-slate-500 text-[10px]">Preventative Cost</div>
                   <div className="text-emerald-700 font-bold font-sans text-sm">₹{activeSelectedRoad.costNow} Lakhs</div>
                 </div>
-                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 shadow-xs">
+                <div className="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 shadow-xs">
                   <div className="text-slate-500 text-[10px]">Deferred Cost</div>
                   <div className="text-rose-600 font-bold font-sans text-sm">₹{activeSelectedRoad.costLater} Lakhs</div>
                 </div>
               </div>
 
               <div className="flex items-center justify-between pt-1">
-                <span className="text-slate-600 text-[11px]">
+                <span className="text-slate-400 text-[11px]">
                   <strong>Recommended IRC Treatment:</strong> {activeSelectedRoad.distressType} (IRC:82-2023 Cl 4.3)
                 </span>
                 <div className="flex items-center gap-2">
                   <Link
                     href={`/audit?sample=${activeSelectedRoad.sampleId}`}
-                    className="px-3 py-1.5 rounded-lg bg-cyan-50 text-cyan-700 border border-cyan-200 font-bold hover:bg-cyan-100 transition-colors shadow-xs"
+                    className="px-3 py-1.5 rounded-lg bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 font-bold hover:bg-cyan-100 transition-colors shadow-xs"
                   >
                     Open in AI Audit Studio
                   </Link>

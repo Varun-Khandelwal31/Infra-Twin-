@@ -241,7 +241,7 @@ export default function IssuesPage() {
   const resolvedCount = issuesList.filter((i) => i.status === 'RESOLVED').length;
 
   return (
-    <div className="flex h-screen bg-transparent text-slate-800 font-sans overflow-hidden">
+    <div className="flex h-screen bg-transparent text-slate-200 font-sans overflow-hidden">
       <Sidebar />
 
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
@@ -249,13 +249,13 @@ export default function IssuesPage() {
 
         <main className="flex-1 overflow-y-auto p-6 space-y-6">
           {/* Header Banner */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs">
             <div>
               <div className="flex items-center gap-2">
                 <div className="p-2 rounded-xl bg-rose-50 text-rose-700 border border-rose-200 shadow-xs">
                   <AlertTriangle className="w-5 h-5" />
                 </div>
-                <h1 className="text-xl font-bold text-slate-900 font-display">
+                <h1 className="text-xl font-bold text-white font-display">
                   🇮🇳 Pan-India Road Issues &amp; Distress Command Center
                 </h1>
               </div>
@@ -267,7 +267,7 @@ export default function IssuesPage() {
             <div className="flex items-center gap-3">
               <button
                 onClick={handleExportCSV}
-                className="px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-cyan-800 hover:bg-slate-50 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs"
+                className="px-4 py-2.5 rounded-xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl text-slate-300 hover:text-cyan-300 hover:bg-slate-900/60 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Export Tickets CSV</span>
@@ -285,7 +285,7 @@ export default function IssuesPage() {
 
           {/* Toast Notification */}
           {toastMessage && (
-            <div className="p-4 rounded-xl bg-white border border-slate-200 text-cyan-800 text-xs font-mono font-bold shadow-xl flex items-center gap-2 animate-fadeIn">
+            <div className="p-4 rounded-xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl text-cyan-300 text-xs font-mono font-bold shadow-xl flex items-center gap-2 animate-fadeIn">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>{toastMessage}</span>
             </div>
@@ -293,17 +293,17 @@ export default function IssuesPage() {
 
           {/* Stat Cards */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex items-center justify-between card-3d-tilt">
+            <div className="p-4 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs flex items-center justify-between card-3d-tilt">
               <div>
                 <div className="text-[11px] font-mono text-slate-500">Total Logged Tickets</div>
-                <div className="text-2xl font-bold text-slate-900 font-display">{issuesList.length} Issues</div>
+                <div className="text-2xl font-bold text-white font-display">{issuesList.length} Issues</div>
               </div>
-              <div className="p-2 rounded-xl bg-cyan-50 text-cyan-700 border border-cyan-200 shadow-xs">
+              <div className="p-2 rounded-xl bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 shadow-xs">
                 <Layers className="w-5 h-5" />
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex items-center justify-between card-3d-tilt">
+            <div className="p-4 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs flex items-center justify-between card-3d-tilt">
               <div>
                 <div className="text-[11px] font-mono text-slate-500">Critical Distress</div>
                 <div className="text-2xl font-bold text-rose-700 font-display">{criticalCount} Critical</div>
@@ -313,7 +313,7 @@ export default function IssuesPage() {
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex items-center justify-between card-3d-tilt">
+            <div className="p-4 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs flex items-center justify-between card-3d-tilt">
               <div>
                 <div className="text-[11px] font-mono text-slate-500">In Repair / Milling</div>
                 <div className="text-2xl font-bold text-amber-700 font-display">{inProgressCount} Active</div>
@@ -323,7 +323,7 @@ export default function IssuesPage() {
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex items-center justify-between card-3d-tilt">
+            <div className="p-4 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs flex items-center justify-between card-3d-tilt">
               <div>
                 <div className="text-[11px] font-mono text-slate-500">Resolved &amp; Verified</div>
                 <div className="text-2xl font-bold text-emerald-700 font-display">{resolvedCount} Repaired</div>
@@ -335,7 +335,7 @@ export default function IssuesPage() {
           </div>
 
           {/* Search & Filter Toolbar */}
-          <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="p-4 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="relative flex-1 max-w-md">
               <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
               <input
@@ -343,7 +343,7 @@ export default function IssuesPage() {
                 placeholder="Search by ticket ID, road name, state, or distress..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-cyan-500 shadow-xs"
+                className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-900/60 border border-slate-800 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-cyan-500 shadow-xs"
               />
             </div>
 
@@ -351,7 +351,7 @@ export default function IssuesPage() {
               <select
                 value={wardFilter}
                 onChange={(e) => setWardFilter(e.target.value)}
-                className="px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-cyan-500 shadow-xs cursor-pointer"
+                className="px-3 py-1.5 rounded-xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl text-xs text-slate-200 focus:outline-none focus:border-cyan-500 shadow-xs cursor-pointer"
               >
                 <option value="ALL">All Jurisdictions (Pan-India)</option>
                 <option value="Delhi NCR">Delhi NCR</option>
@@ -363,15 +363,15 @@ export default function IssuesPage() {
                 <option value="Rajasthan">Rajasthan (Rajasthan PWD)</option>
               </select>
 
-              <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200">
+              <div className="flex items-center gap-1 bg-slate-800/60 p-1 rounded-xl border border-slate-800">
                 {['ALL', 'Critical', 'High', 'Moderate'].map((sev) => (
                   <button
                     key={sev}
                     onClick={() => setSeverityFilter(sev)}
                     className={`px-3 py-1.5 rounded-lg transition-all text-xs font-mono ${
                       severityFilter === sev
-                        ? 'bg-white text-cyan-800 font-bold border border-slate-200 shadow-xs'
-                        : 'text-slate-600 hover:text-slate-900'
+                        ? 'bg-[#111726] text-cyan-300 font-bold border border-slate-800 shadow-xs'
+                        : 'text-slate-400 hover:text-white'
                     }`}
                   >
                     {sev}
@@ -390,11 +390,11 @@ export default function IssuesPage() {
               return (
                 <div
                   key={issue.id}
-                  className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-4 flex flex-col justify-between hover:border-cyan-400 hover:shadow-md transition-all card-3d-tilt"
+                  className="p-5 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs space-y-4 flex flex-col justify-between hover:border-cyan-400 hover:shadow-md transition-all card-3d-tilt"
                 >
                   <div className="space-y-3">
                     <div className="flex items-start justify-between gap-2">
-                      <span className="font-mono text-xs font-bold text-cyan-700">{issue.id}</span>
+                      <span className="font-mono text-xs font-bold text-cyan-400">{issue.id}</span>
                       <button
                         onClick={() => handleToggleStatus(issue.id)}
                         className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold border transition-colors cursor-pointer shadow-xs ${
@@ -411,18 +411,18 @@ export default function IssuesPage() {
                     </div>
 
                     <div>
-                      <h3 className="text-sm font-bold text-slate-900 font-display">{issue.title}</h3>
-                      <p className="text-xs text-slate-600 mt-0.5 font-sans leading-relaxed">{issue.distress}</p>
+                      <h3 className="text-sm font-bold text-white font-display">{issue.title}</h3>
+                      <p className="text-xs text-slate-400 mt-0.5 font-sans leading-relaxed">{issue.distress}</p>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-2 text-[10px] font-mono p-2.5 rounded-xl bg-slate-50 border border-slate-200 shadow-xs">
+                    <div className="grid grid-cols-3 gap-2 text-[10px] font-mono p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 shadow-xs">
                       <div>
                         <span className="text-slate-500 block">Area</span>
-                        <span className="text-slate-900 font-bold">{issue.areaSqm} sqm</span>
+                        <span className="text-white font-bold">{issue.areaSqm} sqm</span>
                       </div>
                       <div>
                         <span className="text-slate-500 block">Max Depth</span>
-                        <span className="text-slate-900 font-bold">{issue.maxDepthCm} cm</span>
+                        <span className="text-white font-bold">{issue.maxDepthCm} cm</span>
                       </div>
                       <div>
                         <span className="text-slate-500 block">Est. Cost</span>
@@ -431,19 +431,19 @@ export default function IssuesPage() {
                     </div>
                   </div>
 
-                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                  <div className="pt-3 border-t border-slate-800/60 flex items-center justify-between text-xs">
                     <span className="text-[10px] font-mono text-slate-500">{issue.reportedAt}</span>
                     <div className="flex items-center gap-2">
                       <Link
                         href={`/audit?sample=${issue.sampleId}`}
-                        className="px-2.5 py-1.5 rounded-lg bg-white text-cyan-700 border border-slate-200 text-[11px] font-mono font-bold hover:bg-cyan-50 flex items-center gap-1 shadow-xs transition-colors"
+                        className="px-2.5 py-1.5 rounded-lg bg-[#111726] text-cyan-400 border border-slate-800 text-[11px] font-mono font-bold hover:bg-cyan-500/15 flex items-center gap-1 shadow-xs transition-colors"
                       >
                         <span>Audit</span>
                         <ExternalLink className="w-3 h-3" />
                       </Link>
                       <Link
                         href={`/copilot?sample=${issue.sampleId}`}
-                        className="px-2.5 py-1.5 rounded-lg bg-white text-blue-700 border border-slate-200 text-[11px] font-mono font-bold hover:bg-blue-50 flex items-center gap-1 shadow-xs transition-colors"
+                        className="px-2.5 py-1.5 rounded-lg bg-[#111726] text-blue-700 border border-slate-800 text-[11px] font-mono font-bold hover:bg-blue-50 flex items-center gap-1 shadow-xs transition-colors"
                       >
                         <Bot className="w-3 h-3" />
                         <span>BOQ</span>

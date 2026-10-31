@@ -4,60 +4,60 @@ import React from 'react';
 
 export default function VengenceBackground() {
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none bg-[#eef3f8]">
-      {/* Ambient Engineering Telemetry Beams (Civil Azure, Highway Amber, Compliance Emerald) */}
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none bg-[#090d16]">
+      {/* Ambient LiDAR & Satellite Optical Sweeps */}
       <div
-        className="absolute -top-[15%] -left-[10%] w-[850px] h-[850px] rounded-full bg-cyan-400/[0.12] blur-[140px] animate-ray-sweep"
-        style={{ animationDuration: '22s' }}
+        className="absolute -top-[20%] -left-[10%] w-[850px] h-[850px] rounded-full bg-cyan-500/[0.10] blur-[150px] animate-ray-sweep"
+        style={{ animationDuration: '24s' }}
       />
       <div
-        className="absolute top-[30%] -right-[15%] w-[750px] h-[750px] rounded-full bg-amber-400/[0.08] blur-[150px] animate-ray-sweep"
-        style={{ animationDelay: '-7s', animationDuration: '25s' }}
+        className="absolute top-[35%] -right-[15%] w-[750px] h-[750px] rounded-full bg-blue-600/[0.08] blur-[160px] animate-ray-sweep"
+        style={{ animationDelay: '-8s', animationDuration: '28s' }}
       />
       <div
-        className="absolute -bottom-[20%] left-[20%] w-[700px] h-[700px] rounded-full bg-emerald-400/[0.07] blur-[150px] animate-ray-sweep"
-        style={{ animationDelay: '-14s', animationDuration: '28s' }}
+        className="absolute -bottom-[20%] left-[25%] w-[700px] h-[700px] rounded-full bg-indigo-500/[0.07] blur-[150px] animate-ray-sweep"
+        style={{ animationDelay: '-16s', animationDuration: '30s' }}
       />
 
-      {/* Precision Civil Engineering CAD & Blueprint Coordinate Grid with Survey Crosshairs */}
+      {/* Modern Civil Engineering CAD & Spatial Coordinate Grid */}
       <svg
-        className="absolute inset-0 w-full h-full opacity-70"
+        className="absolute inset-0 w-full h-full opacity-40"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
       >
         <defs>
           {/* Minor 24px millimeter survey grid */}
-          <pattern id="cad-minor-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+          <pattern id="cad-dark-minor" width="24" height="24" patternUnits="userSpaceOnUse">
             <path
               d="M 24 0 L 0 0 0 24"
               fill="none"
-              stroke="rgba(100, 116, 139, 0.08)"
+              stroke="rgba(0, 217, 255, 0.05)"
               strokeWidth="0.75"
             />
           </pattern>
           {/* Major 120px structural grid with precision crosshairs */}
-          <pattern id="cad-major-grid" width="120" height="120" patternUnits="userSpaceOnUse">
-            <rect width="120" height="120" fill="url(#cad-minor-grid)" />
+          <pattern id="cad-dark-major" width="120" height="120" patternUnits="userSpaceOnUse">
+            <rect width="120" height="120" fill="url(#cad-dark-minor)" />
             <path
               d="M 120 0 L 0 0 0 120"
               fill="none"
-              stroke="rgba(14, 165, 233, 0.16)"
+              stroke="rgba(0, 217, 255, 0.12)"
               strokeWidth="1.2"
             />
             {/* Survey Crosshair at intersections */}
             <path
               d="M -5 0 L 5 0 M 0 -5 L 0 5"
               fill="none"
-              stroke="rgba(2, 132, 199, 0.45)"
+              stroke="rgba(0, 217, 255, 0.35)"
               strokeWidth="1.2"
             />
           </pattern>
         </defs>
-        <rect width="100%" height="100%" fill="url(#cad-major-grid)" />
+        <rect width="100%" height="100%" fill="url(#cad-dark-major)" />
       </svg>
 
-      {/* Subtle CAD Blueprint Coordinate Watermark (Technical Engineering Persona) */}
-      <div className="absolute bottom-3 right-5 flex items-center gap-3 text-[10px] font-mono font-medium text-slate-400/80 tracking-wider">
+      {/* Subtle CAD Blueprint Coordinate Watermark */}
+      <div className="absolute bottom-3 right-5 flex items-center gap-3 text-[10px] font-mono font-medium text-slate-500/60 tracking-wider">
         <span>INFRATWIN // CIVIL SPATIAL TWIN</span>
         <span>•</span>
         <span>IRC:82-2023 SPEC</span>

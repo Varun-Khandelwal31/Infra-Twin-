@@ -136,13 +136,13 @@ function CopilotContent() {
   return (
     <>
       {/* Header Banner */}
-      <div className="p-6 rounded-2xl bg-white/95 border border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-2xl bg-slate-900/95 border border-slate-800/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.05)] flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-cyan-50 border border-cyan-200 flex items-center justify-center text-cyan-700 shadow-xs">
+            <div className="w-8 h-8 rounded-lg bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shadow-xs">
               <Bot className="w-4 h-4" />
             </div>
-            <h1 className="text-xl font-bold text-slate-900 font-display">
+            <h1 className="text-xl font-bold text-white font-display">
               Nirman Copilot • Pan-India GenAI BOQ &amp; IRC Compliance Engine
             </h1>
           </div>
@@ -154,7 +154,7 @@ function CopilotContent() {
         <div className="flex items-center gap-2 text-xs font-mono flex-wrap">
           <button
             onClick={() => setIsProvenanceOpen(true)}
-            className="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-cyan-700 hover:bg-cyan-50 font-semibold flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs"
+            className="px-3 py-1.5 rounded-lg bg-[#111726]/90 border border-slate-800/90 shadow-2xl text-cyan-400 hover:bg-cyan-500/15 font-semibold flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs"
           >
             <Scale className="w-3.5 h-3.5 text-cyan-600" />
             <span>Data Sources</span>
@@ -163,23 +163,23 @@ function CopilotContent() {
           <span
             className={`px-3 py-1.5 rounded-lg border font-bold shadow-xs ${
               isLive
-                ? 'bg-cyan-50 text-cyan-700 border-cyan-200'
+                ? 'bg-cyan-500/15 text-cyan-400 border-cyan-500/30'
                 : 'bg-emerald-50 text-emerald-700 border-emerald-200'
             }`}
           >
             {isLive ? 'Llama-3 70B Live' : 'CPWD Grounded Engine'}
           </span>
-          <span className="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 font-bold shadow-xs">
+          <span className="px-3 py-1.5 rounded-lg bg-[#111726]/90 border border-slate-800/90 shadow-2xl text-slate-300 font-bold shadow-xs">
             🇮🇳 36 States &amp; UTs Loaded
           </span>
         </div>
       </div>
 
       {/* STATE & UNION TERRITORY SELECTOR STRIP */}
-      <div className="p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+      <div className="p-3.5 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
         <div className="flex items-center gap-2">
           <MapPin className="w-4 h-4 text-cyan-600 shrink-0" />
-          <span className="font-bold text-slate-900 font-mono uppercase">
+          <span className="font-bold text-white font-mono uppercase">
             Select Indian State / Region for Localized Schedule of Rates (SOR):
           </span>
         </div>
@@ -188,7 +188,7 @@ function CopilotContent() {
           <select
             value={selectedStateCode}
             onChange={(e) => handleSelectState(e.target.value)}
-            className="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 font-mono text-xs focus:outline-none cursor-pointer shadow-xs"
+            className="px-3 py-1.5 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-200 font-mono text-xs focus:outline-none cursor-pointer shadow-xs"
           >
             {PAN_INDIA_STATES.map((st) => (
               <option key={st.code} value={st.code}>
@@ -201,7 +201,7 @@ function CopilotContent() {
 
       {/* Pan-India Preset Highway & Metro Corridors */}
       <div className="space-y-1.5">
-        <div className="text-[11px] font-mono text-cyan-700 font-semibold flex items-center gap-1.5">
+        <div className="text-[11px] font-mono text-cyan-400 font-semibold flex items-center gap-1.5">
           <Sparkles className="w-3.5 h-3.5" />
           <span>Quick Pan-India Highway &amp; Metro Presets (or type any custom Indian location below):</span>
         </div>
@@ -213,7 +213,7 @@ function CopilotContent() {
                 setPromptInput(p.query);
                 handleGenerate(p.query);
               }}
-              className="px-3 py-1.5 rounded-xl border bg-white border-slate-200 text-slate-700 hover:border-cyan-300 hover:text-cyan-800 transition-all shrink-0 text-xs font-mono font-medium cursor-pointer shadow-xs"
+              className="px-3 py-1.5 rounded-xl border bg-[#111726] border-slate-800 text-slate-300 hover:border-cyan-500/40 hover:text-cyan-300 transition-all shrink-0 text-xs font-mono font-medium cursor-pointer shadow-xs"
             >
               {p.label}
             </button>
@@ -222,7 +222,7 @@ function CopilotContent() {
       </div>
 
       {/* Input Box with Keyboard Enter listener & Clear button */}
-      <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm space-y-3">
+      <div className="p-4 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-sm space-y-3">
         <div className="relative flex items-center">
           <textarea
             value={promptInput}
@@ -235,14 +235,14 @@ function CopilotContent() {
             }}
             placeholder="Type any road, highway or city in India (e.g. Generate BOQ for Hazratganj, Lucknow Area: 3.5 sqm Depth: 16cm)... Press Enter to submit."
             rows={2}
-            className="w-full pl-4 pr-32 py-3 rounded-xl bg-slate-50/80 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-cyan-500 text-xs font-sans resize-none"
+            className="w-full pl-4 pr-32 py-3 rounded-xl bg-slate-900/60/80 border border-slate-800 text-white placeholder-slate-400 focus:outline-none focus:border-cyan-500 text-xs font-sans resize-none"
           />
 
           <div className="absolute right-3 flex items-center gap-2">
             {promptInput && (
               <button
                 onClick={() => setPromptInput('')}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 transition-colors cursor-pointer"
+                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-300 transition-colors cursor-pointer"
                 title="Clear Input"
               >
                 <X className="w-3.5 h-3.5" />
@@ -254,7 +254,7 @@ function CopilotContent() {
               className={`p-2.5 rounded-xl border transition-all cursor-pointer shadow-xs ${
                 isListening
                   ? 'bg-rose-50 text-rose-700 border-rose-300 animate-pulse'
-                  : 'bg-white text-slate-600 border-slate-200 hover:text-cyan-700'
+                  : 'bg-[#111726] text-slate-400 border-slate-800 hover:text-cyan-400'
               }`}
               title="Voice Command"
             >
@@ -280,8 +280,8 @@ function CopilotContent() {
 
         <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 px-1">
           <div className="flex items-center gap-2">
-            <span className="text-cyan-700 font-bold">💡 Tip:</span>
-            <span>Type any Indian location to auto-apply state CPWD cost indices • Press <kbd className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200">Enter</kbd> to calculate</span>
+            <span className="text-cyan-400 font-bold">💡 Tip:</span>
+            <span>Type any Indian location to auto-apply state CPWD cost indices • Press <kbd className="px-1.5 py-0.5 rounded bg-slate-800/60 text-slate-300 border border-slate-800">Enter</kbd> to calculate</span>
           </div>
 
           {isListening && (
@@ -295,9 +295,9 @@ function CopilotContent() {
 
       {/* Results Output */}
       {isLoading && (
-        <div className="p-8 rounded-2xl bg-white border border-slate-200 text-center space-y-3 shadow-xs">
+        <div className="p-8 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl text-center space-y-3 shadow-xs">
           <Cpu className="w-8 h-8 text-cyan-600 animate-spin mx-auto" />
-          <div className="text-sm font-bold text-slate-900 font-display">
+          <div className="text-sm font-bold text-white font-display">
             Synthesizing State-Specific IRC:82-2023 Bill of Quantities...
           </div>
           <p className="text-xs text-slate-500">Querying CPWD Schedule of Rates &amp; State Cost Index Multipliers</p>
@@ -340,7 +340,7 @@ function CopilotContent() {
 
 export default function CopilotPage() {
   return (
-    <div className="flex h-screen bg-transparent text-slate-800 font-sans overflow-hidden">
+    <div className="flex h-screen bg-transparent text-slate-200 font-sans overflow-hidden">
       <Sidebar />
 
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">

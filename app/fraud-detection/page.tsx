@@ -307,7 +307,7 @@ export default function FraudDetectionPage() {
   };
 
   return (
-    <div className="flex h-screen bg-[#f8fafc] text-slate-800 font-sans overflow-hidden">
+    <div className="flex h-screen bg-[#f8fafc] text-slate-200 font-sans overflow-hidden">
       <Sidebar />
 
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
@@ -318,10 +318,10 @@ export default function FraudDetectionPage() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-xl font-bold text-slate-900 font-display">
+                <h1 className="text-xl font-bold text-white font-display">
                   Contractor SLA &amp; Real-Time Fraud Verification Engine
                 </h1>
-                <span className="p-1 rounded-full bg-cyan-50 text-cyan-700 border border-cyan-200">
+                <span className="p-1 rounded-full bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">
                   <ShieldCheck className="w-4 h-4" />
                 </span>
               </div>
@@ -335,7 +335,7 @@ export default function FraudDetectionPage() {
               {/* Data Sources Trigger */}
               <button
                 onClick={() => setIsProvenanceOpen(true)}
-                className="px-3 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-cyan-700 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs cursor-pointer"
+                className="px-3 py-2 rounded-xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl text-slate-300 hover:text-cyan-400 text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs cursor-pointer"
               >
                 <Scale className="w-3.5 h-3.5 text-cyan-600" />
                 <span>Data Sources (CPWD / MoRTH)</span>
@@ -353,7 +353,7 @@ export default function FraudDetectionPage() {
 
               <button
                 onClick={() => setIsCertOpen(true)}
-                className="px-3 py-2 rounded-xl bg-cyan-50 hover:bg-cyan-100 border border-cyan-200 text-cyan-700 text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs cursor-pointer"
+                className="px-3 py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-100 border border-cyan-500/30 text-cyan-400 text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs cursor-pointer"
               >
                 <Lock className="w-3.5 h-3.5 text-cyan-600" />
                 <span>Section 65B Audit Certificate</span>
@@ -381,22 +381,22 @@ export default function FraudDetectionPage() {
 
           {/* Toast Notification */}
           {toastMessage && (
-            <div className="p-3.5 rounded-xl bg-cyan-50 border border-cyan-300 text-cyan-900 text-xs font-mono font-bold shadow-xs flex items-center gap-2 animate-fadeIn">
+            <div className="p-3.5 rounded-xl bg-cyan-500/15 border border-cyan-500/40 text-cyan-900 text-xs font-mono font-bold shadow-xs flex items-center gap-2 animate-fadeIn">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>{toastMessage}</span>
             </div>
           )}
 
           {/* DUAL IMAGE UPLOAD & LIVE SCANNING CONTROL HUB */}
-          <div className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-md space-y-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-200">
+          <div className="p-5 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-md space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-800">
               <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-cyan-500 animate-ping" />
-                <span className="text-xs font-bold text-slate-900 font-mono uppercase">
+                <span className="w-2.5 h-2.5 rounded-full bg-cyan-500/150 animate-ping" />
+                <span className="text-xs font-bold text-white font-mono uppercase">
                   Live Drone Pair Upload &amp; Volumetric Differencing Pipeline
                 </span>
               </div>
-              <span className="text-[11px] font-mono text-cyan-700 font-medium">
+              <span className="text-[11px] font-mono text-cyan-400 font-medium">
                 Upload your own Before &amp; After photos to run instant live AI analysis
               </span>
             </div>
@@ -431,7 +431,7 @@ export default function FraudDetectionPage() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="w-14 h-14 rounded-lg overflow-hidden border border-rose-300 shrink-0 bg-slate-100">
+                  <div className="w-14 h-14 rounded-lg overflow-hidden border border-rose-300 shrink-0 bg-slate-800/60">
                     <img
                       src={customBeforeUrl || dynamicSample.beforeScan.imageUrl}
                       alt="Before Preview"
@@ -440,7 +440,7 @@ export default function FraudDetectionPage() {
                   </div>
                   <button
                     onClick={() => beforeInputRef.current?.click()}
-                    className="flex-1 px-3 py-2.5 rounded-xl bg-white hover:bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-2xs"
+                    className="flex-1 px-3 py-2.5 rounded-xl bg-[#111726] hover:bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-2xs"
                   >
                     <Upload className="w-3.5 h-3.5" />
                     <span>Upload Custom Before Photo</span>
@@ -461,7 +461,7 @@ export default function FraudDetectionPage() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="w-14 h-14 rounded-lg overflow-hidden border border-emerald-300 shrink-0 bg-slate-100">
+                  <div className="w-14 h-14 rounded-lg overflow-hidden border border-emerald-300 shrink-0 bg-slate-800/60">
                     <img
                       src={customAfterUrl || dynamicSample.afterScan.imageUrl}
                       alt="After Preview"
@@ -470,7 +470,7 @@ export default function FraudDetectionPage() {
                   </div>
                   <button
                     onClick={() => afterInputRef.current?.click()}
-                    className="flex-1 px-3 py-2.5 rounded-xl bg-white hover:bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-2xs"
+                    className="flex-1 px-3 py-2.5 rounded-xl bg-[#111726] hover:bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-2xs"
                   >
                     <Upload className="w-3.5 h-3.5" />
                     <span>Upload Custom After Photo</span>
@@ -496,20 +496,20 @@ export default function FraudDetectionPage() {
 
                 <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 px-1">
                   <span>YOLOv8-Seg Mask + Depth Anything</span>
-                  <span className="text-cyan-700 font-bold">Live Pixel Analysis</span>
+                  <span className="text-cyan-400 font-bold">Live Pixel Analysis</span>
                 </div>
               </div>
             </div>
 
             {/* LIVE SCANNING ANIMATED PROGRESS BAR & TELEMETRY STREAM */}
             {isScanning && (
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-cyan-300 space-y-2 animate-pulse">
+              <div className="p-3.5 rounded-xl bg-slate-900/60 border border-cyan-500/40 space-y-2 animate-pulse">
                 <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="text-cyan-800 font-bold flex items-center gap-2">
+                  <span className="text-cyan-300 font-bold flex items-center gap-2">
                     <Activity className="w-3.5 h-3.5 text-cyan-600 animate-spin" />
                     <span>{scanTelemetryLog}</span>
                   </span>
-                  <span className="text-cyan-700 font-extrabold">{scanProgress}%</span>
+                  <span className="text-cyan-400 font-extrabold">{scanProgress}%</span>
                 </div>
                 <div className="w-full h-2 rounded-full bg-slate-200 overflow-hidden">
                   <div
@@ -522,9 +522,9 @@ export default function FraudDetectionPage() {
           </div>
 
           {/* Real-Time Interactive SLA Parameter Control Sliders */}
-          <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-4">
+          <div className="p-4 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs space-y-4">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-xs font-bold text-cyan-700 font-mono">
+              <div className="flex items-center gap-2 text-xs font-bold text-cyan-400 font-mono">
                 <Sliders className="w-4 h-4" />
                 <span>REAL-TIME SLA TELEMETRY SIMULATOR</span>
               </div>
@@ -535,9 +535,9 @@ export default function FraudDetectionPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {/* Slider 1: Material Deficit / Overbilling */}
-              <div className="space-y-1.5 p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <div className="space-y-1.5 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
                 <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="text-slate-700">Material Variance Deficit:</span>
+                  <span className="text-slate-300">Material Variance Deficit:</span>
                   <span className={`font-bold ${overbillPct > allowedTolerance ? 'text-rose-600' : 'text-emerald-600'}`}>
                     -{overbillPct.toFixed(1)}%
                   </span>
@@ -559,9 +559,9 @@ export default function FraudDetectionPage() {
               </div>
 
               {/* Slider 2: Compaction Density */}
-              <div className="space-y-1.5 p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <div className="space-y-1.5 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
                 <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="text-slate-700">Nuclear Compaction Density:</span>
+                  <span className="text-slate-300">Nuclear Compaction Density:</span>
                   <span className={`font-bold ${compactionDensity < 85 ? 'text-rose-600' : 'text-emerald-600'}`}>
                     {compactionDensity}% MDD
                   </span>
@@ -583,10 +583,10 @@ export default function FraudDetectionPage() {
               </div>
 
               {/* Slider 3: Allowed Variance Threshold */}
-              <div className="space-y-1.5 p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <div className="space-y-1.5 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
                 <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="text-slate-700">Allowed SLA Tolerance:</span>
-                  <span className="font-bold text-cyan-700">±{allowedTolerance}%</span>
+                  <span className="text-slate-300">Allowed SLA Tolerance:</span>
+                  <span className="font-bold text-cyan-400">±{allowedTolerance}%</span>
                 </div>
                 <input
                   type="range"
@@ -605,9 +605,9 @@ export default function FraudDetectionPage() {
               </div>
 
               {/* Slider 4: Pothole Depth Parameter */}
-              <div className="space-y-1.5 p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <div className="space-y-1.5 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
                 <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="text-slate-700">Void Excavation Depth:</span>
+                  <span className="text-slate-300">Void Excavation Depth:</span>
                   <span className="font-bold text-amber-700">{potholeDepthCm} cm</span>
                 </div>
                 <input
@@ -629,13 +629,13 @@ export default function FraudDetectionPage() {
           </div>
 
           {/* Metadata Strip & Sample Presets */}
-          <div className="p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs font-mono">
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-slate-600">
-              <span>Project: <strong className="text-slate-900">{dynamicSample.project}</strong></span>
+          <div className="p-3.5 rounded-2xl bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs font-mono">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-slate-400">
+              <span>Project: <strong className="text-white">{dynamicSample.project}</strong></span>
               <span>•</span>
-              <span>Road ID: <strong className="text-cyan-700">{dynamicSample.roadId}</strong></span>
+              <span>Road ID: <strong className="text-cyan-400">{dynamicSample.roadId}</strong></span>
               <span>•</span>
-              <span>Inspection ID: <strong className="text-cyan-700">{dynamicSample.inspectionId}</strong></span>
+              <span>Inspection ID: <strong className="text-cyan-400">{dynamicSample.inspectionId}</strong></span>
               <span>•</span>
               <span>Live Status: <strong className={currentStatus === 'APPROVED' ? 'text-emerald-700' : 'text-rose-700'}>{currentStatus}</strong></span>
             </div>
@@ -654,7 +654,7 @@ export default function FraudDetectionPage() {
                       ? s.status === 'APPROVED'
                         ? 'bg-emerald-50 text-emerald-800 border border-emerald-300 shadow-xs font-bold'
                         : 'bg-rose-50 text-rose-800 border border-rose-300 shadow-xs font-bold'
-                      : 'bg-slate-50 text-slate-600 border border-slate-200 hover:text-slate-900 hover:bg-slate-100'
+                      : 'bg-slate-900/60 text-slate-400 border border-slate-800 hover:text-white hover:bg-slate-800/60'
                   }`}
                 >
                   {s.id.startsWith('custom') ? 'Custom Upload' : idx === 0 ? 'Compliant Repair Preset' : 'Fraud Alert Preset'}

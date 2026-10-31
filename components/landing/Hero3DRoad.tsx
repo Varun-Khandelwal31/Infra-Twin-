@@ -42,11 +42,11 @@ export default function Hero3DRoad() {
 
       ctx.clearRect(0, 0, w, h);
 
-      // Background glowing ambient gradients in light theme
+      // Background glowing ambient gradients in dark command center theme
       const bgGrad = ctx.createRadialGradient(cx, cy + 20, 10, cx, cy + 20, w / 1.3);
-      bgGrad.addColorStop(0, 'rgba(14, 165, 233, 0.08)');
-      bgGrad.addColorStop(0.5, 'rgba(241, 245, 249, 0.7)');
-      bgGrad.addColorStop(1, 'rgba(248, 250, 252, 1)');
+      bgGrad.addColorStop(0, 'rgba(0, 217, 255, 0.12)');
+      bgGrad.addColorStop(0.5, 'rgba(17, 23, 38, 0.85)');
+      bgGrad.addColorStop(1, 'rgba(9, 13, 22, 1)');
       ctx.fillStyle = bgGrad;
       ctx.fillRect(0, 0, w, h);
 
@@ -295,22 +295,22 @@ export default function Hero3DRoad() {
   }, [activeSlice, mousePos]);
 
   return (
-    <div className="relative w-full h-[480px] rounded-3xl overflow-hidden bg-white border border-slate-200/90 shadow-md flex flex-col justify-between p-4 group">
+    <div className="relative w-full h-[480px] rounded-3xl overflow-hidden bg-[#111726]/90 border border-slate-800/90 shadow-2xl shadow-md flex flex-col justify-between p-4 group">
       {/* Top Header Controls */}
       <div className="relative z-10 flex items-center justify-between">
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-slate-200 text-xs font-mono text-cyan-700 shadow-xs">
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 backdrop-blur-md border border-slate-800 text-xs font-mono text-cyan-700 shadow-xs">
           <Cpu className="w-3.5 h-3.5 text-cyan-600 animate-spin" />
           <span>Interactive 3D Spatial Matrix</span>
         </div>
 
         {/* View Slice Mode Selector */}
-        <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs">
+        <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-800 text-xs">
           <button
             onClick={() => setActiveSlice('3d')}
             className={`px-2.5 py-1 rounded-lg transition-all font-medium ${
               activeSlice === '3d'
-                ? 'bg-white text-cyan-700 font-semibold border border-slate-200 shadow-xs'
-                : 'text-slate-500 hover:text-slate-800'
+                ? 'bg-white text-cyan-700 font-semibold border border-slate-800 shadow-xs'
+                : 'text-slate-500 hover:text-slate-200'
             }`}
           >
             3D Mesh
@@ -319,8 +319,8 @@ export default function Hero3DRoad() {
             onClick={() => setActiveSlice('contour')}
             className={`px-2.5 py-1 rounded-lg transition-all font-medium ${
               activeSlice === 'contour'
-                ? 'bg-white text-cyan-700 font-semibold border border-slate-200 shadow-xs'
-                : 'text-slate-500 hover:text-slate-800'
+                ? 'bg-white text-cyan-700 font-semibold border border-slate-800 shadow-xs'
+                : 'text-slate-500 hover:text-slate-200'
             }`}
           >
             Contours
@@ -329,8 +329,8 @@ export default function Hero3DRoad() {
             onClick={() => setActiveSlice('mesh')}
             className={`px-2.5 py-1 rounded-lg transition-all font-medium ${
               activeSlice === 'mesh'
-                ? 'bg-white text-cyan-700 font-semibold border border-slate-200 shadow-xs'
-                : 'text-slate-500 hover:text-slate-800'
+                ? 'bg-white text-cyan-700 font-semibold border border-slate-800 shadow-xs'
+                : 'text-slate-500 hover:text-slate-200'
             }`}
           >
             Wireframe
@@ -342,10 +342,10 @@ export default function Hero3DRoad() {
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full block cursor-crosshair" />
 
       {/* Bottom Telemetry Legend */}
-      <div className="relative z-10 flex items-center justify-between text-[11px] font-mono text-slate-600 p-2.5 rounded-2xl bg-white/90 backdrop-blur-md border border-slate-200 shadow-xs">
+      <div className="relative z-10 flex items-center justify-between text-[11px] font-mono text-slate-400 p-2.5 rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-800 shadow-xs">
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-cyan-600 animate-ping" />
-          <span className="text-slate-600">Move mouse to tilt perspective grid</span>
+          <span className="text-slate-400">Move mouse to tilt perspective grid</span>
         </div>
         <div className="hidden sm:flex items-center gap-3">
           <span className="text-cyan-700 font-medium">0cm Rim</span>
