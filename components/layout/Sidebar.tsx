@@ -40,19 +40,19 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 select-none z-30 min-h-screen text-slate-700 shadow-xs">
+    <aside className="w-64 bg-white/95 backdrop-blur-xl border-r border-slate-200/90 flex flex-col justify-between shrink-0 select-none z-30 min-h-screen text-slate-700 shadow-[4px_0_24px_-4px_rgba(15,23,42,0.04)]">
       {/* Brand Header */}
       <div>
-        <div className="p-4 border-b border-slate-200 flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-600">
+        <div className="p-4 border-b border-slate-200/80 flex items-center gap-3 bg-white/50">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500/15 to-blue-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-600 shadow-xs">
             <Cpu className="w-5 h-5 animate-pulse" />
           </div>
           <div>
             <div className="flex items-center gap-1.5">
               <span className="font-bold text-lg tracking-tight text-slate-900 font-display">InfraTwin</span>
-              <span className="text-xs px-1.5 py-0.5 rounded bg-cyan-100 text-cyan-800 font-mono font-semibold border border-cyan-300">AI</span>
+              <span className="text-xs px-1.5 py-0.5 rounded bg-cyan-100/90 text-cyan-800 font-mono font-bold border border-cyan-300">AI</span>
             </div>
-            <p className="text-[10px] text-slate-500 font-medium">Smart City Audit Engine</p>
+            <p className="text-[10px] text-slate-500 font-medium">Smart City Audit Engine • NHAI</p>
           </div>
         </div>
 
@@ -67,8 +67,8 @@ export default function Sidebar() {
                   className={cn(
                     'flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 group relative overflow-hidden',
                     isActive
-                      ? 'bg-cyan-50 text-cyan-800 border border-cyan-200 font-semibold shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                      ? 'bg-gradient-to-r from-cyan-50 to-blue-50/60 text-cyan-900 border border-cyan-200/90 font-bold shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80'
                   )}
                 >
                   <Icon

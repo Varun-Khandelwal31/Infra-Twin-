@@ -191,7 +191,7 @@ export default function SLAVerificationPage() {
   };
 
   return (
-    <div className="flex h-screen bg-[#edf2f7] text-slate-800 font-sans overflow-hidden">
+    <div className="flex h-screen bg-transparent text-slate-800 font-sans overflow-hidden">
       <Sidebar />
 
       {/* Hidden file inputs */}

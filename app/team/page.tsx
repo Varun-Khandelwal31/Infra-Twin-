@@ -143,7 +143,7 @@ export default function TeamPage() {
   const inAuditCount = teamMembers.filter((m) => m.status === 'IN_AUDIT').length;
 
   return (
-    <div className="flex h-screen bg-[#edf2f7] text-slate-800 font-sans overflow-hidden">
+    <div className="flex h-screen bg-transparent text-slate-800 font-sans overflow-hidden">
       <Sidebar />
 
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">

@@ -14,7 +14,7 @@ import { ArrowRight, ShieldCheck, Sparkles, Cpu, CheckCircle2 } from 'lucide-rea
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-[#edf2f7] text-slate-800 flex flex-col font-sans selection:bg-cyan-500 selection:text-white">
+    <div className="min-h-screen bg-transparent text-slate-800 flex flex-col font-sans selection:bg-cyan-500 selection:text-white">
       <Navbar />
 
       {/* Hero Section */}
